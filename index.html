@@ -1,0 +1,2446 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REC CSE Magazine 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&family=Bebas+Neue&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM — REC CSE MAGAZINE 2026
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #e8c84a;
+  --gold-light: #f5dfa0;
+  --cyan: #00d4ff;
+  --pink: #ff4fa0;
+  --green: #2ecc71;
+  --white: #f8f4ee;
+  --ink: #0c0a14;
+  --slate: #1a1726;
+
+  --font-display: 'Cinzel', serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-tech: 'Space Grotesk', sans-serif;
+  --font-headline: 'Bebas Neue', sans-serif;
+}
+
+body {
+  background: #08060f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  padding: 16px 10px 30px;
+}
+
+/* ── Shell ── */
+.mag-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.mag-header {
+  text-align: center;
+}
+.mag-header h1 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.mag-header p {
+  font-family: var(--font-tech);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ── Flipbook ── */
+#flipbook {
+  width: 900px;
+  height: 600px;
+}
+
+/* ── Nav ── */
+.nav-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-btn {
+  font-family: var(--font-tech);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid rgba(232,200,74,0.35);
+  padding: 9px 24px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-btn:hover {
+  background: rgba(232,200,74,0.12);
+}
+#page-counter {
+  font-family: var(--font-tech);
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  min-width: 120px;
+  text-align: center;
+}
+.progress-track {
+  width: 220px;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 1px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  border-radius: 1px;
+  transition: width 0.4s;
+  width: 5%;
+}
+.kb-hint {
+  font-family: var(--font-tech);
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 1px;
+}
+
+/* ══════════════════════════════════════
+   PAGE BASE
+   ══════════════════════════════════════ */
+.pg {
+  width: 450px;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-body);
+  color: var(--white);
+}
+.pg-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.pg-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Typography Atoms ── */
+.eyebrow {
+  font-family: var(--font-tech);
+  font-size: 8.5px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 6px;
+}
+.display-title {
+  font-family: var(--font-headline);
+  font-size: 64px;
+  line-height: 0.88;
+  letter-spacing: 2px;
+}
+.serif-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+.section-head {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.body-copy {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+.caption {
+  font-family: var(--font-tech);
+  font-size: 9.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+.rule {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.2;
+  margin: 10px 0;
+}
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 10px 0;
+}
+.rule-accent {
+  height: 2px;
+  width: 48px;
+  background: var(--gold);
+  margin-bottom: 10px;
+}
+
+/* ── Page Number ── */
+.pg-num {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: var(--font-tech);
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+/* ── Cards & Blocks ── */
+.card {
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.card-dark {
+  background: rgba(0,0,0,0.38);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.card-gold {
+  background: rgba(232,200,74,0.1);
+  border: 1px solid rgba(232,200,74,0.3);
+}
+.card-glass {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Event block ── */
+.ev-block {
+  display: flex;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.ev-block:last-child { border-bottom: none; }
+.ev-img {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ev-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.ev-img .ev-fallback {
+  font-size: 22px;
+}
+.ev-body { flex: 1; min-width: 0; }
+.ev-title {
+  font-family: var(--font-tech);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.ev-desc {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: rgba(248,244,238,0.72);
+}
+.ev-tag {
+  display: inline-block;
+  margin-top: 5px;
+  font-family: var(--font-tech);
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(0,212,255,0.12);
+  border: 1px solid rgba(0,212,255,0.25);
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+
+/* ── Stat grid ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.stat-cell {
+  padding: 10px 8px;
+  border-radius: 6px;
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.stat-val {
+  font-family: var(--font-headline);
+  font-size: 28px;
+  line-height: 1;
+  color: var(--gold);
+}
+.stat-lbl {
+  font-family: var(--font-tech);
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-top: 3px;
+}
+
+/* ── TOC ── */
+.toc-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.toc-row:last-child { border-bottom: none; }
+.toc-name {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  color: rgba(248,244,238,0.85);
+  flex-shrink: 0;
+}
+.toc-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(255,255,255,0.18);
+}
+.toc-pg {
+  font-family: var(--font-headline);
+  font-size: 14px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── TOC page compact tuning ── */
+#p3 .pg-inner { padding-top: 20px; padding-bottom: 18px; }
+#p3 .eyebrow { margin-bottom: 4px; }
+#p3 .page-headline-sm { margin-bottom: 4px !important; }
+#p3 .card.card-dark { margin-bottom: 8px !important; padding: 8px 12px !important; }
+#p3 .toc-row { padding: 4px 0; }
+#p3 .toc-name { font-size: 10.8px; }
+#p3 .toc-pg { font-size: 13px; }
+#p3 .mascot-row { gap: 8px; align-items: stretch; }
+#p3 .mascot-avatar { width: 40px; height: 40px; }
+#p3 .mascot-speech { padding: 7px 10px; }
+#p3 .mascot-label { margin-bottom: 3px; }
+#p3 .mascot-text { font-size: 10.8px; line-height: 1.35; }
+
+/* ── Mascot bubble ── */
+.mascot-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.mascot-avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.mascot-avatar img { width: 100%; height: 100%; object-fit: contain; }
+.mascot-speech {
+  flex: 1;
+  background: rgba(0,212,255,0.07);
+  border: 1px solid rgba(0,212,255,0.25);
+  border-radius: 0 10px 10px 10px;
+  padding: 9px 12px;
+}
+.mascot-label {
+  font-family: var(--font-tech);
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.mascot-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(248,244,238,0.85);
+}
+
+/* ── Faculty kpi ── */
+.fac-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.fac-kpi {
+  text-align: center;
+  padding: 8px 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.fac-kpi .val {
+  font-family: var(--font-headline);
+  font-size: 22px;
+  color: var(--gold);
+  line-height: 1;
+}
+.fac-kpi .lbl {
+  font-family: var(--font-tech);
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-top: 2px;
+}
+
+/* ── Market bars ── */
+.bar-item {
+  display: grid;
+  grid-template-columns: 100px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.bar-label { font-family: var(--font-tech); font-size: 9.5px; color: rgba(255,255,255,0.7); }
+.bar-track { height: 5px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 99px; background: var(--cyan); }
+.bar-val { font-family: var(--font-tech); font-size: 9px; color: var(--cyan); text-align: right; }
+
+/* ── Company tags ── */
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 5px; }
+.ctag {
+  font-family: var(--font-tech);
+  font-size: 9.5px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 3px 10px;
+  color: rgba(248,244,238,0.8);
+}
+
+/* ── Table ── */
+.plain-table {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 6px 10px;
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+.plain-table .th {
+  font-family: var(--font-tech);
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.plain-table .td {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  color: rgba(248,244,238,0.75);
+}
+
+/* ── Two-col layout ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ── Scatter/photo layout ── */
+.scatter-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.scatter-photo {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.scatter-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.scatter-note {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.scatter-note .ev-title { font-size: 11px; }
+.scatter-note .ev-desc { font-size: 10.5px; }
+
+/* ── Innovation strips ── */
+.innovation-strip {
+  margin-top: auto;
+  align-self: center;
+  width: calc(100% - 8px);
+  max-width: 392px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  padding: 8px 10px 8px 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.innovation-strip.cyan {
+  background: linear-gradient(135deg, rgba(0,212,255,0.14), rgba(0,0,0,0.14));
+  border-color: rgba(0,212,255,0.22);
+}
+.innovation-strip.pink {
+  background: linear-gradient(135deg, rgba(255,79,160,0.14), rgba(0,0,0,0.14));
+  border-color: rgba(255,79,160,0.24);
+}
+.innovation-strip.gold {
+  background: linear-gradient(135deg, rgba(232,200,74,0.14), rgba(0,0,0,0.14));
+  border-color: rgba(232,200,74,0.26);
+}
+.innovation-strip-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.innovation-strip-title {
+  font-family: var(--font-tech);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.innovation-strip-kicker {
+  font-family: var(--font-tech);
+  font-size: 7px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  opacity: 0.65;
+  text-align: right;
+}
+.innovation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.innovation-cell {
+  border-radius: 8px;
+  padding: 7px 6px;
+  min-height: 0;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.innovation-label {
+  font-family: var(--font-tech);
+  font-size: 6.8px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  opacity: 0.58;
+  margin-bottom: 3px;
+}
+.innovation-value {
+  font-family: var(--font-headline);
+  font-size: 15px;
+  line-height: 0.95;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.innovation-copy {
+  font-family: var(--font-serif);
+  font-size: 8.8px;
+  line-height: 1.2;
+  color: rgba(248,244,238,0.78);
+  overflow-wrap: anywhere;
+}
+
+#p5 .corner-mascot,
+#p6 .corner-mascot,
+#p7 .corner-mascot,
+#p8 .corner-mascot,
+#p9 .corner-mascot {
+  width: 46px;
+  left: 8px;
+  bottom: 10px;
+  opacity: 0.62;
+}
+
+/* ── Special mention tuning ── */
+#p11a .pg-inner {
+  padding-left: 28px;
+  padding-right: 28px !important;
+}
+#p11a .eyebrow,
+#p11a .page-headline-sm,
+#p11a .card {
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#p11a .card {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+#p11a .card:first-of-type > div {
+  align-items: center !important;
+}
+#p11a .portrait-frame {
+  width: 104px !important;
+  height: 126px !important;
+}
+#p11a .ev-tag {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* ── Editorial feature blocks ── */
+.feature-num {
+  font-family: var(--font-headline);
+  font-size: 80px;
+  line-height: 0.85;
+  color: var(--gold);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.kpi-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.kpi-item {
+  border-bottom: 2px solid;
+  padding-bottom: 6px;
+}
+.kpi-item .big {
+  font-family: var(--font-headline);
+  font-size: 36px;
+  line-height: 1;
+  color: var(--gold);
+}
+.kpi-item .big.cyan { color: var(--cyan); }
+.kpi-item .small {
+  font-family: var(--font-tech);
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0.55;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-family: var(--font-tech);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 3px 10px;
+  border: 1px solid rgba(232,200,74,0.4);
+  color: var(--gold);
+}
+
+/* ── Two-tone heading ── */
+.hl-gold { color: var(--gold); }
+.hl-cyan { color: var(--cyan); }
+.hl-pink { color: var(--pink); }
+.hl-green { color: var(--green); }
+
+/* ── Image helpers ── */
+.img-frame {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.img-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.img-frame .fb { /* fallback */
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+/* hide fallback when photo loads */
+.img-frame.loaded .fb { display: none; }
+.ev-img.loaded .ev-fallback { display: none; }
+
+/* ══════════════════════════════════════
+   PAGE 1 — COVER: Dark Luxury Gold
+   ══════════════════════════════════════ */
+#p1 { background: #09060f; }
+#p1 .pg-inner {
+  padding: 0;
+  justify-content: flex-end;
+}
+.cover-top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), #c8860a, var(--gold));
+}
+.cover-bottom-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.cover-corner {
+  position: absolute;
+  width: 32px; height: 32px;
+}
+.cover-corner.tl { top: 12px; left: 12px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.cover-corner.tr { top: 12px; right: 12px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+.cover-corner.bl { bottom: 20px; left: 12px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.cover-corner.br { bottom: 20px; right: 12px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+.cover-logo-area {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cover-logo-area img { height: 44px; object-fit: contain; }
+
+.cover-mascot {
+  position: absolute;
+  bottom: 22px;
+  left: 18px;
+  width: 72px;
+  object-fit: contain;
+  opacity: 0.82;
+  z-index: 4;
+}
+
+.cover-body {
+  position: absolute;
+  inset: 58px 28px 44px 28px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) 154px;
+  gap: 16px;
+  align-items: stretch;
+}
+.cover-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.cover-kicker {
+  font-family: var(--font-tech);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: rgba(0,212,255,0.82);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.cover-dept {
+  font-family: var(--font-tech);
+  font-size: 8.5px;
+  letter-spacing: 4.6px;
+  color: rgba(232,200,74,0.58);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.cover-title-main {
+  font-family: var(--font-display);
+  font-size: 52px;
+  line-height: 0.96;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.cover-title-sub {
+  font-family: var(--font-headline);
+  font-size: 26px;
+  letter-spacing: 7px;
+  color: rgba(248,244,238,0.56);
+  margin-bottom: 18px;
+}
+.cover-rule-double {
+  margin: 0 0 18px;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cover-rule-double span {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), rgba(232,200,74,0.18), transparent);
+}
+.cover-rule-double span:nth-child(2) { opacity: 0.4; }
+
+.cover-meta {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.cover-stat {
+  min-width: 58px;
+}
+.cover-stat .n {
+  font-family: var(--font-headline);
+  font-size: 22px;
+  color: var(--gold);
+}
+.cover-stat .l {
+  font-family: var(--font-tech);
+  font-size: 7px;
+  letter-spacing: 1.6px;
+  opacity: 0.45;
+  text-transform: uppercase;
+}
+.cover-bubble {
+  max-width: 280px;
+  background: linear-gradient(90deg, rgba(232,200,74,0.1), rgba(232,200,74,0.04));
+  border: 1px solid rgba(232,200,74,0.16);
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: left;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+.cover-bubble img { width: 28px; flex-shrink: 0; object-fit: contain; }
+.cover-bubble p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 10px;
+  line-height: 1.4;
+  color: rgba(248,244,238,0.8);
+}
+.cover-showcase {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(232,200,74,0.2);
+  background: #110d17;
+  box-shadow: 0 18px 42px rgba(0,0,0,0.34);
+  display: flex;
+  flex-direction: column;
+}
+.cover-showcase-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 142px 74px 74px 74px;
+  gap: 2px;
+  background: rgba(232,200,74,0.12);
+}
+.cover-shot {
+  position: relative;
+  overflow: hidden;
+  background: #18121f;
+}
+.cover-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cover-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0.28) 100%);
+}
+.cover-shot.main {
+  grid-column: 1 / span 2;
+}
+.cover-shot.wide {
+  grid-column: 1 / span 2;
+}
+.cover-showcase-badge {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(6,13,26,0.32);
+  font-family: var(--font-tech);
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.cover-showcase-text {
+  padding: 10px 12px 12px;
+  background: linear-gradient(180deg, rgba(13,9,7,0.92), rgba(13,9,7,0.98));
+}
+.cover-showcase-text .eyebrow {
+  margin-bottom: 4px;
+}
+.cover-showcase-text .big {
+  font-family: var(--font-headline);
+  font-size: 20px;
+  line-height: 0.9;
+  color: var(--white);
+  margin-bottom: 5px;
+}
+.cover-showcase-text .mini {
+  font-family: var(--font-tech);
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(232,200,74,0.86);
+}
+
+/* ══════════════════════════════════════
+   PAGE 2 — MEET THE TEAM: Soft Editorial Cream
+   ══════════════════════════════════════ */
+#p2 { background: #0e0b1a; }
+.p2-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(232,200,74,0.12), transparent);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.team-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.team-photo {
+  width: 52px; height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.team-info .name {
+  font-family: var(--font-tech);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.2;
+}
+.team-info .role {
+  font-family: var(--font-tech);
+  font-size: 9.5px;
+  color: var(--cyan);
+  margin-top: 2px;
+}
+.team-info .year {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 1px;
+}
+
+/* ══════════════════════════════════════
+   PAGE 3 — TOC: Dark Tech Blue
+   ══════════════════════════════════════ */
+#p3 { background: #060d1a; }
+.p3-accent-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--cyan), transparent);
+}
+
+/* ══════════════════════════════════════
+   PAGE 4 — ACHIEVEMENTS: Deep Purple Gold
+   ══════════════════════════════════════ */
+#p4 { background: #0d0520; }
+
+/* ══════════════════════════════════════
+   PAGE 5–10 — EVENTS: Neon Tech
+   ══════════════════════════════════════ */
+#p5 { background: #070814; }
+#p6 { background: #0c0814; }
+#p7 { background: #100814; }
+#p8 { background: #060c14; }
+#p9 { background: #08060f; }
+#p10 { background: #060814; }
+
+/* ══════════════════════════════════════
+   PAGE 11 — SPOTLIGHT: Sports Olive
+   ══════════════════════════════════════ */
+#p11 { background: #090e08; }
+
+/* ══════════════════════════════════════
+   PAGE 11a,11b — SPECIAL MENTIONS: Rich Indigo
+   ══════════════════════════════════════ */
+#p11a { background: #0a0718; }
+#p11b { background: #0d0818; }
+
+/* ══════════════════════════════════════
+   PAGE 12 — MOMENTS: Photographic Dark
+   ══════════════════════════════════════ */
+#p12 { background: #090610; }
+
+/* ══════════════════════════════════════
+   PAGE 13–15 — FACULTY: Academic Navy
+   ══════════════════════════════════════ */
+#p13 { background: #040e1c; }
+#p14 { background: #040a18; }
+#p15 { background: #050c1a; }
+
+/* ══════════════════════════════════════
+   PAGE 16 — WEALTH: Finance Amber
+   ══════════════════════════════════════ */
+#p16 { background: #0d0900; }
+.p16-bg-stripe {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(0deg, rgba(232,200,74,0.06), transparent);
+}
+
+/* ══════════════════════════════════════
+   PAGE 17 — GEN AI: Electric Blue
+   ══════════════════════════════════════ */
+#p17 { background: #040c1e; }
+
+/* ══════════════════════════════════════
+   PAGE 18 — RAG: Royal Blue
+   ══════════════════════════════════════ */
+#p18 { background: #050b1c; }
+
+/* ══════════════════════════════════════
+   PAGE 19 — STOCK: Forest Green
+   ══════════════════════════════════════ */
+#p19 { background: #040d08; }
+
+/* ══════════════════════════════════════
+   PAGE 20 — PLACEMENTS: Midnight Emerald
+   ══════════════════════════════════════ */
+#p20 { background: #040b10; }
+
+/* ══════════════════════════════════════
+   PAGE 23 — THANK YOU: Regal Violet
+   ══════════════════════════════════════ */
+#p23 { background: #0a0618; }
+
+/* ── SVG backgrounds ── */
+.pg-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+
+/* ── Corner logos (all inner pages) ── */
+.corner-logo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 74px;
+  height: 42px;
+  object-fit: contain;
+  z-index: 5;
+  opacity: 0.85;
+}
+.corner-mascot {
+  position: absolute;
+  bottom: 14px;
+  left: 12px;
+  width: 64px;
+  object-fit: contain;
+  z-index: 5;
+  opacity: 0.75;
+}
+
+/* ── Inline image portrait ── */
+.portrait-frame {
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  flex-shrink: 0;
+}
+.portrait-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Scroll-safe pages */
+.pg-inner.scroll { overflow-y: auto; }
+
+/* Separator line */
+.sep {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 8px 0;
+}
+.sep-gold {
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  margin: 8px 0;
+  opacity: 0.5;
+}
+
+/* Two-tone rule */
+.rule-duo {
+  display: flex;
+  gap: 3px;
+  margin: 8px 0;
+}
+.rule-duo span:first-child { flex: 2; height: 2px; background: var(--gold); border-radius: 1px; }
+.rule-duo span:last-child { flex: 1; height: 2px; background: rgba(255,255,255,0.15); border-radius: 1px; }
+
+/* ── Page-specific heading sizes ── */
+.page-headline-lg { font-family: var(--font-headline); font-size: 52px; line-height: 0.9; letter-spacing: 2px; }
+.page-headline-md { font-family: var(--font-headline); font-size: 38px; line-height: 0.92; letter-spacing: 1.5px; }
+.page-headline-sm { font-family: var(--font-headline); font-size: 28px; line-height: 1; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="mag-shell">
+  <div class="mag-header">
+    <h1>✦ REC CSE Magazine ✦</h1>
+    <p>JAN-MAR 2026 Digital Edition · Computer Science &amp; Engineering</p>
+  </div>
+
+  <div id="flipbook">
+
+    <!-- ══════════════════════════════════════
+         PAGE 1: COVER — Dark Luxury Gold
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p1">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cvBg" cx="50%" cy="45%" r="65%">
+            <stop offset="0%" stop-color="#1e1204"/>
+            <stop offset="60%" stop-color="#0d0907"/>
+            <stop offset="100%" stop-color="#050305"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#cvBg)"/>
+        <circle cx="225" cy="260" r="200" fill="rgba(232,200,74,0.03)"/>
+        <circle cx="225" cy="260" r="160" fill="none" stroke="rgba(232,200,74,0.07)" stroke-width="1"/>
+        <circle cx="225" cy="260" r="120" fill="none" stroke="rgba(232,200,74,0.06)" stroke-width="1" stroke-dasharray="3 7"/>
+        <line x1="0" y1="580" x2="450" y2="580" stroke="rgba(232,200,74,0.25)" stroke-width="1"/>
+      </svg>
+      <div class="cover-top-bar"></div>
+      <div class="cover-bottom-bar"></div>
+      <div class="cover-corner tl"></div>
+      <div class="cover-corner tr"></div>
+      <div class="cover-corner bl"></div>
+      <div class="cover-corner br"></div>
+      <div class="cover-logo-area">
+        <img src="images/reclogo.png" alt="REC Logo"/>
+      </div>
+      <img src="images/voltmascot.png" class="cover-mascot" alt="ADHI mascot"/>
+      <div class="cover-body">
+        <div class="cover-copy">
+          <div class="cover-kicker">Our Collective Story</div>
+          <div class="cover-dept">Department of Computer Science &amp; Engineering</div>
+          <div class="cover-title-main">REC CSE</div>
+          <div class="cover-title-sub">MAGAZINE</div>
+          <div class="cover-rule-double"><span></span><span></span></div>
+          <div class="cover-meta">
+            <div class="cover-stat"><div class="n">23</div><div class="l">Pages</div></div>
+            <div style="width:1px;background:rgba(232,200,74,0.2);height:36px;"></div>
+            <div class="cover-stat"><div class="n" style="color:var(--cyan);">500+</div><div class="l">Events</div></div>
+            <div style="width:1px;background:rgba(232,200,74,0.2);height:36px;"></div>
+            <div class="cover-stat"><div class="n" style="color:var(--pink);">2026</div><div class="l">Edition</div></div>
+          </div>
+          <div class="cover-bubble">
+            <img src="images/voltmascot.png" alt="ADHI"/>
+            <p>"Welcome, future innovators! I'm ADHI, guiding you through the people, projects, and moments that shaped REC CSE this year."</p>
+          </div>
+        </div>
+        <div class="cover-showcase">
+          <div class="cover-showcase-grid">
+            <div class="cover-shot main">
+              <img src="images/colab.png" alt="Collaborative CSE moments"/>
+            </div>
+            <div class="cover-shot">
+              <img src="images/sejal.jpeg" alt="Student achievement highlight"/>
+            </div>
+            <div class="cover-shot">
+              <img src="images/sakthi.png" alt="Innovation spotlight"/>
+            </div>
+            <div class="cover-shot wide">
+              <img src="images/gowt.png" alt="Cricket team highlight"/>
+            </div>
+            <div class="cover-shot wide">
+              <img src="images/rak.png" alt="Student team moment"/>
+            </div>
+          </div>
+          <div class="cover-showcase-text">
+            <div class="cover-showcase-badge">Campus Energy</div>
+            <div class="big">Built<br/>Together</div>
+            <div class="mini">Ideas · Teamwork · Impact</div>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">01</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 2: MEET THE TEAM — Warm Editorial
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p2">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#0e0b1a"/>
+        <rect x="0" y="0" width="450" height="110" fill="rgba(232,200,74,0.05)"/>
+        <circle cx="380" cy="500" r="100" fill="rgba(0,212,255,0.04)"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-top:20px;">
+        <div class="eyebrow" style="color:var(--gold);">Editorial</div>
+        <div class="page-headline-sm" style="color:var(--gold); margin-bottom:4px;">Meet the Team</div>
+        <div class="rule-duo"><span></span><span></span></div>
+        <div class="card card-glass" style="padding:10px 12px; margin-bottom:10px;">
+          <p class="body-copy" style="font-size:11.5px;">This magazine is crafted with passion by students who believe in celebrating every milestone. Our editorial team worked tirelessly to bring you stories that inspire, moments that last, and achievements that define us.</p>
+        </div>
+        <div class="team-grid" style="margin-bottom:10px;">
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="images/gow.png" alt="Gowtham S" onerror="this.parentElement.style.fontSize='18px';this.remove()"/>
+            </div>
+            <div class="team-info">
+              <div class="name">GOWTHAM S</div>
+              <div class="role">Chief Editor</div>
+              <div class="year">II Year CSE</div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="images/rohithkumar.jpg" alt="Rohithkumar S" onerror="this.parentElement.style.fontSize='18px';this.remove()"/>
+            </div>
+            <div class="team-info">
+              <div class="name">ROHITHKUMAR S</div>
+              <div class="role">Design Lead</div>
+              <div class="year">II Year CSE</div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="images/sa.png" alt="Sarveshvaran D" onerror="this.parentElement.style.fontSize='18px';this.remove()"/>
+            </div>
+            <div class="team-info">
+              <div class="name">SARVESHVARAN D</div>
+              <div class="role">Content Writer</div>
+              <div class="year">II Year CSE</div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-photo">
+              <img src="images/kevin.png" alt="Kevin" onerror="this.parentElement.style.fontSize='18px';this.remove()"/>
+            </div>
+            <div class="team-info">
+              <div class="name">KEVIN</div>
+              <div class="role">Photographer</div>
+              <div class="year">II Year CSE</div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-gold" style="margin-bottom:8px;">
+          <p style="font-family:var(--font-serif);font-style:italic;font-size:11.5px;color:rgba(232,200,74,0.9);line-height:1.55;">"We dedicate this magazine to every student who dared to dream, to every faculty who inspired, and to every moment that made REC CSE unforgettable."</p>
+        </div>
+        <div style="font-family:var(--font-tech);font-size:10px;color:rgba(255,255,255,0.45);text-align:center;">Faculty Advisor: <span style="color:var(--gold);">Dr. J. PRIYA</span> · HOD: <span style="color:var(--gold);">MALATHY E M</span></div>
+      </div>
+      <span class="pg-num">02</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 3: TABLE OF CONTENTS — Tech Blue
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p3">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#060d1a"/>
+        <rect x="0" y="0" width="3" height="600" fill="url(#cyanBar)"/>
+        <defs><linearGradient id="cyanBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00d4ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></linearGradient></defs>
+        <circle cx="380" cy="120" r="80" fill="rgba(0,212,255,0.04)"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-left:18px;">
+        <div class="eyebrow" style="color:var(--cyan);">Navigation</div>
+        <div class="page-headline-sm" style="color:var(--cyan); margin-bottom:6px;">Table of Contents</div>
+        <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="card card-dark" style="margin-bottom:10px;padding:10px 14px;">
+          <div class="toc-row"><span class="toc-name">📖 Cover Page</span><span class="toc-dots"></span><span class="toc-pg">01</span></div>
+          <div class="toc-row"><span class="toc-name">👥 About the Team</span><span class="toc-dots"></span><span class="toc-pg">02</span></div>
+          <div class="toc-row"><span class="toc-name">🏆 Student Achievements</span><span class="toc-dots"></span><span class="toc-pg">04</span></div>
+          <div class="toc-row"><span class="toc-name">💻 Events: Hackathon &amp; Symposium</span><span class="toc-dots"></span><span class="toc-pg">05</span></div>
+          <div class="toc-row"><span class="toc-name">🎯 Events: Workshops &amp; Talks</span><span class="toc-dots"></span><span class="toc-pg">06</span></div>
+          <div class="toc-row"><span class="toc-name">🌐 Cultural Tech Fusion</span><span class="toc-dots"></span><span class="toc-pg">07</span></div>
+          <div class="toc-row"><span class="toc-name">🚀 Innovation Showcase</span><span class="toc-dots"></span><span class="toc-pg">08–10</span></div>
+          <div class="toc-row"><span class="toc-name">🌟 Sports &amp; Competitions</span><span class="toc-dots"></span><span class="toc-pg">11</span></div>
+          <div class="toc-row"><span class="toc-name">📸 Moments to Glory</span><span class="toc-dots"></span><span class="toc-pg">12</span></div>
+          <div class="toc-row"><span class="toc-name">🏛️ Student Organizations</span><span class="toc-dots"></span><span class="toc-pg">13</span></div>
+          <div class="toc-row"><span class="toc-name">🎪 More Events (Part 2)</span><span class="toc-dots"></span><span class="toc-pg">14–16</span></div>
+          <div class="toc-row"><span class="toc-name">🤖 WriteUs · GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">17</span></div>
+          <div class="toc-row"><span class="toc-name">🌈 Full Showcase</span><span class="toc-dots"></span><span class="toc-pg">18–19</span></div>
+          <div class="toc-row"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">20</span></div>
+          <div class="toc-row" style="border-bottom:none;"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech">
+            <div class="mascot-label">ADHI says</div>
+            <p class="mascot-text">"Navigate our journey page by page — every chapter holds a surprise. Let's explore what makes REC CSE truly extraordinary! ⚡"</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">03</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 4: STUDENT ACHIEVEMENTS — Deep Purple
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p4">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#0d0520"/>
+        <ellipse cx="380" cy="540" rx="140" ry="120" fill="rgba(232,200,74,0.05)"/>
+        <ellipse cx="60" cy="80" rx="100" ry="80" fill="rgba(108,43,217,0.1)"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner">
+        <div class="eyebrow" style="color:var(--gold);">Pride &amp; Glory</div>
+        <div class="page-headline-sm" style="color:var(--gold);margin-bottom:6px;">Student Achievements</div>
+        <div class="rule-duo" style="margin-bottom:8px;"><span></span><span></span></div>
+        <div class="mascot-row" style="margin-bottom:10px;">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech">
+            <div class="mascot-label">ADHI says</div>
+            <p class="mascot-text">"Our students don't just participate — they DOMINATE! Here are the numbers that make me proud! 🏆"</p>
+          </div>
+        </div>
+        <div class="stat-row" style="margin-bottom:10px;">
+          <div class="stat-cell"><div class="stat-val">500+</div><div class="stat-lbl">Events Participated</div></div>
+          <div class="stat-cell"><div class="stat-val" style="color:var(--cyan);">100+</div><div class="stat-lbl">Awards Won</div></div>
+          <div class="stat-cell"><div class="stat-val" style="color:var(--pink);">12</div><div class="stat-lbl">National Titles</div></div>
+          <div class="stat-cell"><div class="stat-val" style="color:var(--green);">3</div><div class="stat-lbl">International Wins</div></div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:10px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">🌏 NOTABLE ACHIEVEMENTS</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;gap:8px;align-items:flex-start;">
+              <span style="font-size:14px;flex-shrink:0;">🥇</span>
+              <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Smart India Hackathon 2023</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">National Winner — AI for Healthcare</div></div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:flex-start;">
+              <span style="font-size:14px;flex-shrink:0;">🌐</span>
+              <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">ICPC Asia Pacific 2023</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">Qualified Top 5% — International</div></div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:flex-start;">
+              <span style="font-size:14px;flex-shrink:0;">🤖</span>
+              <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">IEEE Xtreme 17.0</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">Global Rank 42 — International</div></div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:flex-start;">
+              <span style="font-size:14px;flex-shrink:0;">💡</span>
+              <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Google Solution Challenge</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">Top 100 Globally — International</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-gold" style="padding:8px 12px;">
+          <div style="font-size:11px;color:rgba(232,200,74,0.9);">🎓 <strong style="color:var(--gold);">48 patents filed</strong> by students · <strong style="color:var(--gold);">23 research papers</strong> published in international journals · <strong style="color:var(--gold);">₹2.1Cr</strong> in scholarship awards</div>
+        </div>
+      </div>
+      <span class="pg-num">04</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 5: HACKATHON & SYMPOSIUM I
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p5">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#070814"/>
+        <circle cx="400" cy="100" r="110" fill="rgba(0,212,255,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(0,212,255,0.3)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--cyan);">Events Chronicle · Part I</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Hackathon <span style="color:var(--cyan);">&amp;</span> Symposium</div>
+        <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/sakthi.png" alt="Sakthivel" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">HACKTHRONE 2025</div>
+            <p class="ev-desc">Our <strong>CSE Department</strong> student <strong style="color:var(--gold);">Sakthivel (II Year)</strong> made us proud by emerging as a winner at the prestigious Hackathrone 2025. Competing against top innovators from across the country, he showcased exceptional problem-solving skills and creativity, earning recognition among hundreds of participants.</p>
+            <span class="ev-tag">3rd Prize · ₹30,000 · 100+ Teams</span>
+          </div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/sa.png" alt="Sarveshvaran" onerror="this.parentElement.classList.add('loaded');"/>
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">CODEATHON 2026</div>
+            <p class="ev-desc">Showcasing exceptional innovation, <strong style="color:var(--gold);">Sarveshvaran D (II Year)</strong> made a remarkable mark at Codeathon 2026, a 30-hour national-level hackathon. His project stood out for its practical approach and impactful execution, bringing pride to the department.</p>
+            <span class="ev-tag">2nd Prize · ₹5,000 · National Level</span>
+          </div>
+        </div>
+        <div class="innovation-strip cyan">
+          <div class="innovation-strip-head">
+            <div class="innovation-strip-title">Momentum Meter</div>
+            <div class="innovation-strip-kicker" style="color:var(--cyan);">Problem to Prototype</div>
+          </div>
+          <div class="innovation-grid">
+            <div class="innovation-cell">
+              <div class="innovation-label">Entries</div>
+              <div class="innovation-value" style="color:var(--cyan);">130+</div>
+              <div class="innovation-copy">Students stepping into high-pressure build spaces with bold first ideas.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Winning Edge</div>
+              <div class="innovation-value">30 Hrs</div>
+              <div class="innovation-copy">Rapid execution, sharper pitching, and calm teamwork under deadlines.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Outcome</div>
+              <div class="innovation-value" style="color:var(--gold);">2 Wins</div>
+              <div class="innovation-copy">Early-page victories set the tone for a department culture built on execution.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">05</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 6: HACKATHON II — Violet Neon
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p6">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#0c0814"/>
+        <circle cx="60" cy="400" r="90" fill="rgba(255,79,160,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(255,79,160,0.4)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--pink);">Events Chronicle · Part II</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Hackathon <span style="color:var(--pink);">&amp;</span> Symposium</div>
+        <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="ev-block">
+          <div class="ev-img" style="width:100px;height:90px;">
+            <img src="images/image.png" alt="Piraisoodan" onerror="this.parentElement.classList.add('loaded');"/>
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">PROMPTORIA</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Piraisoodan R &amp; Periya Nayagam M</strong> (CSE) secured <strong>First Prize</strong> in a national-level Prompting Event. From accurately recreating images in Round 1 to crafting high-quality prompts in Round 2, their performance showcased exceptional creativity and precision in AI-driven problem solving.</p>
+            <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">1st Prize · AI Creativity · National Level</span>
+          </div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/mukesh.jpeg" alt="Mukesh" onerror="this.parentElement.classList.add('loaded');"/>
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">TECHHACKS 2.0</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Mukesh V (II yr)</strong> secured <strong>First Prize</strong> at TechHacks 2.0, conducted by SRM Ramapuram. His project, <strong>CuraTrack</strong>, is a Smart Beneficiary Health Record and Medication Tracking System integrating AI-based medication reminders, unified digital health records, and intelligent health insights.</p>
+            <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">1st Prize · ₹20,000 · AI Healthcare</span>
+          </div>
+        </div>
+        <div class="innovation-strip pink">
+          <div class="innovation-strip-head">
+            <div class="innovation-strip-title">Build Energy</div>
+            <div class="innovation-strip-kicker" style="color:var(--pink);">AI Creativity in Motion</div>
+          </div>
+          <div class="innovation-grid">
+            <div class="innovation-cell">
+              <div class="innovation-label">Prompt Skill</div>
+              <div class="innovation-value" style="color:var(--pink);">2 Rds</div>
+              <div class="innovation-copy">From visual recreation to precision prompting, craft mattered at every stage.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Healthcare</div>
+              <div class="innovation-value" style="color:var(--cyan);">AI+</div>
+              <div class="innovation-copy">Student ideas moved beyond demo mode into usable health-tech thinking.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Signal</div>
+              <div class="innovation-value" style="color:var(--gold);">Future</div>
+              <div class="innovation-copy">Prompt engineering and product building are growing together on campus.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">06</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 7: CULTURAL TECH FUSION — Magenta
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p7">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#100814"/>
+        <circle cx="300" cy="300" r="160" fill="rgba(255,79,160,0.04)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(232,200,74,0.4)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--gold);">Events Chronicle · Part III</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Hackathon <span style="color:var(--gold);">&amp;</span> Symposium</div>
+        <div style="height:2px;width:40px;background:var(--gold);margin-bottom:10px;opacity:0.8;"></div>
+        <div class="ev-block">
+          <div class="ev-img" style="width:100px;height:88px;">
+            <img src="images/darshan.jpeg" alt="Darshan" onerror="this.parentElement.classList.add('loaded');"/>
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">LITHOS</div>
+            <p class="ev-desc">Bringing pride to the CSE Department, <strong style="color:var(--gold);">Darshan M (III yr)</strong> secured <strong>2nd Runner-Up</strong> at the Lithos Hackathon, held on February 10th at CIT, Chennai. After being shortlisted through an initial online screening, the team advanced to the final stage demonstrating strong problem-solving skills.</p>
+            <span class="ev-tag" style="background:rgba(232,200,74,0.1);border-color:rgba(232,200,74,0.3);color:var(--gold);">2nd Runner-Up · CIT Chennai</span>
+          </div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/sejal.jpeg" alt="Sejal" onerror="this.parentElement.classList.add('loaded');"/>
+        
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">DEFY26</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Sejal Sai S (II yr)</strong> emerged as a <strong>Top 3 Track Finalist</strong> in DEFY'26 Hackathon from VIT Chennai under the Public Goods track. The solution focused on building a decentralized system to securely preserve online evidence, ensuring proof of integrity and existence.</p>
+            <span class="ev-tag" style="background:rgba(232,200,74,0.1);border-color:rgba(232,200,74,0.3);color:var(--gold);">Top 3 Finalist · DEFY'26 · Decentralized Tech</span>
+          </div>
+        </div>
+        <div class="innovation-strip gold">
+          <div class="innovation-strip-head">
+            <div class="innovation-strip-title">Finalist Radar</div>
+            <div class="innovation-strip-kicker" style="color:var(--gold);">Campus to National Stage</div>
+          </div>
+          <div class="innovation-grid">
+            <div class="innovation-cell">
+              <div class="innovation-label">Recognition</div>
+              <div class="innovation-value">Top 3</div>
+              <div class="innovation-copy">Shortlisted work is turning into visible national-level credibility.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Themes</div>
+              <div class="innovation-value" style="color:var(--green);">Trust</div>
+              <div class="innovation-copy">Public-good systems, evidence integrity, and real-world utility stand out.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Campus Pulse</div>
+              <div class="innovation-value" style="color:var(--gold);">Rise</div>
+              <div class="innovation-copy">These wins show a department steadily moving from participation to leadership.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">07</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 8: INNOVATION SHOWCASE I
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p8">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#060c14"/>
+        <circle cx="200" cy="200" r="180" fill="rgba(0,212,255,0.04)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--cyan);">Events Chronicle · Part IV</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Innovation <span style="color:var(--cyan);">Showcase</span></div>
+        <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/event-10.jpg" alt="Zorphix" onerror="this.parentElement.classList.add('loaded');"/>
+        
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">ZORPHIX</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Krithik D</strong> secured <strong>First Prize</strong> in the Prompt Craft event at ZORPHIX, a Techno-Management Symposium by CSBS at Chennai Institute of Technology. The competition tested precise and effective prompt design, showcasing creativity in emerging AI domains.</p>
+            <span class="ev-tag">1st Prize · ZORPHIX 2026 · CIT Chennai</span>
+          </div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/rak.png" alt="EDXTRA team" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">EDXTRA 2026</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Prasanna K, Pooja S A, Ragavi N, and Prakash R</strong> (II Year, CSE) participated in EDXTRA 2026, an intensive 8-hour hackathon by the Department of IT. The event challenged participants to develop impactful solutions aligned with Sustainable Development Goals (SDGs).</p>
+            <span class="ev-tag">8-Hour Hackathon · SDG-Based Innovation</span>
+          </div>
+        </div>
+        <div class="innovation-strip cyan">
+          <div class="innovation-strip-head">
+            <div class="innovation-strip-title">Showcase Signal</div>
+            <div class="innovation-strip-kicker" style="color:var(--cyan);">Ideas with Visibility</div>
+          </div>
+          <div class="innovation-grid">
+            <div class="innovation-cell">
+              <div class="innovation-label">Prompt Craft</div>
+              <div class="innovation-value" style="color:var(--cyan);">1st</div>
+              <div class="innovation-copy">Innovation here is not abstract; it is precise, presentable, and competition-ready.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">SDG Lens</div>
+              <div class="innovation-value" style="color:var(--green);">8 Hr</div>
+              <div class="innovation-copy">Fast builds are being shaped around meaningful social and technical problem spaces.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Department Mood</div>
+              <div class="innovation-value" style="color:var(--gold);">Bold</div>
+              <div class="innovation-copy">These entries reflect a campus that likes building ideas people can immediately feel.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">08</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 9: PAPER PRESENTATION
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p9">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#08060f"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(255,79,160,0.4)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--pink);">Events Chronicle · Part V</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Paper <span style="color:var(--pink);">Presentation</span></div>
+        <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="ev-block">
+          <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="ev-img" style="width:60px;height:80px;">
+              <img src="images/sa.png" alt="Sarveshvaran" onerror="this.parentElement.classList.add('loaded');"/>
+              
+            </div>
+            <div class="ev-img" style="width:60px;height:80px;">
+              <img src="images/sejal.jpeg" alt="Sejal" onerror="this.parentElement.classList.add('loaded');"/>
+              
+            </div>
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">BEST PAPER – INTERNATIONAL CONFERENCE</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Sarveshvaran D &amp; Sejal Sai S</strong> received the <strong>Best Paper Award</strong> at an international conference for their research on detecting financial anomalies using a Random Forest-based ML system.</p>
+            <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">Best Paper · International Conference</span>
+          </div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/event-14.jpg" alt="IKS Conference" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">IKS CONFERENCE – PAPER PRESENTATION 🏆</div>
+            <p class="ev-desc">Demonstrating strong research and presentation skills, <strong style="color:var(--gold);">Haritha M (III yr)</strong> secured <strong>First Position</strong> in Paper Presentation at the IKS Conference conducted by SSN College of Engineering. The conference focused on <em>Indian Knowledge Systems: Tradition, Culture &amp; Technology</em>.</p>
+            <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">1st Position · IKS Conference · SSN College</span>
+          </div>
+        </div>
+        <div class="innovation-strip pink">
+          <div class="innovation-strip-head">
+            <div class="innovation-strip-title">Research Pulse</div>
+            <div class="innovation-strip-kicker" style="color:var(--pink);">From Insight to Stage</div>
+          </div>
+          <div class="innovation-grid">
+            <div class="innovation-cell">
+              <div class="innovation-label">Recognition</div>
+              <div class="innovation-value" style="color:var(--pink);">Best</div>
+              <div class="innovation-copy">The work is not only being presented, it is being chosen above strong peer research.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Research Area</div>
+              <div class="innovation-value" style="color:var(--cyan);">ML</div>
+              <div class="innovation-copy">Applied machine learning and culturally rooted topics both find space on this stage.</div>
+            </div>
+            <div class="innovation-cell">
+              <div class="innovation-label">Voice</div>
+              <div class="innovation-value" style="color:var(--gold);">Clear</div>
+              <div class="innovation-copy">Strong papers here combine technical depth with confident storytelling and delivery.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">09</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 10: STUDENT ORGANIZATIONS
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p10">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#060814"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(46,204,113,0.5)" stroke-width="2"/>
+        <circle cx="400" cy="500" r="90" fill="rgba(46,204,113,0.04)"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--green);">Events Chronicle · Part VI</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Student <span style="color:var(--green);">Organizations</span></div>
+        <div style="height:2px;width:40px;background:var(--green);margin-bottom:10px;opacity:0.8;"></div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/ss.png" alt="Sarvesh" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">CODESAPIENS MEETUP 2K26</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Sarvesh Sivasankaran (II Year)</strong> served as a <strong>Speaker</strong> at FT. Codesapiens Meetup 2k26, sharing technical insights and engaging with the developer community.</p>
+            <span class="ev-tag" style="background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.3);color:var(--green);">Speaker · Tech Community Engagement</span>
+          </div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/Adhi.jpeg" alt="Aadithya" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">IPL AUCTION</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Aadithya Rajasekaran (II Year)</strong> successfully organized the IPL Auction event at <strong>Recharge Fest 2026</strong>, demonstrating leadership, coordination, and event management skills.</p>
+            <span class="ev-tag" style="background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.3);color:var(--green);">Event Organizer · Recharge Fest 2026</span>
+          </div>
+        </div>
+        <div class="ev-block" style="border-bottom:none;">
+          <div class="ev-body">
+            <div class="ev-title">IRUMUGAN</div>
+            <p class="ev-desc"><strong style="color:var(--gold);">Shreenidhi T (II Year)</strong> served as <strong>Project Secretary</strong> for the Irumugan mono acting event, successfully planning and executing a two-round competition focused on creativity and performance.</p>
+            <span class="ev-tag" style="background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.3);color:var(--green);">Project Secretary · Leadership &amp; Event Management</span>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">10</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 11: SPORTS — Olive Green / Scatter
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p11">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#090e08"/>
+        <circle cx="380" cy="350" r="120" fill="rgba(46,204,113,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(46,204,113,0.5)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--green);">Events Chronicle · Part VII</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Spotlight <span style="color:var(--green);">Stories</span></div>
+        <div style="height:2px;width:40px;background:var(--green);margin-bottom:10px;opacity:0.8;"></div>
+        <div class="scatter-wrap" style="margin-bottom:10px;">
+          <div class="scatter-photo" style="height:140px;">
+            <img src="images/chess.png" alt="Chess Tournament" onerror="this.style.display='none'"/>
+          </div>
+          <div class="scatter-note">
+            <div class="ev-title" style="font-size:10.5px;margin-bottom:4px;">STATE-LEVEL CHESS TOURNAMENT – SILVER MEDAL</div>
+            <p class="ev-desc" style="font-size:10.5px;"><strong style="color:var(--gold);">Hari Keshav K</strong> from I-CSE secured a <strong>Silver Medal</strong> in a State-Level Chess Tournament organized by Rajalakshmi Institute of Technology on 08.02.2026, demonstrating strong analytical thinking and strategy.</p>
+          </div>
+        </div>
+        <div class="scatter-wrap">
+          <div class="scatter-note">
+            <div class="ev-title" style="font-size:10.5px;margin-bottom:4px;">LOYOLA ICAM TROPHY – RUNNER-UP 🏏</div>
+            <p class="ev-desc" style="font-size:10.5px;">The Cricket (Men) team secured <strong>Runner-Up</strong> in the Loyola ICAM Trophy 2026. CSE students — <strong style="color:var(--gold);">Lithan G, Mohith, Hirthic Vasan R, Dhanush Karthick, and Gowtham Raj M</strong> — played a significant role throughout the tournament.</p>
+          </div>
+          <div class="scatter-photo" style="height:140px;">
+            <img src="images/gowt.png" alt="Cricket Team" onerror="this.style.display='none'"/>
+          </div>
+        </div>
+        <div class="card card-dark" style="margin-top:8px;padding:8px 12px;background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);">
+          <div style="font-family:var(--font-tech);font-size:9.5px;color:var(--green);text-align:center;letter-spacing:1px;">Quick Highlights: Chess Silver · Cricket Runner-Up · Inter-Dept Champions</div>
+        </div>
+      </div>
+      <span class="pg-num">11</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 12 (p11a): SPECIAL MENTION — Sakthivel
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p11a">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#0a0718"/>
+        <ellipse cx="360" cy="100" rx="120" ry="100" fill="rgba(232,200,74,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(232,200,74,0.5)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--gold);">Special Mention</div>
+        <div class="page-headline-sm" style="color:var(--gold);margin-bottom:6px;">Sakthivel R</div>
+        <div class="eyebrow" style="color:rgba(255,255,255,0.5);margin-bottom:8px;">Rising Innovator</div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <div class="portrait-frame" style="width:96px;height:120px;flex-shrink:0;">
+              <img src="images/sakthi.png" alt="Sakthivel R"/>
+            </div>
+            <div>
+              <div style="font-family:var(--font-tech);font-size:11px;color:var(--gold);font-weight:700;margin-bottom:4px;">II Year – CSE</div>
+              <p class="ev-desc"><strong>Sakthivel R</strong> has emerged as a high-impact student innovator, turning AI ideas into nationally recognized sustainability solutions. His progression from campus hackathons to international representation reflects exceptional technical depth.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.25);padding:9px 12px;margin-bottom:8px;">
+          <div style="font-family:var(--font-tech);font-size:9px;letter-spacing:2px;color:var(--cyan);margin-bottom:4px;text-transform:uppercase;">Progression</div>
+          <div style="font-family:var(--font-tech);font-size:10.5px;color:var(--white);line-height:1.4;"><strong style="color:var(--gold);">VIT Hackathon Winner</strong> → <strong style="color:var(--gold);">EcoInnovators Ideathon 2026 Winner</strong> → <strong style="color:var(--gold);">Selected for Villars Symposium, Switzerland</strong></div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:10px;">
+          <div class="ev-title">EcoInnovators Ideathon 2026 – National Winner</div>
+          <p class="ev-desc">In a multi-stage national challenge, he developed AI-driven solutions for renewable-energy verification and governance systems. The win was recognized in the MeitY-aligned IndiaAI Impact ecosystem.</p>
+          <span class="ev-tag">AI Innovation · Sustainability Governance</span>
+        </div>
+        <div class="card card-dark" style="padding:10px;">
+          <div class="ev-title">Global and Institutional Recognition</div>
+          <p class="ev-desc">Selected for the Villars Symposium, Switzerland; shortlisted for the Indian Bank innovation event; contributing to a government-funded project with strong public-impact relevance.</p>
+          <span class="ev-tag">Hackathon → Ideathon → International Stage</span>
+        </div>
+      </div>
+      <span class="pg-num">12</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 13 (p11b): SPECIAL MENTION — Atchaya
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p11b">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#0d0818"/>
+        <circle cx="120" cy="180" r="130" fill="rgba(255,79,160,0.04)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(255,79,160,0.5)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--pink);">Special Mention</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:2px;">Atchaya <span style="color:var(--pink);">Senthilkumaran</span></div>
+        <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
+        <div style="display:flex;justify-content:center;margin-bottom:12px;">
+          <div class="portrait-frame" style="width:150px;height:160px;">
+            <img src="images/at.png" alt="Atchaya Senthilkumaran"/>
+          </div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:12px;">
+          <p class="ev-desc" style="font-size:12px;line-height:1.5;"><strong style="color:var(--gold);">Atchaya Senthilkumaran</strong> stands out as a student leader who has translated vision into measurable impact across entrepreneurship, AI, and education. As Founder and CEO of <strong>AT Speaks</strong>, she built a future-ready learning community through 15+ events, reaching over 700 learners. She currently contributes as an AI Tech Associate at <strong>c2x.ai</strong> while mentoring as a course instructor and online tech educator. Her leadership as Design Lead at Intellexa REC reflects strong execution, creativity, and team collaboration. Through hands-on work in AI, OpenCV, and web development, she continues to champion learning by doing and real-world exposure.</p>
+        </div>
+        <div class="card" style="background:rgba(255,79,160,0.08);border:1px solid rgba(255,79,160,0.25);padding:8px 12px;text-align:center;">
+          <div style="font-family:var(--font-tech);font-size:9px;letter-spacing:1.5px;color:var(--pink);">Founder and CEO · AI Tech Associate · Educator · Design Lead · Community Builder</div>
+        </div>
+      </div>
+      <span class="pg-num">13</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 14 (p12): MOMENTS TO GLORY
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p12">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#090610"/>
+        <circle cx="225" cy="300" r="200" fill="rgba(108,43,217,0.06)"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner">
+        <div class="eyebrow" style="color:var(--pink);">Memory Lane</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Moments to <span style="color:var(--pink);">Glory</span></div>
+        <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="img-frame" style="height:360px;margin-bottom:12px;border-radius:12px;">
+          <img src="images/colab.png" alt="Collaborative Moments"/>
+          
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(255,79,160,0.3);background:rgba(255,79,160,0.06);">
+            <div class="mascot-label" style="color:var(--pink);">ADHI says</div>
+            <p class="mascot-text">"One strong frame is enough when the effort behind it is real. Keep showing up, keep learning, and let consistency become your signature."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">14</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 15 (p13): FACULTY EXCELLENCE I
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p13">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#040e1c"/>
+        <circle cx="100" cy="150" r="100" fill="rgba(0,212,255,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(0,212,255,0.3)" stroke-width="2"/>
+        <rect x="0" y="0" width="3" height="600" fill="url(#cyanBar2)"/>
+        <defs><linearGradient id="cyanBar2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></linearGradient></defs>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-left:14px;padding-right:88px;">
+        <div class="eyebrow" style="color:var(--cyan);">Faculty Excellence · Part I</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:4px;">Professional <span style="color:var(--cyan);">Development</span></div>
+        <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:8px;opacity:0.7;"></div>
+        <div class="card card-glass" style="padding:9px 12px;margin-bottom:8px;">
+          <p class="body-copy" style="font-size:11px;">The department faculty advanced professional capability through internationally recognized certifications and focused upskilling in emerging technologies.</p>
+        </div>
+        <div class="fac-kpi-row">
+          <div class="fac-kpi"><div class="val">02</div><div class="lbl">FDP Programs</div></div>
+          <div class="fac-kpi"><div class="val">01</div><div class="lbl">Global Cert</div></div>
+          <div class="fac-kpi"><div class="val">01</div><div class="lbl">PhD Milestone</div></div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/faculty-upskilling-01.jpg" alt="Cloud Cert" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">Cloud Architecture Certification</div>
+            <p class="ev-desc"><strong>Dr. Anantha Sivaprakasam S</strong> earned the AWS Certified Solutions Architect (Associate) credential, reinforcing expertise in secure and scalable cloud architecture.</p>
+            <span class="ev-tag">Impact: cloud-centric curriculum alignment</span>
+          </div>
+        </div>
+        <div class="ev-block" style="border-bottom:none;">
+          <div class="ev-img">
+            <img src="images/faculty-upskilling-02.jpg" alt="Quantum FDP" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">Quantum Technologies FDP</div>
+            <p class="ev-desc"><strong>Dr. V. Murali Bhaskaran</strong> completed a 21-day FDP on Quantum Technologies conducted by IITs and NITs, deepening expertise in advanced computational paradigms.</p>
+            <span class="ev-tag">Impact: quantum-focused teaching readiness</span>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">15</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 16 (p14): FACULTY EXCELLENCE II
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p14">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#040a18"/>
+        <circle cx="350" cy="200" r="130" fill="rgba(108,43,217,0.06)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(108,43,217,0.4)" stroke-width="2"/>
+        <rect x="0" y="0" width="3" height="600" fill="url(#purpBar)"/>
+        <defs><linearGradient id="purpBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9b59b6" stop-opacity="0.8"/><stop offset="100%" stop-color="#9b59b6" stop-opacity="0"/></linearGradient></defs>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-left:14px;padding-right:88px;">
+        <div class="eyebrow" style="color:#b08ce8;">Faculty Excellence · Part II</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:4px;">Research &amp; <span style="color:#b08ce8;">Innovation</span></div>
+        <div style="height:2px;width:40px;background:#b08ce8;margin-bottom:8px;opacity:0.7;"></div>
+        <div class="fac-kpi-row">
+          <div class="fac-kpi"><div class="val">03</div><div class="lbl">Patents Filed</div></div>
+          <div class="fac-kpi"><div class="val">01</div><div class="lbl">Research Award</div></div>
+          <div class="fac-kpi"><div class="val">01</div><div class="lbl">Conference Led</div></div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/faculty-patent-01.jpg" alt="Faculty Patent" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">Academic Development and Conference Leadership</div>
+            <p class="ev-desc"><strong>Dr. Chettiyar Vani Vivekanand</strong> attended the AI for Educators FDP at IIT Tirupati.<br/><strong>Dr. P. Kumar</strong> organized the IEEE International Conference on Computing and Data Science (ICCDS-2025).</p>
+            <span class="ev-tag" style="background:rgba(176,140,232,0.12);border-color:rgba(176,140,232,0.3);color:#b08ce8;">Elevated pedagogy · Global academic collaboration</span>
+          </div>
+        </div>
+        <div class="ev-block" style="border-bottom:none;">
+          <div class="ev-img">
+            <img src="images/faculty-publication-01.jpg" alt="Research" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">Research Milestones and Recognition</div>
+            <p class="ev-desc"><strong>Dr. V. Karthick</strong> completed a Ph.D. in Quantum Computing with focus on error mitigation in IBM systems.<br/><strong>Dr. J. Manoranjini</strong> received the Best Research Paper Award from the Knowledge Research Academy.</p>
+            <span class="ev-tag" style="background:rgba(176,140,232,0.12);border-color:rgba(176,140,232,0.3);color:#b08ce8;">Research depth · Scholarly recognition</span>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">16</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 17 (p15): FACULTY EXCELLENCE III
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p15">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#050c1a"/>
+        <circle cx="100" cy="450" r="100" fill="rgba(255,79,160,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(0,212,255,0.3)" stroke-width="2"/>
+        <rect x="0" y="0" width="3" height="600" fill="url(#cyanBar3)"/>
+        <defs><linearGradient id="cyanBar3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></linearGradient></defs>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-left:14px;padding-right:88px;">
+        <div class="eyebrow" style="color:var(--cyan);">Faculty Excellence · Part III</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:4px;">Academic Impact &amp; <span style="color:var(--cyan);">Mentoring</span></div>
+        <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:8px;opacity:0.7;"></div>
+        <div class="fac-kpi-row">
+          <div class="fac-kpi"><div class="val">03</div><div class="lbl">Patents Filed</div></div>
+          <div class="fac-kpi"><div class="val">01</div><div class="lbl">Invited Talk</div></div>
+          <div class="fac-kpi"><div class="val">01</div><div class="lbl">Session Chair</div></div>
+        </div>
+        <div class="ev-block">
+          <div class="ev-img">
+            <img src="images/faculty-mentoring-01.jpg" alt="Patents" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">Patents in Applied Intelligence</div>
+            <p class="ev-desc"><strong>Dr. Vinodhkumar S</strong> filed a patent on an Intelligent Railway Station Navigation System.<br/><strong>Dr. Anand K</strong> filed patents on an AI Smart Sanitizing System and real-time audio transcription.</p>
+            <span class="ev-tag">Expanded IP portfolio · Real-world AI solutions</span>
+          </div>
+        </div>
+        <div class="ev-block" style="border-bottom:none;">
+          <div class="ev-img">
+            <img src="images/faculty-recognition-01.jpg" alt="Outreach" onerror="this.parentElement.classList.add('loaded');"/>
+            
+          </div>
+          <div class="ev-body">
+            <div class="ev-title">Academic Outreach and Conference Stewardship</div>
+            <p class="ev-desc"><strong>Dr. Preetha Evangeline</strong> delivered an invited talk and hands-on session on Cloud Computing at Anna University.<br/><strong>Dr. M. Ayyadurai</strong> served as Session Chair in an IEEE-associated conference.</p>
+            <span class="ev-tag">Institutional outreach · Technical leadership</span>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">17</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 18 (p16): WEALTH ENGINEERING — Amber Finance
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p16">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wBg" cx="70%" cy="90%" r="80%">
+            <stop offset="0%" stop-color="#2a1e00"/>
+            <stop offset="60%" stop-color="#0d0900"/>
+            <stop offset="100%" stop-color="#050300"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#wBg)"/>
+        <polyline points="20,520 80,490 140,510 200,460 260,480 320,430 400,370" fill="none" stroke="rgba(232,200,74,0.2)" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(232,200,74,0.6)" stroke-width="2"/>
+      </svg>
+      <div class="p16-bg-stripe"></div>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner" style="padding-right:22px;">
+        <div class="eyebrow" style="color:var(--gold);">Finance Blueprint · Premium Student Edition</div>
+        <div class="page-headline-lg" style="color:var(--gold);margin-bottom:2px;">WEALTH</div>
+        <div class="page-headline-lg" style="color:rgba(232,200,74,0.4);font-size:28px;margin-bottom:4px;">ENGINEERING</div>
+        <div style="font-family:var(--font-tech);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.55);margin-bottom:10px;">DESIGN YOUR CASH FLOW BEFORE YOUR CAREER STARTS</div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;color:var(--gold);font-weight:700;margin-bottom:4px;">Premium Reality Check</div>
+          <div style="font-family:var(--font-headline);font-size:42px;color:var(--gold);line-height:0.9;margin-bottom:6px;">Rs. 1.44L</div>
+          <p class="body-copy" style="font-size:11.5px;">A casual <strong style="color:var(--gold);">Rs.100/day</strong> lifestyle spend across 4 years becomes nearly <strong style="color:var(--gold);">Rs.1.44 lakhs</strong>. The winning move is simple: keep lifestyle joy, remove money leakage.</p>
+          <div style="font-family:var(--font-tech);font-size:10px;color:rgba(255,255,255,0.6);margin-top:6px;"><strong style="color:var(--gold);">Rs.500</strong> Monthly SIP → <strong style="color:var(--gold);">10–12%</strong> Long-run equity range → <strong style="color:var(--gold);">Time</strong> Your hidden multiplier</div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;color:var(--gold);font-weight:700;margin-bottom:6px;">Trading vs Investing: Career-Safe Decision Matrix</div>
+          <div class="plain-table">
+            <div class="th">Attribute</div><div class="th">Trading</div><div class="th">Investing</div>
+            <div class="td">Time Frame</div><div class="td">Minutes–weeks</div><div class="td">Years</div>
+            <div class="td">Student Fit</div><div class="td">High stress</div><div class="td">Beginner friendly</div>
+            <div class="td">Best Move</div><div class="td">Learn first</div><div class="td">SIP first</div>
+          </div>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(232,200,74,0.3);background:rgba(232,200,74,0.07);">
+            <div class="mascot-label" style="color:var(--gold);">ADHI PREMIUM NOTE</div>
+            <p class="mascot-text">"Financial freedom is a system. Automate savings, avoid ego trades, and let compounding become your silent teammate."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">18</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 19 (p17): GEN AI — Electric Blue
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p17">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="gBg" cx="18%" cy="20%" r="90%">
+            <stop offset="0%" stop-color="#1f4f7a"/>
+            <stop offset="50%" stop-color="#0a1c36"/>
+            <stop offset="100%" stop-color="#02040b"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#gBg)"/>
+        <circle cx="90" cy="120" r="3" fill="rgba(0,212,255,0.8)"/>
+        <circle cx="180" cy="82" r="2" fill="rgba(232,200,74,0.7)"/>
+        <circle cx="282" cy="122" r="3" fill="rgba(0,212,255,0.7)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(0,212,255,0.5)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner">
+        <div class="eyebrow" style="color:var(--cyan);">Generative AI In Tech</div>
+        <div class="page-headline-md" style="color:var(--white);margin-bottom:2px;">The Big <span style="color:var(--cyan);">Picture</span></div>
+        <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <p class="body-copy" style="font-size:11.5px;margin-bottom:8px;">Generative AI has moved from research novelty to a defining force in technology. A full stack has formed from silicon to applications, and software is being rebuilt with AI as a core reasoning layer.</p>
+          <div class="two-col">
+            <div><div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:3px;">Infrastructure Bet</div><p class="body-copy" style="font-size:10.5px;">AWS, Azure, and Google Cloud are investing at historic scale in GPU clusters and custom AI chips.</p></div>
+            <div><div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:3px;">Chip Race</div><p class="body-copy" style="font-size:10.5px;">Nvidia leads training while AMD, Gaudi, Cerebras, Groq, and others compete hard in inference.</p></div>
+            <div><div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--cyan);margin-bottom:3px;">Model Consolidation</div><p class="body-copy" style="font-size:10.5px;">OpenAI, Anthropic, DeepMind, Meta, and Mistral drive multimodal systems across text, image, audio, video, and code.</p></div>
+            <div><div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--cyan);margin-bottom:3px;">Reasoning Jump</div><p class="body-copy" style="font-size:10.5px;">Chain-of-thought and reasoning models have significantly improved complex problem-solving reliability.</p></div>
+          </div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--white);margin-bottom:6px;">Engineering Middle Layer</div>
+          <p class="body-copy" style="font-size:11px;margin-bottom:6px;">Real product value emerges between models and users: RAG, vector databases, orchestration, evals, and domain tuning.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px;">
+            <span class="ctag">RAG</span><span class="ctag">Pinecone</span><span class="ctag">Weaviate</span><span class="ctag">pgvector</span><span class="ctag">LangChain</span><span class="ctag">LlamaIndex</span>
+          </div>
+          <p style="font-family:var(--font-tech);font-size:10px;color:rgba(255,153,0,0.9);font-weight:700;">Open-source models keep pace with frontier labs, enabling private deployment and data residency control in sensitive sectors.</p>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech">
+            <div class="mascot-label">ADHI FINAL INSIGHT</div>
+            <p class="mascot-text">"The winning products will not bolt AI on top. They will rebuild software around AI as the default reasoning engine."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">19</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 20 (p18): RAG MODELS — Royal Blue
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p18">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rBg" cx="55%" cy="40%" r="86%">
+            <stop offset="0%" stop-color="#284d8e"/>
+            <stop offset="54%" stop-color="#14244d"/>
+            <stop offset="100%" stop-color="#050714"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#rBg)"/>
+        <polygon points="225,50 390,320 60,320" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="1"/>
+        <polygon points="225,550 390,280 60,280" fill="none" stroke="rgba(232,200,74,0.1)" stroke-width="1"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(100,150,255,0.5)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner">
+        <div class="eyebrow" style="color:#9db8ff;">RAG Deep Dive · Retrieval Augmented Generation</div>
+        <div class="page-headline-md" style="color:var(--white);line-height:0.9;margin-bottom:2px;">RAG</div>
+        <div style="font-family:var(--font-tech);font-size:12px;letter-spacing:1px;color:#9db8ff;margin-bottom:8px;">THE RETRIEVAL-AUGMENTED GENERATION</div>
+        <div style="height:2px;width:40px;background:#9db8ff;margin-bottom:10px;opacity:0.7;"></div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--white);margin-bottom:4px;">What Is RAG?</div>
+          <p class="body-copy" style="font-size:11px;margin-bottom:8px;">Retrieval-Augmented Generation (RAG) combines the power of large language models with external knowledge bases. Instead of relying solely on training data, RAG systems retrieve relevant information at query time to generate more accurate, context-aware responses.</p>
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:#9db8ff;margin-bottom:4px;">How RAG Works</div>
+          <p class="body-copy" style="font-size:11px;line-height:1.55;">1. <strong>Index:</strong> Documents are chunked and embedded into vectors.<br/>2. <strong>Retrieve:</strong> Query matches most relevant context from DB.<br/>3. <strong>Augment:</strong> Retrieved context feeds the LLM prompt.<br/>4. <strong>Generate:</strong> Model produces grounded, accurate output.</p>
+          <div class="kpi-pair" style="margin-top:8px;">
+            <div class="kpi-item" style="border-color:rgba(0,212,255,0.3);"><div class="big">60%</div><div class="small">Reduced Hallucinations</div></div>
+            <div class="kpi-item" style="border-color:rgba(232,200,74,0.3);"><div class="big" style="font-size:18px;color:var(--cyan);">Real-time</div><div class="small">Knowledge Access</div></div>
+          </div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--white);margin-bottom:6px;">THE ENGINEERING MIDDLE LAYER</div>
+          <div class="two-col">
+            <div><div style="font-family:var(--font-tech);font-size:9.5px;font-weight:700;color:var(--white);margin-bottom:3px;">Vector Databases</div><p class="body-copy" style="font-size:10.5px;">Pinecone, Weaviate, Chroma, and pgvector store embeddings for fast similarity search.</p></div>
+            <div><div style="font-family:var(--font-tech);font-size:9.5px;font-weight:700;color:var(--white);margin-bottom:3px;">Embedding Models</div><p class="body-copy" style="font-size:10.5px;">BGE, sentence-transformers, and OpenAI embeddings convert text to semantic vectors.</p></div>
+          </div>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(157,184,255,0.3);background:rgba(157,184,255,0.07);">
+            <div class="mascot-label" style="color:#9db8ff;">ADHI INSIGHT</div>
+            <p class="mascot-text">"RAG is the bridge between static model knowledge and dynamic, real-time enterprise data."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">20</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 21 (p19): STOCK MARKET — Forest Green
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p19">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="sBg" cx="70%" cy="20%" r="86%">
+            <stop offset="0%" stop-color="#2b5a33"/>
+            <stop offset="52%" stop-color="#0d2216"/>
+            <stop offset="100%" stop-color="#030806"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#sBg)"/>
+        <polyline points="20,440 86,410 146,425 212,370 274,390 338,325 424,258" fill="none" stroke="rgba(46,204,113,0.3)" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(46,204,113,0.6)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner">
+        <div class="eyebrow" style="color:var(--green);">Money Mindset · Market Intelligence</div>
+        <div class="page-headline-md" style="color:var(--white);margin-bottom:2px;">Stock <span style="color:var(--green);">Market</span></div>
+        <div style="font-family:var(--font-tech);font-size:10px;letter-spacing:1px;color:rgba(255,255,255,0.55);margin-bottom:8px;">OWN BUSINESSES · MANAGE RISK · STAY CONSISTENT</div>
+        <div style="height:2px;width:40px;background:var(--green);margin-bottom:10px;opacity:0.8;"></div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--white);margin-bottom:4px;">Masterclass Thesis</div>
+          <p class="body-copy" style="font-size:11px;margin-bottom:8px;">Equity is a long-term ownership game. The biggest student advantage is not insider knowledge; it is time, discipline, and consistent capital allocation.</p>
+          <div class="two-col" style="margin-bottom:8px;">
+            <div><div style="font-family:var(--font-tech);font-size:9.5px;font-weight:700;color:var(--cyan);margin-bottom:3px;">Investor Lens</div><p class="body-copy" style="font-size:10.5px;">Diversified SIP, patience, and business quality focus. Low churn, high survival.</p></div>
+            <div><div style="font-family:var(--font-tech);font-size:9.5px;font-weight:700;color:var(--pink);margin-bottom:3px;">Trader Lens</div><p class="body-copy" style="font-size:10.5px;">Needs defined setups, strict stop-losses, and emotional control during drawdowns.</p></div>
+          </div>
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--green);margin-bottom:6px;">Premium Signal Dashboard</div>
+          <div class="bar-item"><span class="bar-label">Business Quality</span><div class="bar-track"><div class="bar-fill" style="width:86%;background:var(--green);"></div></div><span class="bar-val" style="color:var(--green);">Core</span></div>
+          <div class="bar-item"><span class="bar-label">Valuation Gap</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--green);"></div></div><span class="bar-val" style="color:var(--green);">Entry</span></div>
+          <div class="bar-item"><span class="bar-label">Risk Guardrail</span><div class="bar-track"><div class="bar-fill" style="width:62%;background:var(--cyan);"></div></div><span class="bar-val" style="color:var(--cyan);">Shield</span></div>
+          <div class="bar-item"><span class="bar-label">Patience Score</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:var(--gold);"></div></div><span class="bar-val" style="color:var(--gold);">Alpha</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div class="stat-cell"><div class="stat-val" style="font-size:20px;">₹500</div><div class="stat-lbl">SIP Start</div></div>
+          <div class="stat-cell"><div class="stat-val" style="font-size:20px;color:var(--cyan);">6 Mo</div><div class="stat-lbl">Safety Buffer</div></div>
+          <div class="stat-cell"><div class="stat-val" style="font-size:20px;color:var(--pink);">0</div><div class="stat-lbl">Leverage</div></div>
+        </div>
+        <div class="mascot-row" style="margin-bottom:8px;">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(46,204,113,0.3);background:rgba(46,204,113,0.08);">
+            <div class="mascot-label" style="color:var(--green);">ADHI says</div>
+            <p class="mascot-text">"The market rewards students who stay curious, start small, and protect capital. Learn the business first, then let patience do the heavy lifting."</p>
+          </div>
+        </div>
+        <div style="font-family:var(--font-serif);font-size:12px;color:var(--gold);border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">Golden Rule: protect capital first. Compounding rewards survivors.</div>
+      </div>
+      <span class="pg-num">21</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 22 (p20): PLACEMENTS — Midnight Emerald
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p20">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="450" height="600" fill="#040b10"/>
+        <circle cx="400" cy="100" r="120" fill="rgba(46,204,113,0.05)"/>
+        <circle cx="50" cy="500" r="90" fill="rgba(232,200,74,0.04)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(46,204,113,0.5)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding-right:88px;">
+        <div class="eyebrow" style="color:var(--green);">Career Success</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Placement <span style="color:var(--green);">Achievements</span></div>
+        <div style="height:2px;width:40px;background:var(--green);margin-bottom:10px;opacity:0.8;"></div>
+        <div class="stat-row" style="margin-bottom:10px;">
+          <div class="stat-cell" style="background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);"><div class="stat-val" style="color:var(--green);">96%</div><div class="stat-lbl">Placement Rate</div></div>
+          <div class="stat-cell"><div class="stat-val">₹45L</div><div class="stat-lbl">Highest Package</div></div>
+          <div class="stat-cell"><div class="stat-val" style="color:var(--cyan);">₹8.2L</div><div class="stat-lbl">Average CTC</div></div>
+          <div class="stat-cell" style="background:rgba(255,79,160,0.08);border-color:rgba(255,79,160,0.2);"><div class="stat-val" style="color:var(--pink);">180+</div><div class="stat-lbl">Companies Visited</div></div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:10px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:2px;">🏢 TOP RECRUITERS 2026</div>
+          <div class="tag-cloud">
+            <span class="ctag">Google</span><span class="ctag">Microsoft</span><span class="ctag">Amazon</span><span class="ctag">Apple</span>
+            <span class="ctag">Goldman Sachs</span><span class="ctag">Zoho</span><span class="ctag">Freshworks</span><span class="ctag">Oracle</span>
+            <span class="ctag">Wipro</span><span class="ctag">Infosys</span><span class="ctag">TCS</span><span class="ctag">Cognizant</span>
+          </div>
+        </div>
+        <div class="card card-gold" style="margin-bottom:10px;padding:10px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:1.5px;">⭐ DREAM PLACEMENTS</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Preethi K.</strong> → Google SWE · ₹45L · Hyderabad</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Rahul S.</strong> → Microsoft SDET · ₹38L · Bangalore</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Sneha M.</strong> → Goldman Sachs · ₹32L · Bangalore</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Arun P.</strong> → Amazon SDE-2 · ₹29L · Chennai</div>
+          </div>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(46,204,113,0.3);background:rgba(46,204,113,0.07);">
+            <div class="mascot-label" style="color:var(--green);">ADHI says</div>
+            <p class="mascot-text">"These numbers aren't just stats — they're dreams fulfilled! Every offer letter is a story of late-night coding sessions paying off! 💪✨"</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">22</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 23: THANK YOU — Regal Violet
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p23">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="tBg" cx="50%" cy="50%" r="80%">
+            <stop offset="0%" stop-color="#2d1557"/>
+            <stop offset="70%" stop-color="#1a0a2e"/>
+            <stop offset="100%" stop-color="#08000f"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#tBg)"/>
+        <circle cx="225" cy="300" r="200" fill="rgba(108,43,217,0.08)"/>
+        <circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.7)"/>
+        <circle cx="150" cy="30" r="1" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="320" cy="70" r="2" fill="rgba(232,200,74,0.6)"/>
+        <circle cx="420" cy="120" r="1" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="400" cy="450" r="2" fill="rgba(255,79,160,0.5)"/>
+        <!-- large mascot SVG placeholder area -->
+        <image href="images/voltmascot.png" x="148" y="395" width="154" height="180" preserveAspectRatio="xMidYMid meet"/>
+        <image href="images/reclogo.png" x="350" y="10" width="88" height="50" preserveAspectRatio="xMidYMid meet"/>
+      </svg>
+      <div class="cover-corner tl"></div>
+      <div class="cover-corner tr"></div>
+      <div class="cover-corner bl"></div>
+      <div class="cover-corner br"></div>
+      <div class="pg-inner" style="padding-top:28px;align-items:center;text-align:center;">
+        <div class="eyebrow" style="color:var(--gold);text-align:center;margin-bottom:8px;">From ADHI &amp; Team</div>
+        <div style="font-family:var(--font-display);font-size:42px;letter-spacing:4px;color:var(--gold);margin-bottom:6px;">Thank You</div>
+        <div style="height:1px;width:140px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 16px;"></div>
+        <div class="card card-glass" style="text-align:center;padding:14px 20px;max-width:360px;margin-bottom:12px;">
+          <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(248,244,238,0.85);line-height:1.7;">"Every page of this magazine represents a heartbeat of our department — a proof that when passionate minds come together, extraordinary things happen. <strong style="color:var(--gold);">You are REC CSE.</strong> You are the code that runs this world."</p>
+        </div>
+        <div class="mascot-row" style="max-width:340px;margin-bottom:130px;">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech">
+            <div class="mascot-label">ADHI signing off</div>
+            <p class="mascot-text">"Until next year, keep coding, keep innovating, keep dreaming BIG! This isn't the end of our story — it's just the beginning of something even more legendary! ⚡🚀"</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
+          <span class="badge">REC CSE 2026</span>
+          <span class="badge" style="border-color:rgba(0,212,255,0.4);color:var(--cyan);">JAN-MAR 2026 Edition</span>
+          <span class="badge" style="border-color:rgba(255,79,160,0.4);color:var(--pink);">Digital First</span>
+        </div>
+        <div style="font-family:var(--font-tech);font-size:9.5px;color:rgba(255,255,255,0.25);margin-top:4px;">© 2026 REC CSE Department · All rights reserved</div>
+        <div style="font-family:var(--font-tech);font-size:9px;color:rgba(255,255,255,0.18);margin-top:2px;">Designed with ❤️ by CSE Editorial Team</div>
+      </div>
+      <span class="pg-num">23</span>
+    </div>
+
+  </div><!-- end #flipbook -->
+
+  <div class="nav-row">
+    <button class="nav-btn" id="btn-prev">← PREV</button>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div id="page-counter">Page 1 of 21</div>
+      <div class="progress-track"><div class="progress-fill" id="prog"></div></div>
+    </div>
+    <button class="nav-btn" id="btn-next">NEXT →</button>
+  </div>
+  <p class="kb-hint">← → Arrow keys to navigate · Click page edges to flip</p>
+</div><!-- end .mag-shell -->
+
+<script>
+$(document).ready(function() {
+  var total = 0;
+
+  $('#flipbook').turn({
+    width: 900,
+    height: 600,
+    autoCenter: true,
+    display: 'double',
+    acceleration: true,
+    gradients: true,
+    elevation: 50,
+    when: {
+      turned: function(e, page) { updateNav(page); }
+    }
+  });
+
+  total = $('#flipbook').turn('pages');
+
+  function updateNav(page) {
+    total = $('#flipbook').turn('pages');
+    $('#page-counter').text('Page ' + page + ' of ' + total);
+    var pct = Math.max(4, Math.round((page / total) * 100));
+    $('#prog').css('width', pct + '%');
+  }
+
+  $('#btn-next').on('click', function() { $('#flipbook').turn('next'); });
+  $('#btn-prev').on('click', function() { $('#flipbook').turn('previous'); });
+
+  $(document).on('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') $('#flipbook').turn('next');
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') $('#flipbook').turn('previous');
+  });
+
+  function adjustSize() {
+    var w = $(window).width();
+    var avail = Math.min(w - 40, 900);
+    var scale = avail / 900;
+    if (scale < 1) {
+      $('#flipbook').css({
+        transform: 'scale(' + scale + ')',
+        transformOrigin: 'top center',
+        marginBottom: (-600 * (1 - scale)) + 'px'
+      });
+    } else {
+      $('#flipbook').css({ transform: '', marginBottom: '' });
+    }
+  }
+  adjustSize();
+  $(window).on('resize', adjustSize);
+  updateNav(1);
+});
+</script>
+</body>
+</html>

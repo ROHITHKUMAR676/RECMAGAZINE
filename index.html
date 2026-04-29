@@ -41,7 +41,141 @@ body {
   padding: 16px 10px 30px;
 }
 
-/* ── Shell ── */
+/* ══════════════════════════════════════
+   OPENING ANIMATION — Geometric Reveal
+   ══════════════════════════════════════ */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #08060f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOut 0.8s ease 4.2s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; pointer-events: none; visibility: hidden; }
+}
+
+.intro-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+#intro-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  animation: contentReveal 1s ease 1.5s forwards;
+}
+
+@keyframes contentReveal {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.intro-badge {
+  font-family: var(--font-tech);
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: badgeSlide 0.6s ease 2s forwards;
+}
+
+@keyframes badgeSlide {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.intro-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.intro-word {
+  font-family: var(--font-headline);
+  font-size: 72px;
+  letter-spacing: 12px;
+  color: var(--gold);
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.intro-word:first-child {
+  animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+}
+
+.intro-word:last-child {
+  animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+}
+
+@keyframes wordReveal {
+  0% { opacity: 0; transform: translateY(40px) scale(0.9); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.intro-tagline {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(248, 244, 238, 0.5);
+  letter-spacing: 3px;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 3s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.intro-progress {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  margin: 30px auto 0;
+  overflow: hidden;
+}
+
+.intro-progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold), var(--cyan), var(--pink));
+  border-radius: 1px;
+  animation: progressFill 3.5s ease-out 0.5s forwards;
+}
+
+@keyframes progressFill {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* Hide shell during intro */
+.mag-shell {
+  opacity: 0;
+  animation: shellReveal 0.8s ease 4s forwards;
+}
+
+@keyframes shellReveal {
+  to { opacity: 1; }
+}
+
+/* Shell */
 .mag-shell {
   display: flex;
   flex-direction: column;
@@ -724,230 +858,194 @@ body {
 .img-frame.loaded .fb { display: none; }
 .ev-img.loaded .ev-fallback { display: none; }
 
-/* ══════════════════════════════════════
-   PAGE 1 — COVER: Dark Luxury Gold
-   ══════════════════════════════════════ */
-#p1 { background: #09060f; }
-#p1 .pg-inner {
-  padding: 0;
-  justify-content: flex-end;
-}
-.cover-top-bar {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold), #c8860a, var(--gold));
-}
-.cover-bottom-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
 .cover-corner {
   position: absolute;
-  width: 32px; height: 32px;
+  width: 32px;
+  height: 32px;
 }
 .cover-corner.tl { top: 12px; left: 12px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
 .cover-corner.tr { top: 12px; right: 12px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
 .cover-corner.bl { bottom: 20px; left: 12px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
 .cover-corner.br { bottom: 20px; right: 12px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
 
-.cover-logo-area {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* ══════════════════════════════════════
+   PAGE 1 — COVER: Cinematic Intro
+   ══════════════════════════════════════ */
+#p1 { background: #05070d; }
+#p1 .pg-inner {
+  padding: 0;
+  overflow: hidden;
 }
-.cover-logo-area img { height: 44px; object-fit: contain; }
-
-.cover-mascot {
+.cover-backdrop,
+.cover-overlay,
+.cover-vignette,
+.cover-content {
   position: absolute;
-  bottom: 22px;
-  left: 18px;
-  width: 72px;
-  object-fit: contain;
-  opacity: 0.82;
-  z-index: 4;
+  inset: 0;
 }
-
-.cover-body {
-  position: absolute;
-  inset: 58px 28px 44px 28px;
+.cover-backdrop {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.02);
+  animation: coverZoom 10s ease-out forwards;
+}
+.cover-overlay {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.24) 34%, rgba(0,0,0,0.68) 100%),
+    linear-gradient(90deg, rgba(4,6,14,0.72) 0%, rgba(4,6,14,0.18) 55%, rgba(4,6,14,0.52) 100%);
+  z-index: 1;
+}
+.cover-vignette {
+  background:
+    radial-gradient(circle at top left, rgba(232,200,74,0.16), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(0,0,0,0.12), rgba(0,0,0,0.45) 70%);
   z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1.28fr) 154px;
-  gap: 16px;
-  align-items: stretch;
 }
-.cover-copy {
+.cover-content {
+  z-index: 3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-width: 0;
+  padding: 24px 26px 24px 26px;
 }
-.cover-kicker {
+.cover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cover-logo-area img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.32));
+}
+.cover-edition-chip {
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(8,10,18,0.24);
+  backdrop-filter: blur(8px);
   font-family: var(--font-tech);
   font-size: 8px;
-  letter-spacing: 4px;
-  color: rgba(0,212,255,0.82);
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  color: rgba(248,244,238,0.78);
+}
+.cover-hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: 260px;
+}
+.cover-copy {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: coverFadeUp 1s ease 0.2s forwards;
 }
 .cover-dept {
   font-family: var(--font-tech);
-  font-size: 8.5px;
-  letter-spacing: 4.6px;
-  color: rgba(232,200,74,0.58);
+  font-size: 8px;
+  letter-spacing: 4px;
   text-transform: uppercase;
+  color: rgba(248,244,238,0.78);
   margin-bottom: 14px;
 }
 .cover-title-main {
   font-family: var(--font-display);
-  font-size: 52px;
-  line-height: 0.96;
+  font-size: 50px;
+  line-height: 0.9;
   letter-spacing: 3px;
-  color: var(--gold);
-  margin-bottom: 6px;
+  color: var(--white);
+  text-transform: uppercase;
 }
 .cover-title-sub {
   font-family: var(--font-headline);
-  font-size: 26px;
+  font-size: 40px;
+  line-height: 0.9;
   letter-spacing: 7px;
-  color: rgba(248,244,238,0.56);
-  margin-bottom: 18px;
+  color: var(--gold-light);
+  margin-top: 8px;
+  text-transform: uppercase;
 }
-.cover-rule-double {
-  margin: 0 0 18px;
-  width: 210px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.cover-kicker {
+  margin-top: 18px;
+  max-width: 180px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.25;
+  color: rgba(248,244,238,0.82);
 }
-.cover-rule-double span {
-  display: block;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold), rgba(232,200,74,0.18), transparent);
+.cover-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: end;
 }
-.cover-rule-double span:nth-child(2) { opacity: 0.4; }
-
 .cover-meta {
   display: flex;
-  justify-content: flex-start;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 .cover-stat {
-  min-width: 58px;
+  min-width: 70px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.22);
 }
 .cover-stat .n {
+  display: block;
   font-family: var(--font-headline);
-  font-size: 22px;
-  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--white);
 }
 .cover-stat .l {
+  display: block;
+  margin-top: 3px;
   font-family: var(--font-tech);
   font-size: 7px;
-  letter-spacing: 1.6px;
-  opacity: 0.45;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
+  color: rgba(248,244,238,0.62);
 }
 .cover-bubble {
-  max-width: 280px;
-  background: linear-gradient(90deg, rgba(232,200,74,0.1), rgba(232,200,74,0.04));
-  border: 1px solid rgba(232,200,74,0.16);
-  border-radius: 14px;
-  padding: 10px 12px;
-  text-align: left;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  max-width: 212px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 18px 18px 18px 6px;
+  background: rgba(8,10,18,0.36);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.28);
 }
-.cover-bubble img { width: 28px; flex-shrink: 0; object-fit: contain; }
 .cover-bubble p {
   font-family: var(--font-serif);
+  font-size: 11px;
   font-style: italic;
-  font-size: 10px;
-  line-height: 1.4;
-  color: rgba(248,244,238,0.8);
+  line-height: 1.45;
+  color: rgba(248,244,238,0.9);
 }
-.cover-showcase {
-  position: relative;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(232,200,74,0.2);
-  background: #110d17;
-  box-shadow: 0 18px 42px rgba(0,0,0,0.34);
-  display: flex;
-  flex-direction: column;
-}
-.cover-showcase-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 142px 74px 74px 74px;
-  gap: 2px;
-  background: rgba(232,200,74,0.12);
-}
-.cover-shot {
-  position: relative;
-  overflow: hidden;
-  background: #18121f;
-}
-.cover-shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.cover-shot::after {
-  content: "";
+.cover-mascot {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0.28) 100%);
+  right: 24px;
+  bottom: 110px;
+  width: 108px;
+  height: auto;
+  object-fit: contain;
+  z-index: 4;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,0.32));
 }
-.cover-shot.main {
-  grid-column: 1 / span 2;
+
+@keyframes coverZoom {
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.08); }
 }
-.cover-shot.wide {
-  grid-column: 1 / span 2;
-}
-.cover-showcase-badge {
-  display: inline-block;
-  margin-bottom: 6px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(6,13,26,0.32);
-  font-family: var(--font-tech);
-  font-size: 7px;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: var(--cyan);
-}
-.cover-showcase-text {
-  padding: 10px 12px 12px;
-  background: linear-gradient(180deg, rgba(13,9,7,0.92), rgba(13,9,7,0.98));
-}
-.cover-showcase-text .eyebrow {
-  margin-bottom: 4px;
-}
-.cover-showcase-text .big {
-  font-family: var(--font-headline);
-  font-size: 20px;
-  line-height: 0.9;
-  color: var(--white);
-  margin-bottom: 5px;
-}
-.cover-showcase-text .mini {
-  font-family: var(--font-tech);
-  font-size: 7px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(232,200,74,0.86);
+
+@keyframes coverFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ══════════════════════════════════════
@@ -1161,6 +1259,27 @@ body {
 </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════
+     OPENING ANIMATION — Geometric Reveal
+     ══════════════════════════════════════ -->
+<div id="intro-overlay">
+  <div class="intro-canvas">
+    <canvas id="intro-canvas"></canvas>
+  </div>
+  <div class="intro-content">
+    <div class="intro-badge">REC CSE</div>
+    <div class="intro-title">
+      <span class="intro-word">MAGAZINE</span>
+      <span class="intro-word">2026</span>
+    </div>
+    <div class="intro-tagline">Digital Edition</div>
+    <div class="intro-progress">
+      <div class="intro-progress-bar"></div>
+    </div>
+  </div>
+</div>
+
 <div class="mag-shell">
   <div class="mag-header">
     <h1>✦ REC CSE Magazine ✦</h1>
@@ -1173,74 +1292,36 @@ body {
          PAGE 1: COVER — Dark Luxury Gold
          ══════════════════════════════════════ -->
     <div class="pg" id="p1">
-      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="cvBg" cx="50%" cy="45%" r="65%">
-            <stop offset="0%" stop-color="#1e1204"/>
-            <stop offset="60%" stop-color="#0d0907"/>
-            <stop offset="100%" stop-color="#050305"/>
-          </radialGradient>
-        </defs>
-        <rect width="450" height="600" fill="url(#cvBg)"/>
-        <circle cx="225" cy="260" r="200" fill="rgba(232,200,74,0.03)"/>
-        <circle cx="225" cy="260" r="160" fill="none" stroke="rgba(232,200,74,0.07)" stroke-width="1"/>
-        <circle cx="225" cy="260" r="120" fill="none" stroke="rgba(232,200,74,0.06)" stroke-width="1" stroke-dasharray="3 7"/>
-        <line x1="0" y1="580" x2="450" y2="580" stroke="rgba(232,200,74,0.25)" stroke-width="1"/>
-      </svg>
-      <div class="cover-top-bar"></div>
-      <div class="cover-bottom-bar"></div>
-      <div class="cover-corner tl"></div>
-      <div class="cover-corner tr"></div>
-      <div class="cover-corner bl"></div>
-      <div class="cover-corner br"></div>
-      <div class="cover-logo-area">
-        <img src="images/reclogo.png" alt="REC Logo"/>
-      </div>
-      <img src="images/voltmascot.png" class="cover-mascot" alt="ADHI mascot"/>
-      <div class="cover-body">
-        <div class="cover-copy">
-          <div class="cover-kicker">Our Collective Story</div>
-          <div class="cover-dept">Department of Computer Science &amp; Engineering</div>
-          <div class="cover-title-main">REC CSE</div>
-          <div class="cover-title-sub">MAGAZINE</div>
-          <div class="cover-rule-double"><span></span><span></span></div>
+      <img src="images/colab.png" class="cover-backdrop" alt="Collaborative CSE moments"/>
+      <div class="cover-overlay"></div>
+      <div class="cover-vignette"></div>
+      <div class="cover-content">
+        <div class="cover-header">
+          <div class="cover-logo-area">
+            <img src="images/reclogo.png" alt="REC Logo"/>
+          </div>
+          <div class="cover-edition-chip">JAN - MAR Edition</div>
+        </div>
+        <div class="cover-hero">
+          <div class="cover-copy">
+            <div class="cover-dept">Department of Computer Science &amp; Engineering</div>
+            <div class="cover-title-main">REC CSE</div>
+            <div class="cover-title-sub">MAGAZINE</div>
+            <div class="cover-kicker">Our Collective Story</div>
+          </div>
+        </div>
+        <div class="cover-footer">
           <div class="cover-meta">
-            <div class="cover-stat"><div class="n">23</div><div class="l">Pages</div></div>
-            <div style="width:1px;background:rgba(232,200,74,0.2);height:36px;"></div>
-            <div class="cover-stat"><div class="n" style="color:var(--cyan);">500+</div><div class="l">Events</div></div>
-            <div style="width:1px;background:rgba(232,200,74,0.2);height:36px;"></div>
-            <div class="cover-stat"><div class="n" style="color:var(--pink);">2026</div><div class="l">Edition</div></div>
+            <div class="cover-stat"><span class="n">23</span><span class="l">Pages</span></div>
+            <div class="cover-stat"><span class="n">500+</span><span class="l">Events</span></div>
+            <div class="cover-stat"><span class="n">2026</span><span class="l">Edition</span></div>
           </div>
           <div class="cover-bubble">
-            <img src="images/voltmascot.png" alt="ADHI"/>
             <p>"Welcome, future innovators! I'm ADHI, guiding you through the people, projects, and moments that shaped REC CSE this year."</p>
           </div>
         </div>
-        <div class="cover-showcase">
-          <div class="cover-showcase-grid">
-            <div class="cover-shot main">
-              <img src="images/colab.png" alt="Collaborative CSE moments"/>
-            </div>
-            <div class="cover-shot">
-              <img src="images/sejal.jpeg" alt="Student achievement highlight"/>
-            </div>
-            <div class="cover-shot">
-              <img src="images/sakthi.png" alt="Innovation spotlight"/>
-            </div>
-            <div class="cover-shot wide">
-              <img src="images/gowt.png" alt="Cricket team highlight"/>
-            </div>
-            <div class="cover-shot wide">
-              <img src="images/rak.png" alt="Student team moment"/>
-            </div>
-          </div>
-          <div class="cover-showcase-text">
-            <div class="cover-showcase-badge">Campus Energy</div>
-            <div class="big">Built<br/>Together</div>
-            <div class="mini">Ideas · Teamwork · Impact</div>
-          </div>
-        </div>
       </div>
+      <img src="images/voltmascot.png" class="cover-mascot" alt="ADHI mascot"/>
       <span class="pg-num">01</span>
     </div>
 
@@ -2391,6 +2472,149 @@ body {
 
 <script>
 $(document).ready(function() {
+  // ══════════════════════════════════════
+  // INTRO CANVAS ANIMATION
+  // ══════════════════════════════════════
+  (function() {
+    const canvas = document.getElementById('intro-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    
+    // Geometric shapes configuration
+    const shapes = [];
+    const colors = ['#e8c84a', '#00d4ff', '#ff4fa0', '#2ecc71', '#f8f4ee'];
+    const maxShapes = 35;
+    
+    // Create random geometric shapes
+    for (let i = 0; i < maxShapes; i++) {
+      shapes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 80 + 20,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.02,
+        type: Math.floor(Math.random() * 3), // 0: triangle, 1: square, 2: circle
+        color: colors[Math.floor(Math.random() * colors.length)],
+        opacity: Math.random() * 0.4 + 0.1,
+        speedX: (Math.random() - 0.5) * 1.5,
+        speedY: (Math.random() - 0.5) * 1.5,
+        scale: 0,
+        targetScale: 1,
+        delay: Math.random() * 1.5
+      });
+    }
+    
+    let startTime = null;
+    const duration = 4000;
+    
+    function drawTriangle(x, y, size, rotation) {
+      ctx.beginPath();
+      for (let i = 0; i < 3; i++) {
+        const angle = rotation + (i * Math.PI * 2 / 3) - Math.PI / 2;
+        const px = x + Math.cos(angle) * size;
+        const py = y + Math.sin(angle) * size;
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+    }
+    
+    function drawSquare(x, y, size, rotation) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.beginPath();
+      ctx.rect(-size/2, -size/2, size, size);
+      ctx.closePath();
+      ctx.restore();
+    }
+    
+    function drawCircle(x, y, size) {
+      ctx.beginPath();
+      ctx.arc(x, y, size/2, 0, Math.PI * 2);
+      ctx.closePath();
+    }
+    
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Clear with fade effect
+      ctx.fillStyle = 'rgba(8, 6, 15, 0.15)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw shapes
+      shapes.forEach((shape, index) => {
+        const shapeProgress = Math.max(0, Math.min(1, (progress - shape.delay) * 2));
+        shape.scale = shapeProgress * shape.targetScale;
+        
+        if (shape.scale > 0) {
+          ctx.save();
+          ctx.globalAlpha = shape.opacity * shape.scale;
+          ctx.strokeStyle = shape.color;
+          ctx.lineWidth = 1.5;
+          
+          // Update position
+          shape.x += shape.speedX;
+          shape.y += shape.speedY;
+          shape.rotation += shape.rotationSpeed;
+          
+          // Wrap around screen
+          if (shape.x < -50) shape.x = canvas.width + 50;
+          if (shape.x > canvas.width + 50) shape.x = -50;
+          if (shape.y < -50) shape.y = canvas.height + 50;
+          if (shape.y > canvas.height + 50) shape.y = -50;
+          
+          // Draw based on type
+          const s = shape.size * shape.scale;
+          if (shape.type === 0) {
+            drawTriangle(shape.x, shape.y, s, shape.rotation);
+          } else if (shape.type === 1) {
+            drawSquare(shape.x, shape.y, s, shape.rotation);
+          } else {
+            drawCircle(shape.x, shape.y, s);
+          }
+          
+          ctx.stroke();
+          ctx.restore();
+        }
+      });
+      
+      // Add connecting lines between nearby shapes
+      ctx.strokeStyle = 'rgba(232, 200, 74, 0.08)';
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < shapes.length; i++) {
+        for (let j = i + 1; j < shapes.length; j++) {
+          const dx = shapes[i].x - shapes[j].x;
+          const dy = shapes[i].y - shapes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150 && shapes[i].scale > 0.3 && shapes[j].scale > 0.3) {
+            ctx.beginPath();
+            ctx.moveTo(shapes[i].x, shapes[i].y);
+            ctx.lineTo(shapes[j].x, shapes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    }
+    
+    // Start animation after a brief delay
+    setTimeout(() => {
+      requestAnimationFrame(animate);
+    }, 100);
+  })();
+
   var total = 0;
 
   $('#flipbook').turn({

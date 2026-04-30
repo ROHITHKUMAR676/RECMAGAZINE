@@ -744,6 +744,48 @@ body {
   z-index: 10;
 }
 
+.pg:not(#p1) .pg-num {
+  bottom: 38px;
+}
+
+/* ── REC CSE Edge Mark (all inner pages except cover) ── */
+.pg:not(#p1)::after {
+  content: "REC • CSE • 2026";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 9;
+  font-family: var(--font-tech);
+  font-size: 7.25px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: rgba(182, 228, 255, 0.78);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(77,232,255,0.08);
+}
+
+.pg:not(#p1)::before {
+  content: "";
+  position: absolute;
+  right: 112px;
+  bottom: 17px;
+  width: 14px;
+  height: 2px;
+  z-index: 9;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(77,232,255,0), rgba(77,232,255,0.78), rgba(232,200,74,0.68));
+  box-shadow: 0 0 10px rgba(77,232,255,0.14);
+}
+
+/* Reserve space for bottom-right page signature on dense write-up pages */
+#p16 .pg-inner,
+#p17 .pg-inner,
+#p18 .pg-inner,
+#p19 .pg-inner {
+  padding-bottom: 56px;
+}
+
 /* ── Cards & Blocks ── */
 .card {
   border-radius: 8px;
@@ -1208,6 +1250,107 @@ body {
   padding: 3px 10px;
   border: 1px solid rgba(232,200,74,0.4);
   color: var(--gold);
+}
+
+.writeup-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: var(--font-tech);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.74);
+}
+
+.writeup-chip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+  opacity: 0.85;
+}
+
+.gratitude-panel {
+  width: 100%;
+  max-width: 370px;
+  margin-bottom: 12px;
+  padding: 12px 14px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.gratitude-head {
+  font-family: var(--font-tech);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: rgba(232,200,74,0.86);
+  margin-bottom: 10px;
+}
+
+.gratitude-crew {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.gratitude-person {
+  text-align: center;
+}
+
+.gratitude-photo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.02),
+    0 0 18px rgba(232,200,74,0.08);
+}
+
+.gratitude-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.gratitude-name {
+  font-family: var(--font-tech);
+  font-size: 8.8px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.4px;
+  color: rgba(248,244,238,0.92);
+}
+
+.gratitude-role {
+  margin-top: 3px;
+  font-family: var(--font-tech);
+  font-size: 7px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: rgba(232,200,74,0.7);
 }
 
 /* ── Two-tone heading ── */
@@ -1979,7 +2122,7 @@ body {
         <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
         <div class="ev-block">
           <div class="ev-img" style="width:100px;height:90px;">
-            <img src="images/image.png" alt="Piraisoodan" onerror="this.parentElement.classList.add('loaded');"/>
+            <img src="images/irai.png" alt="Piraisoodan" onerror="this.parentElement.classList.add('loaded');"/>
           </div>
           <div class="ev-body">
             <div class="ev-title">PROMPTORIA</div>
@@ -2589,6 +2732,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
       <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
       <div class="pg-inner" style="padding-right:22px;">
         <div class="eyebrow" style="color:var(--gold);">Finance Blueprint · Premium Student Edition</div>
+        <div class="writeup-chip" style="color:rgba(232,200,74,0.86);border-color:rgba(232,200,74,0.22);background:rgba(232,200,74,0.06);">Student Write-Up</div>
         <div class="page-headline-lg" style="color:var(--gold);margin-bottom:2px;">WEALTH</div>
         <div class="page-headline-lg" style="color:rgba(232,200,74,0.4);font-size:28px;margin-bottom:4px;">ENGINEERING</div>
         <div style="font-family:var(--font-tech);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.55);margin-bottom:10px;">DESIGN YOUR CASH FLOW BEFORE YOUR CAREER STARTS</div>
@@ -2639,6 +2783,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
       <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
       <div class="pg-inner">
         <div class="eyebrow" style="color:var(--cyan);">Generative AI In Tech</div>
+        <div class="writeup-chip" style="color:rgba(0,212,255,0.86);border-color:rgba(0,212,255,0.24);background:rgba(0,212,255,0.07);">Student Write-Up</div>
         <div class="page-headline-md" style="color:var(--white);margin-bottom:2px;">The Big <span style="color:var(--cyan);">Picture</span></div>
         <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
         <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
@@ -2689,6 +2834,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
       <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
       <div class="pg-inner">
         <div class="eyebrow" style="color:#9db8ff;">RAG Deep Dive · Retrieval Augmented Generation</div>
+        <div class="writeup-chip" style="color:rgba(157,184,255,0.9);border-color:rgba(157,184,255,0.24);background:rgba(157,184,255,0.08);">Student Write-Up</div>
         <div class="page-headline-md" style="color:var(--white);line-height:0.9;margin-bottom:2px;">RAG</div>
         <div style="font-family:var(--font-tech);font-size:12px;letter-spacing:1px;color:#9db8ff;margin-bottom:8px;">THE RETRIEVAL-AUGMENTED GENERATION</div>
         <div style="height:2px;width:40px;background:#9db8ff;margin-bottom:10px;opacity:0.7;"></div>
@@ -2699,7 +2845,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <p class="body-copy" style="font-size:11px;line-height:1.55;">1. <strong>Index:</strong> Documents are chunked and embedded into vectors.<br/>2. <strong>Retrieve:</strong> Query matches most relevant context from DB.<br/>3. <strong>Augment:</strong> Retrieved context feeds the LLM prompt.<br/>4. <strong>Generate:</strong> Model produces grounded, accurate output.</p>
           <div class="kpi-pair" style="margin-top:8px;">
             <div class="kpi-item" style="border-color:rgba(0,212,255,0.3);"><div class="big">60%</div><div class="small">Reduced Hallucinations</div></div>
-            <div class="kpi-item" style="border-color:rgba(232,200,74,0.3);"><div class="big" style="font-size:18px;color:var(--cyan);">Real-time</div><div class="small">Knowledge Access</div></div>
+            <div class="kpi-item" style="border-color:rgba(232,200,74,0.3);"><div class="big" style="color:var(--cyan);">Real-time</div><div class="small">Knowledge Access</div></div>
           </div>
         </div>
         <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
@@ -2739,6 +2885,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
       <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
       <div class="pg-inner">
         <div class="eyebrow" style="color:var(--green);">Money Mindset · Market Intelligence</div>
+        <div class="writeup-chip" style="color:rgba(46,204,113,0.9);border-color:rgba(46,204,113,0.24);background:rgba(46,204,113,0.08);">Student Write-Up</div>
         <div class="page-headline-md" style="color:var(--white);margin-bottom:2px;">Stock <span style="color:var(--green);">Market</span></div>
         <div style="font-family:var(--font-tech);font-size:10px;letter-spacing:1px;color:rgba(255,255,255,0.55);margin-bottom:8px;">OWN BUSINESSES · MANAGE RISK · STAY CONSISTENT</div>
         <div style="height:2px;width:40px;background:var(--green);margin-bottom:10px;opacity:0.8;"></div>
@@ -2842,7 +2989,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         <circle cx="420" cy="120" r="1" fill="rgba(255,255,255,0.4)"/>
         <circle cx="400" cy="450" r="2" fill="rgba(255,79,160,0.5)"/>
         <!-- large mascot SVG placeholder area -->
-        <image href="images/voltmascot.png" x="148" y="395" width="154" height="180" preserveAspectRatio="xMidYMid meet"/>
+        <image href="images/voltmascot.png" x="1" y="412" width="154" height="180" preserveAspectRatio="xMidYMid meet"/>
         <image href="images/reclogo.png" x="350" y="10" width="88" height="50" preserveAspectRatio="xMidYMid meet"/>
       </svg>
       <div class="cover-corner tl"></div>
@@ -2852,15 +2999,35 @@ With experience across AI, development, design, and entrepreneurship, and a grow
       <div class="pg-inner" style="padding-top:28px;align-items:center;text-align:center;">
         <div class="eyebrow" style="color:var(--gold);text-align:center;margin-bottom:8px;">From ADHI &amp; Team</div>
         <div style="font-family:var(--font-display);font-size:42px;letter-spacing:4px;color:var(--gold);margin-bottom:6px;">Thank You</div>
-        <div style="height:1px;width:140px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 16px;"></div>
-        <div class="card card-glass" style="text-align:center;padding:14px 20px;max-width:360px;margin-bottom:12px;">
-          <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(248,244,238,0.85);line-height:1.7;">"Every page of this magazine represents a heartbeat of our department — a proof that when passionate minds come together, extraordinary things happen. <strong style="color:var(--gold);">You are REC CSE.</strong> You are the code that runs this world."</p>
+        <div style="height:1px;width:140px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 14px;"></div>
+        <div class="card card-glass" style="text-align:center;padding:12px 18px;max-width:360px;margin-bottom:10px;">
+          <p style="font-family:var(--font-serif);font-style:italic;font-size:13px;color:rgba(248,244,238,0.85);line-height:1.65;">"Every page of this magazine carries the energy of our department and the support of the people who believed in us. <strong style="color:var(--gold);">REC CSE</strong> is not just a place of learning, but a space where ideas are encouraged to become something real."</p>
         </div>
-        <div class="mascot-row" style="max-width:340px;margin-bottom:130px;">
+        <div class="gratitude-panel">
+          <div class="gratitude-head">With Gratitude To Our Faculty Mentors</div>
+          <div class="gratitude-crew">
+            <div class="gratitude-person">
+              <div class="gratitude-photo"><img src="images/karthisir.png" alt="Dr. V. Karthick"/></div>
+              <div class="gratitude-name">KARTHIKEYAN</div>
+              <div class="gratitude-role">Faculty Coordinator</div>
+            </div>
+            <div class="gratitude-person">
+              <div class="gratitude-photo"><img src="images/priyamam.jpeg" alt="Priya Ma'am"/></div>
+              <div class="gratitude-name">Priya J</div>
+              <div class="gratitude-role">Faculty Coordinator</div>
+            </div>
+            <div class="gratitude-person">
+              <div class="gratitude-photo"><img src="images/EMM pic.jpg.jpeg" alt="Dr. J. E. Miriam Mani"/></div>
+              <div class="gratitude-name">Dr. EM MALATHY</div>
+              <div class="gratitude-role">Head of Department</div>
+            </div>
+          </div>
+        </div>
+        <div class="mascot-row" style="max-width:360px;margin-bottom:90px;">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
           <div class="mascot-speech">
-            <div class="mascot-label">ADHI signing off</div>
-            <p class="mascot-text">"Until next year, keep coding, keep innovating, keep dreaming BIG! This isn't the end of our story — it's just the beginning of something even more legendary! ⚡🚀"</p>
+            <div class="mascot-label">ADHI thanks you</div>
+            <p class="mascot-text">"A special thank you to our HOD and faculty coordinators for their constant encouragement, guidance, and trust throughout this magazine journey. Your support helped our ideas take shape, our team stay motivated, and this edition reach the finish line with pride."</p>
           </div>
         </div>
         <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">

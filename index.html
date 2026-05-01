@@ -3444,8 +3444,10 @@ $(document).ready(function() {
 
   function adjustSize() {
     var w = $(window).width();
-    var avail = Math.min(w - 40, 900);
-    var scale = avail / 900;
+    var h = $(window).height();
+    var availW = Math.min(w - 40, 900);
+    var availH = Math.max(360, h - 160);
+    var scale = Math.min(availW / 900, availH / 600, 1);
     if (scale < 1) {
       $('#flipbook').css({
         transform: 'scale(' + scale + ')',

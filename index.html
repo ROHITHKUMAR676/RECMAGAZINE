@@ -647,6 +647,57 @@ body {
   letter-spacing: 1px;
 }
 
+@media (max-width: 760px) {
+  body {
+    min-height: 100dvh;
+    padding: 10px 8px 18px;
+  }
+
+  .mag-shell {
+    gap: 12px;
+  }
+
+  .mag-header h1 {
+    font-size: 15px;
+    letter-spacing: 3px;
+  }
+
+  .mag-header p {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .nav-row {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    flex: 1 1 112px;
+    max-width: 148px;
+    padding: 9px 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  #page-counter {
+    min-width: 104px;
+    font-size: 10px;
+  }
+
+  .progress-track {
+    width: min(48vw, 180px);
+  }
+
+  .kb-hint {
+    max-width: 300px;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
 /* ══════════════════════════════════════
    PAGE BASE
    ══════════════════════════════════════ */
@@ -3445,14 +3496,22 @@ $(document).ready(function() {
   function adjustSize() {
     var w = $(window).width();
     var h = $(window).height();
-    var availW = Math.min(w - 40, 900);
-    var availH = Math.max(360, h - 160);
-    var scale = Math.min(availW / 900, availH / 600, 1);
+    var isMobile = w <= 760;
+    var bookW = isMobile ? 450 : 900;
+    var bookH = 600;
+    var availW = Math.min(w - 16, bookW);
+    var reservedH = isMobile ? 138 : 160;
+    var availH = Math.max(360, h - reservedH);
+    var scale = Math.min(availW / bookW, availH / bookH, 1);
+
+    $('#flipbook').turn('display', isMobile ? 'single' : 'double');
+    $('#flipbook').turn('size', bookW, bookH);
+
     if (scale < 1) {
       $('#flipbook').css({
         transform: 'scale(' + scale + ')',
         transformOrigin: 'top center',
-        marginBottom: (-600 * (1 - scale)) + 'px'
+        marginBottom: (-bookH * (1 - scale)) + 'px'
       });
     } else {
       $('#flipbook').css({ transform: '', marginBottom: '' });

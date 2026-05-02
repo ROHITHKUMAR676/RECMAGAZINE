@@ -1019,6 +1019,26 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .toc-row:last-child { border-bottom: none; }
+.toc-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.toc-link:visited,
+.toc-link:hover,
+.toc-link:active {
+  color: inherit;
+  text-decoration: none;
+}
+.toc-link:hover .toc-name,
+.toc-link:hover .toc-pg {
+  color: var(--cyan);
+}
+.toc-link:focus-visible {
+  outline: 1px solid rgba(77,232,255,0.45);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 .toc-name {
   font-family: var(--font-body);
   font-size: 11.5px;
@@ -1057,6 +1077,81 @@ body {
 #p3 .mascot-speech { padding: 6px 9px; }
 #p3 .mascot-label { margin-bottom: 2px; }
 #p3 .mascot-text { font-size: 9.4px; line-height: 1.2; }
+
+/* Placement page tuning */
+#p20 .pg-inner {
+  padding: 22px 22px 88px 22px !important;
+}
+#p20 .corner-mascot {
+  display: none;
+}
+#p20 .card.card-dark {
+  margin-bottom: 7px !important;
+  padding: 9px 11px !important;
+}
+#p20 .tag-cloud {
+  gap: 4px;
+}
+#p20 .ctag {
+  font-size: 8.8px;
+  padding: 3px 8px;
+}
+#p20 .placement-highlight {
+  margin-bottom: 10px !important;
+  padding: 10px 12px 11px !important;
+}
+#p20 .placement-kicker {
+  font-family: var(--font-tech);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
+  letter-spacing: 1.4px;
+}
+#p20 .placement-intro {
+  font-size: 10.2px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.48;
+  margin-bottom: 8px;
+}
+#p20 .placement-names {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 14px;
+  margin-bottom: 8px;
+}
+#p20 .placement-name {
+  font-size: 10.6px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.2;
+}
+#p20 .placement-note {
+  font-size: 9.95px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.42;
+}
+#p20 .mascot-row {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 34px;
+  gap: 8px;
+  align-items: stretch;
+}
+#p20 .mascot-avatar {
+  width: 34px;
+  height: 34px;
+}
+#p20 .mascot-speech {
+  padding: 6px 9px;
+}
+#p20 .mascot-label {
+  margin-bottom: 2px;
+}
+#p20 .mascot-text {
+  font-size: 9.3px;
+  line-height: 1.22;
+}
 
 /* ── Mascot bubble ── */
 .mascot-row {
@@ -1486,6 +1581,44 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.38);
+}
+
+/* Thank-you page mentor row */
+#p23 .gratitude-panel {
+  max-width: 412px;
+  padding: 10px 10px 12px;
+}
+#p23 .gratitude-head {
+  font-size: 7.2px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+#p23 .gratitude-crew {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px 6px;
+}
+#p23 .gratitude-person {
+  min-width: 0;
+}
+#p23 .gratitude-photo {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 7px;
+}
+#p23 .gratitude-name {
+  font-size: 7.2px;
+  line-height: 1.22;
+}
+#p23 .gratitude-role {
+  margin-top: 2px;
+  font-size: 5.9px;
+  letter-spacing: 0.8px;
+  line-height: 1.25;
+}
+#p23 .gratitude-dept {
+  margin-top: 2px;
+  font-size: 5.4px;
+  letter-spacing: 0.8px;
 }
 
 /* ── Two-tone heading ── */
@@ -2167,41 +2300,41 @@ body {
         <div class="page-headline-sm" style="color:var(--cyan); margin-bottom:6px;">Table of Contents</div>
         <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
         <div class="card card-dark" style="margin-bottom:10px;padding:10px 14px;">
-   <div class="toc-row"><span class="toc-name">📖 Cover Page</span><span class="toc-dots"></span><span class="toc-pg">01</span></div>
+   <a class="toc-row toc-link" href="#p1" data-page="1"><span class="toc-name">📖 Cover Page</span><span class="toc-dots"></span><span class="toc-pg">01</span></a>
 
-<div class="toc-row"><span class="toc-name">👥 Meet the Team</span><span class="toc-dots"></span><span class="toc-pg">02</span></div>
+<a class="toc-row toc-link" href="#p2" data-page="2"><span class="toc-name">👥 Meet the Team</span><span class="toc-dots"></span><span class="toc-pg">02</span></a>
 
-<div class="toc-row"><span class="toc-name">📑 Table of Contents</span><span class="toc-dots"></span><span class="toc-pg">03</span></div>
+<a class="toc-row toc-link" href="#p3" data-page="3"><span class="toc-name">📑 Table of Contents</span><span class="toc-dots"></span><span class="toc-pg">03</span></a>
 
-<div class="toc-row"><span class="toc-name">🏆 Student Achievements</span><span class="toc-dots"></span><span class="toc-pg">04</span></div>
+<a class="toc-row toc-link" href="#p4" data-page="4"><span class="toc-name">🏆 Student Achievements</span><span class="toc-dots"></span><span class="toc-pg">04</span></a>
 
-<div class="toc-row"><span class="toc-name">💻 Hackathon & Symposium</span><span class="toc-dots"></span><span class="toc-pg">05–06</span></div>
+<a class="toc-row toc-link" href="#p5" data-page="5"><span class="toc-name">💻 Hackathon & Symposium</span><span class="toc-dots"></span><span class="toc-pg">05–06</span></a>
 
-<div class="toc-row"><span class="toc-name">🎯 Workshops & Talks</span><span class="toc-dots"></span><span class="toc-pg">07–10</span></div>
+<a class="toc-row toc-link" href="#p7" data-page="7"><span class="toc-name">🎯 Workshops & Talks</span><span class="toc-dots"></span><span class="toc-pg">07–10</span></a>
 
-<div class="toc-row"><span class="toc-name">🌟 Sports & Spotlight</span><span class="toc-dots"></span><span class="toc-pg">11</span></div>
+<a class="toc-row toc-link" href="#p11" data-page="11"><span class="toc-name">🌟 Sports & Spotlight</span><span class="toc-dots"></span><span class="toc-pg">11</span></a>
 
-<div class="toc-row"><span class="toc-name">🏅 Special Mentions</span><span class="toc-dots"></span><span class="toc-pg">12–13</span></div>
+<a class="toc-row toc-link" href="#p11a" data-page="12"><span class="toc-name">🏅 Special Mentions</span><span class="toc-dots"></span><span class="toc-pg">12–13</span></a>
 
-<div class="toc-row"><span class="toc-name">📸 Moments to Glory</span><span class="toc-dots"></span><span class="toc-pg">14</span></div>
+<a class="toc-row toc-link" href="#p12" data-page="14"><span class="toc-name">📸 Moments to Glory</span><span class="toc-dots"></span><span class="toc-pg">14</span></a>
 
-<div class="toc-row"><span class="toc-name">🏛️ Faculty & Department</span><span class="toc-dots"></span><span class="toc-pg">15–17</span></div>
+<a class="toc-row toc-link" href="#p13" data-page="15"><span class="toc-name">🏛️ Faculty & Department</span><span class="toc-dots"></span><span class="toc-pg">15–17</span></a>
 
-<div class="toc-row"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">18–19</span></div>
+<a class="toc-row toc-link" href="#p15a" data-page="18"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">18–19</span></a>
 
-<div class="toc-row"><span class="toc-name">🌟 Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">20</span></div>
+<a class="toc-row toc-link" href="#p15c" data-page="20"><span class="toc-name">🌟 Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">20</span></a>
 
-<div class="toc-row"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
+<a class="toc-row toc-link" href="#p16" data-page="21"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">21</span></a>
 
-<div class="toc-row"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">22</span></div>
+<a class="toc-row toc-link" href="#p17" data-page="22"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">22</span></a>
 
-<div class="toc-row"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">23</span></div>
+<a class="toc-row toc-link" href="#p18" data-page="23"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">23</span></a>
 
-<div class="toc-row"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">24</span></div>
+<a class="toc-row toc-link" href="#p19" data-page="24"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">24</span></a>
 
-<div class="toc-row"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">25</span></div>
+<a class="toc-row toc-link" href="#p20" data-page="25"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">25</span></a>
 
-<div class="toc-row"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">26</span></div>
+<a class="toc-row toc-link" href="#p23" data-page="26"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">26</span></a>
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
@@ -3010,7 +3143,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
         <div class="faculty-engage-grid">
-          <div class="faculty-photo-slot"><img src="images/edu.png" alt="ThinkEdu Conclave placeholder"/></div>
+          <div class="faculty-photo-slot"><img src="images/newedu.png" alt="ThinkEdu Conclave placeholder" style="object-fit:contain;object-position:center center;"/></div>
           <div>
             <div class="faculty-engage-title">ThinkEdu Conclave 2026</div>
             <p class="faculty-engage-copy">The <strong>14th edition of The New Indian Express ThinkEdu Conclave 2026</strong> was held on March 2 and 3, 2026, at ITC Grand Chola, Chennai.</p>
@@ -3375,16 +3508,22 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <div class="tag-cloud">
             <span class="ctag">Google</span><span class="ctag">Microsoft</span><span class="ctag">Amazon</span><span class="ctag">Apple</span>
             <span class="ctag">Goldman Sachs</span><span class="ctag">Zoho</span><span class="ctag">Freshworks</span><span class="ctag">Oracle</span>
-            <span class="ctag">Wipro</span><span class="ctag">Infosys</span><span class="ctag">TCS</span><span class="ctag">Cognizant</span>
+            <span class="ctag">embedUR Systems</span><span class="ctag">Wipro</span><span class="ctag">Infosys</span><span class="ctag">TCS</span><span class="ctag">Cognizant</span>
           </div>
         </div>
-        <div class="card card-gold" style="margin-bottom:10px;padding:10px 12px;">
-          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:1.5px;">⭐ DREAM PLACEMENTS</div>
-          <div style="display:flex;flex-direction:column;gap:4px;">
-            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Preethi K.</strong> → Google SWE · ₹45L · Hyderabad</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Rahul S.</strong> → Microsoft SDET · ₹38L · Bangalore</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Sneha M.</strong> → Goldman Sachs · ₹32L · Bangalore</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Arun P.</strong> → Amazon SDE-2 · ₹29L · Chennai</div>
+        <div class="card card-gold placement-highlight">
+          <div class="placement-kicker">STAR EMBEDUR SYSTEMS SELECTION</div>
+          <p class="placement-intro">
+            Students from the <strong style="color:var(--gold);">Computer Science &amp; Engineering</strong> department successfully cleared the campus recruitment process conducted by <strong style="color:var(--green);">embedUR Systems</strong>, reflecting strong technical skills, consistency, and preparation.
+          </p>
+          <div class="placement-names">
+            <div class="placement-name">• <strong style="color:var(--gold);">Shangamithra TS</strong></div>
+            <div class="placement-name">• <strong style="color:var(--gold);">Manicka Meenakshi S</strong></div>
+            <div class="placement-name">• <strong style="color:var(--gold);">Kumaran S</strong></div>
+            <div class="placement-name">• <strong style="color:var(--gold);">Vishwa J</strong></div>
+          </div>
+          <div class="placement-note">
+            Their excellence in core computer science concepts, problem-solving ability, and interview performance adds to the department's growing placement success and inspires upcoming batches.
           </div>
         </div>
         <div class="mascot-row">
@@ -3439,6 +3578,12 @@ With experience across AI, development, design, and entrepreneurship, and a grow
               <div class="gratitude-photo"><img src="images/EMM pic.jpg.jpeg" alt="Dr. J. E. Miriam Mani"/></div>
               <div class="gratitude-name">Dr. E.M. MALATHY</div>
               <div class="gratitude-role">Professor & Head</div>
+              <div class="gratitude-dept">Department of CSE</div>
+            </div>
+            <div class="gratitude-person">
+              <div class="gratitude-photo"><img src="images/Manoranjini Photo.jpg.jpeg" alt="Dr. Manoranjini J"/></div>
+              <div class="gratitude-name">Dr. Manoranjini J</div>
+              <div class="gratitude-role">Professor &amp; Deputy Head</div>
               <div class="gratitude-dept">Department of CSE</div>
             </div>
             <div class="gratitude-person">
@@ -3802,6 +3947,48 @@ $(document).ready(function() {
     $('#prog').css('width', pct + '%');
   }
 
+  function goToBookPage(page, targetId) {
+    if (!page) return;
+    $('#flipbook').turn('page', page);
+    if (targetId) {
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '#' + targetId);
+      } else {
+        window.location.hash = targetId;
+      }
+    }
+  }
+
+  $('.toc-link').on('click', function(e) {
+    e.preventDefault();
+    var page = parseInt(this.getAttribute('data-page'), 10);
+    var targetId = (this.getAttribute('href') || '').replace('#', '');
+    goToBookPage(page, targetId);
+  });
+
+  function syncBookToHash() {
+    var hash = window.location.hash ? window.location.hash.slice(1) : '';
+    if (!hash) return;
+
+    var $link = $('.toc-link[href="#' + hash + '"]').first();
+    if (!$link.length) return;
+
+    var page = parseInt($link.attr('data-page'), 10);
+    if (!page) return;
+
+    $('#flipbook').turn('page', page);
+  }
+
+  function resetBookToCover() {
+    $('#flipbook').turn('page', 1);
+    updateNav(1);
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', '#p1');
+    } else {
+      window.location.hash = 'p1';
+    }
+  }
+
   $('#btn-next').on('click', function() { $('#flipbook').turn('next'); });
   $('#btn-prev').on('click', function() { $('#flipbook').turn('previous'); });
 
@@ -3873,7 +4060,8 @@ $(document).ready(function() {
 
   window.addEventListener('afterprint', adjustSize);
 
-  updateNav(1);
+  resetBookToCover();
+  window.addEventListener('hashchange', syncBookToHash);
 });
 </script>
 </body>

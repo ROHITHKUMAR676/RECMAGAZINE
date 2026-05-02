@@ -1735,14 +1735,70 @@ body {
 #p12 { background: #090610; }
 
 /* ══════════════════════════════════════
-   PAGE 13–15 — FACULTY: Academic Navy
+   PAGE 13–19 — FACULTY: Academic Navy + Engagements
    ══════════════════════════════════════ */
 #p13 { background: #040e1c; }
 #p14 { background: #040a18; }
 #p15 { background: #050c1a; }
+#p15a { background: #071016; }
+#p15b { background: #0d0718; }
+
+.faculty-engage-grid {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.faculty-engage-grid:last-child { border-bottom: none; }
+.faculty-photo-slot {
+  width: 96px;
+  height: 118px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  position: relative;
+}
+.faculty-photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  opacity: 0.74;
+}
+.faculty-engage-title {
+  font-family: var(--font-tech);
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.faculty-engage-copy {
+  font-family: var(--font-serif);
+  font-size: 11.1px;
+  line-height: 1.52;
+  color: rgba(248,244,238,0.82);
+}
+.faculty-engage-meta {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(0,212,255,0.28);
+  background: rgba(0,212,255,0.08);
+  font-family: var(--font-tech);
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
 
 /* ══════════════════════════════════════
-   PAGE 16 — WEALTH: Finance Amber
+   PAGE 20 — WEALTH: Finance Amber
    ══════════════════════════════════════ */
 #p16 { background: #0d0900; }
 .p16-bg-stripe {
@@ -1753,27 +1809,27 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PAGE 17 — GEN AI: Electric Blue
+   PAGE 21 — GEN AI: Electric Blue
    ══════════════════════════════════════ */
 #p17 { background: #040c1e; }
 
 /* ══════════════════════════════════════
-   PAGE 18 — RAG: Royal Blue
+   PAGE 22 — RAG: Royal Blue
    ══════════════════════════════════════ */
 #p18 { background: #050b1c; }
 
 /* ══════════════════════════════════════
-   PAGE 19 — STOCK: Forest Green
+   PAGE 23 — STOCK: Forest Green
    ══════════════════════════════════════ */
 #p19 { background: #040d08; }
 
 /* ══════════════════════════════════════
-   PAGE 20 — PLACEMENTS: Midnight Emerald
+   PAGE 24 — PLACEMENTS: Midnight Emerald
    ══════════════════════════════════════ */
 #p20 { background: #040b10; }
 
 /* ══════════════════════════════════════
-   PAGE 23 — THANK YOU: Regal Violet
+   PAGE 25 — THANK YOU: Regal Violet
    ══════════════════════════════════════ */
 #p23 { background: #0a0618; }
 
@@ -2050,17 +2106,19 @@ body {
 
 <div class="toc-row"><span class="toc-name">🏛️ Faculty & Department</span><span class="toc-dots"></span><span class="toc-pg">15–17</span></div>
 
-<div class="toc-row"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">18</span></div>
+<div class="toc-row"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">18–19</span></div>
 
-<div class="toc-row"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">19</span></div>
+<div class="toc-row"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">20</span></div>
 
-<div class="toc-row"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">20</span></div>
+<div class="toc-row"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
 
-<div class="toc-row"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
+<div class="toc-row"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">22</span></div>
 
-<div class="toc-row"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">22</span></div>
+<div class="toc-row"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">23</span></div>
 
-<div class="toc-row"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">23</span></div>
+<div class="toc-row"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">24</span></div>
+
+<div class="toc-row"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">25</span></div>
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
@@ -2838,7 +2896,109 @@ With experience across AI, development, design, and entrepreneurship, and a grow
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 18 (p16): WEALTH ENGINEERING — Amber Finance
+         PAGE 18 (p15a): FACULTY ENGAGEMENTS — Teal Gold
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p15a">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="feBg1" cx="78%" cy="18%" r="78%">
+            <stop offset="0%" stop-color="#123a44"/>
+            <stop offset="55%" stop-color="#071016"/>
+            <stop offset="100%" stop-color="#03070b"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#feBg1)"/>
+        <circle cx="355" cy="155" r="118" fill="rgba(0,212,255,0.07)"/>
+        <circle cx="70" cy="520" r="112" fill="rgba(232,200,74,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(0,212,255,0.55)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner" style="padding-left:18px;padding-right:20px;">
+        <div class="eyebrow" style="color:var(--cyan);">Faculty Engagements · Part I</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:4px;">Industry <span style="color:var(--gold);">Dialogues</span></div>
+        <div style="height:2px;width:44px;background:var(--gold);margin-bottom:9px;opacity:0.85;"></div>
+        <div class="faculty-engage-grid">
+          <div class="faculty-photo-slot"><img src="images/twin.png" alt="Digital Twin conference placeholder"/></div>
+          <div>
+            <div class="faculty-engage-title">Digital Twin Conference</div>
+            <p class="faculty-engage-copy"><strong>Dr. E. M. Malathy</strong>, Professor and Head, attended the conference on <em>Digital Twin - Powering Agile Engineering, Industry 4.0 and Smart Enterprises</em>, organized by <strong>CII-TNTDPC</strong>.</p>
+            <p class="faculty-engage-copy">The conference was chaired by <strong>Mr. Balasubramanian N</strong>, Vice President, Renault Nissan Technology Business Centre India, with sessions focused on the Digital Twin dimensions of product, process, and people.</p>
+            <span class="faculty-engage-meta">26 Feb 2026 · ITC Grand Chola, Chennai</span>
+          </div>
+        </div>
+        <div class="faculty-engage-grid">
+          <div class="faculty-photo-slot"><img src="images/edu.png" alt="ThinkEdu Conclave placeholder"/></div>
+          <div>
+            <div class="faculty-engage-title">ThinkEdu Conclave 2026</div>
+            <p class="faculty-engage-copy">The <strong>14th edition of The New Indian Express ThinkEdu Conclave 2026</strong> was held on March 2 and 3, 2026, at ITC Grand Chola, Chennai.</p>
+            <p class="faculty-engage-copy"><strong>Rajalakshmi</strong>, as Title Sponsor, joined policymakers, educators, industry leaders, students, faculty, and guests for sessions on AI, sustainability, policy reform, and India's education landscape. REC faculty and students participated enthusiastically.</p>
+            <span class="faculty-engage-meta">2-3 Mar 2026 · Education summit</span>
+          </div>
+        </div>
+        <div class="mascot-row" style="margin-top:8px;">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(232,200,74,0.3);background:rgba(232,200,74,0.07);">
+            <div class="mascot-label" style="color:var(--gold);">ADHI INSIGHT</div>
+            <p class="mascot-text">"Strong departments stay close to industry conversations, because tomorrow's classroom is shaped by today's enterprise problems."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">18</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 19 (p15b): FACULTY ENGAGEMENTS — Violet Lime
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p15b">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="feBg2" cx="20%" cy="20%" r="82%">
+            <stop offset="0%" stop-color="#291c58"/>
+            <stop offset="58%" stop-color="#0d0718"/>
+            <stop offset="100%" stop-color="#05040b"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#feBg2)"/>
+        <circle cx="70" cy="120" r="110" fill="rgba(176,140,232,0.08)"/>
+        <circle cx="390" cy="500" r="118" fill="rgba(46,204,113,0.05)"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(176,140,232,0.6)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner" style="padding-left:18px;padding-right:20px;">
+        <div class="eyebrow" style="color:#b08ce8;">Faculty Engagements · Part II</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:4px;">Research <span style="color:var(--green);">Connect</span></div>
+        <div style="height:2px;width:44px;background:var(--green);margin-bottom:9px;opacity:0.85;"></div>
+        <div class="faculty-engage-grid">
+          <div class="faculty-photo-slot"><img src="images/niot.png" alt="NIOT visit placeholder"/></div>
+          <div>
+            <div class="faculty-engage-title" style="color:#b08ce8;">NIOT Research Collaboration</div>
+            <p class="faculty-engage-copy"><strong>Dr. E. M. Malathy</strong> and <strong>Dr. M. Ayyadurai</strong> had an insightful discussion with <strong>Dr. R. Srinivasan</strong>, Scientist, during an industrial visit to the <strong>National Institute of Ocean Technology (NIOT), Chennai</strong>.</p>
+            <p class="faculty-engage-copy">The visit explored possibilities for future collaboration on research projects and technology-oriented academic engagement.</p>
+            <span class="faculty-engage-meta" style="border-color:rgba(176,140,232,0.3);background:rgba(176,140,232,0.08);color:#b08ce8;">14 Jan 2026 · NIOT Chennai</span>
+          </div>
+        </div>
+        <div class="faculty-engage-grid">
+          <div class="faculty-photo-slot"><img src="images/res.png" alt="AI full stack workshop placeholder"/></div>
+          <div>
+            <div class="faculty-engage-title" style="color:var(--green);">AI for All Initiative</div>
+            <p class="faculty-engage-copy">A hands-on workshop titled <em>AI for All Initiative: Next-Gen Full Stack Development</em> was scheduled on <strong>11 February 2026</strong> to connect Artificial Intelligence with modern full stack development.</p>
+            <p class="faculty-engage-copy">The sessions focused on practical learning, real-world use cases, and emerging development practices with external expert <strong>Mr. A. Velliraj</strong>, Tech Manager, Virtusa Pvt. Ltd., Chennai.</p>
+            <span class="faculty-engage-meta" style="border-color:rgba(46,204,113,0.3);background:rgba(46,204,113,0.08);color:var(--green);">11 Feb 2026 · Hands-on workshop</span>
+          </div>
+        </div>
+        <div class="mascot-row" style="margin-top:8px;">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(46,204,113,0.3);background:rgba(46,204,113,0.07);">
+            <div class="mascot-label" style="color:var(--green);">ADHI INSIGHT</div>
+            <p class="mascot-text">"Collaboration begins when faculty step into research spaces, listen closely, and bring that energy back to student learning."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">19</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 20 (p16): WEALTH ENGINEERING — Amber Finance
          ══════════════════════════════════════ -->
     <div class="pg" id="p16">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -2884,11 +3044,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">18</span>
+      <span class="pg-num">20</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 19 (p17): GEN AI — Electric Blue
+         PAGE 21 (p17): GEN AI — Electric Blue
          ══════════════════════════════════════ -->
     <div class="pg" id="p17">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -2936,11 +3096,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">19</span>
+      <span class="pg-num">21</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 20 (p18): RAG MODELS — Royal Blue
+         PAGE 22 (p18): RAG MODELS — Royal Blue
          ══════════════════════════════════════ -->
     <div class="pg" id="p18">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -2988,11 +3148,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">20</span>
+      <span class="pg-num">22</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 21 (p19): STOCK MARKET — Forest Green
+         PAGE 23 (p19): STOCK MARKET — Forest Green
          ══════════════════════════════════════ -->
     <div class="pg" id="p19">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3041,11 +3201,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         </div>
         <div style="font-family:var(--font-serif);font-size:12px;color:var(--gold);border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">Golden Rule: protect capital first. Compounding rewards survivors.</div>
       </div>
-      <span class="pg-num">21</span>
+      <span class="pg-num">23</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 22 (p20): PLACEMENTS — Midnight Emerald
+         PAGE 24 (p20): PLACEMENTS — Midnight Emerald
          ══════════════════════════════════════ -->
     <div class="pg" id="p20">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3091,11 +3251,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">22</span>
+      <span class="pg-num">24</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 23: THANK YOU — Regal Violet
+         PAGE 25: THANK YOU — Regal Violet
          ══════════════════════════════════════ -->
     <div class="pg" id="p23">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3167,7 +3327,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         <div style="font-family:var(--font-tech);font-size:9.5px;color:rgba(255,255,255,0.25);margin-top:4px;">© 2026 REC CSE Department · All rights reserved</div>
         <div style="font-family:var(--font-tech);font-size:9px;color:rgba(255,255,255,0.18);margin-top:2px;">Designed with ❤️ by CSE Editorial Team</div>
       </div>
-      <span class="pg-num">23</span>
+      <span class="pg-num">25</span>
     </div>
 
   </div><!-- end #flipbook -->

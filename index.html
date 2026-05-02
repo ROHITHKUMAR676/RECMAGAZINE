@@ -970,18 +970,26 @@ body {
 }
 
 /* ── TOC page compact tuning ── */
-#p3 .pg-inner { padding-top: 20px; padding-bottom: 18px; }
-#p3 .eyebrow { margin-bottom: 4px; }
-#p3 .page-headline-sm { margin-bottom: 4px !important; }
-#p3 .card.card-dark { margin-bottom: 8px !important; padding: 8px 12px !important; }
-#p3 .toc-row { padding: 4px 0; }
-#p3 .toc-name { font-size: 10.8px; }
-#p3 .toc-pg { font-size: 13px; }
-#p3 .mascot-row { gap: 8px; align-items: stretch; }
-#p3 .mascot-avatar { width: 40px; height: 40px; }
-#p3 .mascot-speech { padding: 7px 10px; }
-#p3 .mascot-label { margin-bottom: 3px; }
-#p3 .mascot-text { font-size: 10.8px; line-height: 1.35; }
+#p3 .pg-inner { padding: 16px 26px 78px 18px !important; }
+#p3 .corner-mascot { display: none; }
+#p3 .eyebrow { margin-bottom: 2px; }
+#p3 .page-headline-sm { margin-bottom: 2px !important; font-size: 25px; }
+#p3 .card.card-dark { margin-bottom: 0 !important; padding: 7px 12px !important; }
+#p3 .toc-row { padding: 2.6px 0; }
+#p3 .toc-name { font-size: 9.8px; line-height: 1.1; }
+#p3 .toc-pg { font-size: 11.5px; }
+#p3 .mascot-row {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 34px;
+  gap: 7px;
+  align-items: stretch;
+}
+#p3 .mascot-avatar { width: 34px; height: 34px; }
+#p3 .mascot-speech { padding: 6px 9px; }
+#p3 .mascot-label { margin-bottom: 2px; }
+#p3 .mascot-text { font-size: 9.4px; line-height: 1.2; }
 
 /* ── Mascot bubble ── */
 .mascot-row {
@@ -1798,7 +1806,12 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PAGE 20 — WEALTH: Finance Amber
+   PAGE 20 — SPECIAL MENTION: Faculty Spotlight
+   ══════════════════════════════════════ */
+#p15c { background: #09070f; }
+
+/* ══════════════════════════════════════
+   PAGE 21 — WEALTH: Finance Amber
    ══════════════════════════════════════ */
 #p16 { background: #0d0900; }
 .p16-bg-stripe {
@@ -1809,27 +1822,27 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PAGE 21 — GEN AI: Electric Blue
+   PAGE 22 — GEN AI: Electric Blue
    ══════════════════════════════════════ */
 #p17 { background: #040c1e; }
 
 /* ══════════════════════════════════════
-   PAGE 22 — RAG: Royal Blue
+   PAGE 23 — RAG: Royal Blue
    ══════════════════════════════════════ */
 #p18 { background: #050b1c; }
 
 /* ══════════════════════════════════════
-   PAGE 23 — STOCK: Forest Green
+   PAGE 24 — STOCK: Forest Green
    ══════════════════════════════════════ */
 #p19 { background: #040d08; }
 
 /* ══════════════════════════════════════
-   PAGE 24 — PLACEMENTS: Midnight Emerald
+   PAGE 25 — PLACEMENTS: Midnight Emerald
    ══════════════════════════════════════ */
 #p20 { background: #040b10; }
 
 /* ══════════════════════════════════════
-   PAGE 25 — THANK YOU: Regal Violet
+   PAGE 26 — THANK YOU: Regal Violet
    ══════════════════════════════════════ */
 #p23 { background: #0a0618; }
 
@@ -1978,7 +1991,7 @@ body {
         </div>
         <div class="cover-footer">
           <div class="cover-meta">
-            <div class="cover-stat"><span class="n">23</span><span class="l">Pages</span></div>
+            <div class="cover-stat"><span class="n">26</span><span class="l">Pages</span></div>
             <div class="cover-stat"><span class="n">500+</span><span class="l">Events</span></div>
             <div class="cover-stat"><span class="n">2026</span><span class="l">Edition</span></div>
           </div>
@@ -2064,7 +2077,7 @@ body {
         <div class="card card-gold" style="margin-bottom:8px;">
           <p style="font-family:var(--font-serif);font-style:italic;font-size:11.5px;color:rgba(232,200,74,0.9);line-height:1.55;">"We dedicate this magazine to every student who dared to dream, to every faculty who inspired, and to every moment that made REC CSE unforgettable."</p>
         </div>
-        <div style="font-family:var(--font-tech);font-size:10px;color:rgba(255,255,255,0.45);text-align:center;">Faculty Advisor: <span style="color:var(--gold);">Dr. J. PRIYACHITRA</span> · HOD: <span style="color:var(--gold);">MALATHY E M</span></div>
+
       </div>
       <span class="pg-num">02</span>
     </div>
@@ -2072,6 +2085,7 @@ body {
     <!-- ══════════════════════════════════════
          PAGE 3: TABLE OF CONTENTS — Tech Blue
          ══════════════════════════════════════ -->
+
     <div class="pg" id="p3">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#060d1a"/>
@@ -2108,23 +2122,25 @@ body {
 
 <div class="toc-row"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">18–19</span></div>
 
-<div class="toc-row"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">20</span></div>
+<div class="toc-row"><span class="toc-name">🌟 Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">20</span></div>
 
-<div class="toc-row"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
+<div class="toc-row"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
 
-<div class="toc-row"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">22</span></div>
+<div class="toc-row"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">22</span></div>
 
-<div class="toc-row"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">23</span></div>
+<div class="toc-row"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">23</span></div>
 
-<div class="toc-row"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">24</span></div>
+<div class="toc-row"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">24</span></div>
 
-<div class="toc-row"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">25</span></div>
+<div class="toc-row"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">25</span></div>
+
+<div class="toc-row"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">26</span></div>
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
           <div class="mascot-speech">
             <div class="mascot-label">ADHI says</div>
-            <p class="mascot-text">"Navigate our journey page by page — every chapter holds a surprise. Let's explore what makes REC CSE truly extraordinary! ⚡"</p>
+            <p class="mascot-text">"Navigate page by page — every chapter carries a fresh REC CSE highlight."</p>
           </div>
         </div>
       </div>
@@ -2182,7 +2198,7 @@ body {
         </div>
         <div class="card card-gold" style="padding:8px 12px;">
           <div style="
-  padding-left:70px; 
+  padding-left:70px;
   position:relative;
 ">
 
@@ -2228,7 +2244,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/sakthi.png" alt="Sakthivel" onerror="this.parentElement.classList.add('loaded');"/>
-            
+
           </div>
           <div class="ev-body">
             <div class="ev-title">HACKTHRONE 2025</div>
@@ -2363,7 +2379,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/sejal.jpeg" alt="Sejal" onerror="this.parentElement.classList.add('loaded');"/>
-        
+
           </div>
           <div class="ev-body">
             <div class="ev-title">DEFY26</div>
@@ -2416,7 +2432,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/kr.png" alt="Zorphix" style="object-fit:contain;object-position:center center;" onerror="this.parentElement.classList.add('loaded');"/>
-        
+
           </div>
           <div class="ev-body">
             <div class="ev-title">ZORPHIX</div>
@@ -2427,7 +2443,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/rak.png" alt="EDXTRA team" onerror="this.parentElement.classList.add('loaded');"/>
-            
+
           </div>
           <div class="ev-body">
             <div class="ev-title">EDXTRA 2026</div>
@@ -2478,14 +2494,14 @@ body {
         <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
         <div class="ev-block">
           <div style="display:flex;gap:6px;flex-shrink:0;">
-            
+
             <div class="ev-img" style="width:60px;height:80px;">
               <img src="images/sejal.jpeg" alt="Sejal" onerror="this.parentElement.classList.add('loaded');"/>
-              
+
             </div>
             <div class="ev-img" style="width:60px;height:80px;">
               <img src="images/sar.png" alt="Sarveshvaran" onerror="this.parentElement.classList.add('loaded');"/>
-              
+
             </div>
           </div>
           <div class="ev-body">
@@ -2497,7 +2513,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/Haritha-photo.jpeg" alt="IKS Conference" onerror="this.parentElement.classList.add('loaded');"/>
-            
+
           </div>
           <div class="ev-body">
             <div class="ev-title">IKS CONFERENCE – PAPER PRESENTATION 🏆</div>
@@ -2550,7 +2566,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/ss.png" alt="Sarvesh" onerror="this.parentElement.classList.add('loaded');"/>
-            
+
           </div>
           <div class="ev-body">
             <div class="ev-title">CODESAPIENS MEETUP 2K26</div>
@@ -2561,7 +2577,7 @@ body {
         <div class="ev-block">
           <div class="ev-img">
             <img src="images/Adhi.jpeg" alt="Aadithya" onerror="this.parentElement.classList.add('loaded');"/>
-            
+
           </div>
           <div class="ev-body">
             <div class="ev-title">IPL AUCTION</div>
@@ -2572,7 +2588,7 @@ body {
         <div class="ev-block" style="border-bottom:none;">
           <div class="ev-img">
             <img src="images/shree.jpeg" alt="Sarvesh" onerror="this.parentElement.classList.add('loaded');"/>
-            
+
           </div>
           <div class="ev-body">
             <div class="ev-title">IRUMUGAN</div>
@@ -2720,7 +2736,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         <div style="height:2px;width:40px;background:var(--pink);margin-bottom:10px;opacity:0.7;"></div>
         <div class="img-frame" style="height:360px;margin-bottom:12px;border-radius:12px;">
           <img src="images/colab.png" alt="Collaborative Moments"/>
-          
+
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
@@ -2998,7 +3014,68 @@ With experience across AI, development, design, and entrepreneurship, and a grow
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 20 (p16): WEALTH ENGINEERING — Amber Finance
+         PAGE 20 (p15c): SPECIAL MENTION — Faculty Spotlight
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p15c">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="smBg" cx="72%" cy="18%" r="88%">
+            <stop offset="0%" stop-color="#43306d"/>
+            <stop offset="56%" stop-color="#120a20"/>
+            <stop offset="100%" stop-color="#05040a"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#smBg)"/>
+        <circle cx="78" cy="118" r="115" fill="rgba(232,200,74,0.07)"/>
+        <circle cx="378" cy="486" r="128" fill="rgba(0,212,255,0.05)"/>
+        <path d="M28 520 C126 466 178 548 270 480 S388 396 424 432" fill="none" stroke="rgba(232,200,74,0.16)" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(232,200,74,0.58)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner" style="padding:18px 18px 52px 18px;">
+        <div class="eyebrow" style="color:var(--gold);margin-bottom:3px;">Special Mention · Faculty Achievement</div>
+        <div class="page-headline-sm" style="color:var(--white);margin-bottom:2px;font-size:26px;">Dr. J. <span style="color:var(--gold);">Manoranjini</span></div>
+        <div style="font-family:var(--font-tech);font-size:8.8px;letter-spacing:1.7px;color:rgba(255,255,255,0.58);margin-bottom:7px;text-transform:uppercase;">Deputy HOD of CSE · Academic Leadership</div>
+        <div style="display:grid;grid-template-columns:112px 1fr;gap:10px;align-items:start;margin-bottom:8px;">
+          <div class="card card-gold" style="padding:7px;">
+            <div style="height:128px;border:1px solid rgba(232,200,74,0.28);background:rgba(255,255,255,0.05);overflow:hidden;">
+              <img src="images/Manoranjini Photo.jpg.jpeg" alt="Dr. J. Manoranjini" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"/>
+            </div>
+            <div style="font-family:var(--font-tech);font-size:7.2px;letter-spacing:1.1px;color:var(--gold);text-align:center;margin-top:5px;text-transform:uppercase;">Department of CSE</div>
+          </div>
+          <div class="card card-dark" style="padding:9px 11px;">
+            <div style="font-family:var(--font-tech);font-size:9.4px;font-weight:700;color:var(--gold);letter-spacing:1.3px;margin-bottom:4px;text-transform:uppercase;">Recognition Note</div>
+            <p class="body-copy" style="font-size:10.4px;line-height:1.38;">A proud special mention to <strong style="color:var(--gold);">Dr. J. Manoranjini</strong>, Deputy HOD of CSE, for active participation in academic development, emerging technology discussions, and national-level awareness initiatives during 2026.</p>
+          </div>
+        </div>
+        <div class="card card-dark" style="padding:7px 10px;margin-bottom:5px;border-color:rgba(232,200,74,0.2);">
+          <div style="font-family:var(--font-tech);font-size:9.2px;font-weight:700;color:var(--gold);margin-bottom:2px;">FDP Certificate · Bennett University</div>
+          <p class="body-copy" style="font-size:9.9px;line-height:1.28;">Participated in a <strong>5-day International FDP on Federated Learning for Privacy-Preserving AI (FLPPAI-2026)</strong>, organized by Bennett University.</p>
+          <span class="faculty-engage-meta" style="margin-top:4px;font-size:7px;padding:3px 9px;border-color:rgba(232,200,74,0.28);background:rgba(232,200,74,0.08);color:var(--gold);">23-27 Feb 2026 · Faculty Development Program</span>
+        </div>
+        <div class="card card-dark" style="padding:7px 10px;margin-bottom:5px;border-color:rgba(0,212,255,0.2);">
+          <div style="font-family:var(--font-tech);font-size:9.2px;font-weight:700;color:var(--cyan);margin-bottom:2px;">International Guest Lecture · AI + Blockchain</div>
+          <p class="body-copy" style="font-size:9.9px;line-height:1.28;">Attended an International Guest Lecture on <strong>AI-Enabled Blockchain Innovations and Research Publication</strong>, featuring <strong>Dr. Shyamala Devi Munisamy</strong>, at Rajalakshmi Engineering College.</p>
+          <span class="faculty-engage-meta" style="margin-top:4px;font-size:7px;padding:3px 9px;border-color:rgba(0,212,255,0.28);background:rgba(0,212,255,0.08);color:var(--cyan);">20 Jan 2026 · International Guest Lecture</span>
+        </div>
+        <div class="card card-dark" style="padding:7px 10px;margin-bottom:5px;border-color:rgba(46,204,113,0.2);">
+          <div style="font-family:var(--font-tech);font-size:9.2px;font-weight:700;color:var(--green);margin-bottom:2px;">National IP Awareness Program</div>
+          <p class="body-copy" style="font-size:9.9px;line-height:1.28;">Successfully participated in the <strong>National Intellectual Property Awareness Program</strong> conducted by the <strong>Intellectual Property Office, India</strong>.</p>
+          <span class="faculty-engage-meta" style="margin-top:4px;font-size:7px;padding:3px 9px;border-color:rgba(46,204,113,0.28);background:rgba(46,204,113,0.08);color:var(--green);">22 Jan 2026 · IP Awareness</span>
+        </div>
+        <div class="mascot-row" style="gap:7px;margin-top:1px;">
+          <div class="mascot-avatar" style="width:30px;height:30px;"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="padding:5px 9px;border-color:rgba(232,200,74,0.3);background:rgba(232,200,74,0.07);">
+            <div class="mascot-label" style="color:var(--gold);margin-bottom:1px;font-size:6.8px;">ADHI salutes</div>
+            <p class="mascot-text" style="font-size:8.8px;line-height:1.2;">"Faculty growth keeps the department future-ready."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">20</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 21 (p16): WEALTH ENGINEERING — Amber Finance
          ══════════════════════════════════════ -->
     <div class="pg" id="p16">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3044,11 +3121,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">20</span>
+      <span class="pg-num">21</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 21 (p17): GEN AI — Electric Blue
+         PAGE 22 (p17): GEN AI — Electric Blue
          ══════════════════════════════════════ -->
     <div class="pg" id="p17">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3096,11 +3173,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">21</span>
+      <span class="pg-num">22</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 22 (p18): RAG MODELS — Royal Blue
+         PAGE 23 (p18): RAG MODELS — Royal Blue
          ══════════════════════════════════════ -->
     <div class="pg" id="p18">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3148,11 +3225,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">22</span>
+      <span class="pg-num">23</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 23 (p19): STOCK MARKET — Forest Green
+         PAGE 24 (p19): STOCK MARKET — Forest Green
          ══════════════════════════════════════ -->
     <div class="pg" id="p19">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3201,11 +3278,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         </div>
         <div style="font-family:var(--font-serif);font-size:12px;color:var(--gold);border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">Golden Rule: protect capital first. Compounding rewards survivors.</div>
       </div>
-      <span class="pg-num">23</span>
+      <span class="pg-num">24</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 24 (p20): PLACEMENTS — Midnight Emerald
+         PAGE 25 (p20): PLACEMENTS — Midnight Emerald
          ══════════════════════════════════════ -->
     <div class="pg" id="p20">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3251,11 +3328,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">24</span>
+      <span class="pg-num">25</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 25: THANK YOU — Regal Violet
+         PAGE 26: THANK YOU — Regal Violet
          ══════════════════════════════════════ -->
     <div class="pg" id="p23">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3292,24 +3369,24 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <div class="gratitude-head">With Gratitude To Our Faculty Mentors</div>
           <div class="gratitude-crew">
             <div class="gratitude-person">
-              <div class="gratitude-photo"><img src="images/karthisir.png" alt="Dr. V. Karthick"/></div>
-              <div class="gratitude-name">KARTHIKEYAN</div>
-              <div class="gratitude-role">Faculty Coordinator</div>
+              <div class="gratitude-photo"><img src="images/EMM pic.jpg.jpeg" alt="Dr. J. E. Miriam Mani"/></div>
+              <div class="gratitude-name">Dr. E.M. MALATHY</div>
+              <div class="gratitude-role">Professor & Head</div>
               <div class="gratitude-dept">Department of CSE</div>
             </div>
             <div class="gratitude-person">
               <div class="gratitude-photo"><img src="images/mam.png" alt="Priya Ma'am"/></div>
-              <div class="gratitude-name">Priyachitra</div>
+              <div class="gratitude-name">Ms M.Priyachitra</div>
               <div class="gratitude-role">Faculty Coordinator</div>
               <div class="gratitude-dept">Department of CSE</div>
             </div>
             <div class="gratitude-person">
-              <div class="gratitude-photo"><img src="images/EMM pic.jpg.jpeg" alt="Dr. J. E. Miriam Mani"/></div>
-              <div class="gratitude-name">Dr. E.M. MALATHY</div>
-              <div class="gratitude-role">Professor & Head of the Department</div>
+              <div class="gratitude-photo"><img src="images/karthisir.png" alt="Dr. V. Karthick"/></div>
+              <div class="gratitude-name">Mr N.KARTHIKEYAN</div>
+              <div class="gratitude-role">Faculty Coordinator</div>
               <div class="gratitude-dept">Department of CSE</div>
             </div>
-              
+
           </div>
         </div>
         <div class="mascot-row" style="max-width:360px;margin-bottom:90px;">
@@ -3327,7 +3404,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         <div style="font-family:var(--font-tech);font-size:9.5px;color:rgba(255,255,255,0.25);margin-top:4px;">© 2026 REC CSE Department · All rights reserved</div>
         <div style="font-family:var(--font-tech);font-size:9px;color:rgba(255,255,255,0.18);margin-top:2px;">Designed with ❤️ by CSE Editorial Team</div>
       </div>
-      <span class="pg-num">25</span>
+      <span class="pg-num">26</span>
     </div>
 
   </div><!-- end #flipbook -->
@@ -3335,7 +3412,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
   <div class="nav-row">
     <button class="nav-btn" id="btn-prev">← PREV</button>
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div id="page-counter">Page 1 of 21</div>
+      <div id="page-counter">Page 1 of 26</div>
       <div class="progress-track"><div class="progress-fill" id="prog"></div></div>
     </div>
     <button class="nav-btn" id="btn-next">NEXT →</button>

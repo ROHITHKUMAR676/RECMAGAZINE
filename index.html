@@ -8,9 +8,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
 <style>
-/* ═══════════════════════════════════════════
+/* -------------------------------------------
    DESIGN SYSTEM — REC CSE MAGAZINE 2026
-   ═══════════════════════════════════════════ */
+   ------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -41,9 +41,9 @@ body {
   padding: 16px 10px 30px;
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    OPENING ANIMATION — Cinematic Neon Intro
-   ══════════════════════════════════════ */
+   -------------------------------------- */
 #intro-overlay {
   position: fixed;
   inset: 0;
@@ -588,13 +588,13 @@ body {
   margin-top: 4px;
 }
 
-/* ── Flipbook ── */
+/* -- Flipbook -- */
 #flipbook {
   width: 900px;
   height: 600px;
 }
 
-/* ── Nav ── */
+/* -- Nav -- */
 .nav-row {
   display: flex;
   align-items: center;
@@ -765,9 +765,9 @@ body {
   }
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE BASE
-   ══════════════════════════════════════ */
+   -------------------------------------- */
 .pg {
   width: 450px;
   height: 600px;
@@ -793,7 +793,7 @@ body {
   overflow: hidden;
 }
 
-/* ── Typography Atoms ── */
+/* -- Typography Atoms -- */
 .eyebrow {
   font-family: var(--font-tech);
   font-size: 8.5px;
@@ -850,7 +850,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* ── Page Number ── */
+/* -- Page Number -- */
 .pg-num {
   position: absolute;
   bottom: 12px;
@@ -866,7 +866,7 @@ body {
   bottom: 38px;
 }
 
-/* ── REC CSE Edge Mark (all inner pages except cover) ── */
+/* -- REC CSE Edge Mark (all inner pages except cover) -- */
 .pg:not(#p1)::after {
   content: "REC • CSE • 2026";
   position: absolute;
@@ -897,14 +897,14 @@ body {
 }
 
 /* Reserve space for bottom-right page signature on dense write-up pages */
-#p16 .pg-inner,
 #p17 .pg-inner,
 #p18 .pg-inner,
-#p19 .pg-inner {
+#p19 .pg-inner,
+#p20 .pg-inner {
   padding-bottom: 56px;
 }
 
-/* ── Cards & Blocks ── */
+/* -- Cards & Blocks -- */
 .card {
   border-radius: 8px;
   padding: 12px 14px;
@@ -923,7 +923,7 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* ── Event block ── */
+/* -- Event block -- */
 .ev-block {
   display: flex;
   gap: 12px;
@@ -982,7 +982,7 @@ body {
   padding: 2px 8px;
 }
 
-/* ── Stat grid ── */
+/* -- Stat grid -- */
 .stat-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1010,7 +1010,7 @@ body {
   margin-top: 3px;
 }
 
-/* ── TOC ── */
+/* -- TOC -- */
 .toc-row {
   display: flex;
   align-items: center;
@@ -1019,26 +1019,6 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .toc-row:last-child { border-bottom: none; }
-.toc-link {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-.toc-link:visited,
-.toc-link:hover,
-.toc-link:active {
-  color: inherit;
-  text-decoration: none;
-}
-.toc-link:hover .toc-name,
-.toc-link:hover .toc-pg {
-  color: var(--cyan);
-}
-.toc-link:focus-visible {
-  outline: 1px solid rgba(77,232,255,0.45);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
 .toc-name {
   font-family: var(--font-body);
   font-size: 11.5px;
@@ -1056,16 +1036,134 @@ body {
   flex-shrink: 0;
 }
 
-/* ── TOC page compact tuning ── */
-#p3 .pg-inner { padding: 16px 26px 78px 18px !important; }
-#p3 .corner-mascot { display: none; }
-#p3 .eyebrow { margin-bottom: 2px; }
-#p3 .page-headline-sm { margin-bottom: 2px !important; font-size: 25px; }
-#p3 .card.card-dark { margin-bottom: 0 !important; padding: 7px 12px !important; }
-#p3 .toc-row { padding: 2.6px 0; }
-#p3 .toc-name { font-size: 9.8px; line-height: 1.1; }
-#p3 .toc-pg { font-size: 11.5px; }
-#p3 .mascot-row {
+/* -- HoD desk page -- */
+.hod-page .pg-inner {
+  padding: 22px 22px 20px;
+}
+.hod-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.hod-title-block {
+  min-width: 0;
+  padding-top: 8px;
+}
+.hod-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.08;
+  letter-spacing: 1.8px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.hod-edition {
+  margin-top: 7px;
+  font-family: var(--font-tech);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(0,212,255,0.82);
+  text-transform: uppercase;
+}
+.hod-photo-frame {
+  width: 118px;
+  height: 120px;
+  flex: 0 0 auto;
+  position: relative;
+  border: 1.5px solid rgba(232,200,74,0.6);
+  background: linear-gradient(160deg, rgba(232,200,74,0.18), rgba(0,212,255,0.1));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12);
+  overflow: hidden;
+  margin-top: 32px;
+  margin-right: 20px;
+  border-radius: 12px;
+}
+.hod-photo-frame::after {
+  content: "HoD";
+  position: absolute;
+  inset: auto 8px 8px;
+  z-index: 0;
+  font-family: var(--font-headline);
+  font-size: 34px;
+  letter-spacing: 3px;
+  color: rgba(232,200,74,0.12);
+  text-align: center;
+}
+.hod-photo-frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+}
+.hod-letter {
+  position: relative;
+  padding: 14px 16px 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.hod-letter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), transparent);
+}
+.hod-letter p {
+  font-family: var(--font-serif);
+  font-size: 12.25px;
+  line-height: 1.37;
+  color: rgba(248,244,238,0.88);
+  margin-bottom: 6px;
+}
+.hod-letter p:last-child {
+  margin-bottom: 0;
+}
+.hod-letter strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+.hod-signature {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-left: 2px solid var(--gold);
+  background: rgba(8, 10, 24, 0.46);
+}
+.hod-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--gold);
+  letter-spacing: 0.8px;
+  line-height: 1.2;
+}
+.hod-role {
+  margin-top: 3px;
+  font-family: var(--font-tech);
+  font-size: 8.6px;
+  letter-spacing: 1.1px;
+  line-height: 1.45;
+  color: rgba(248,244,238,0.64);
+  text-transform: uppercase;
+}
+
+/* -- TOC page compact tuning -- */
+#p4 .pg-inner { padding: 16px 26px 78px 18px !important; }
+#p4 .corner-mascot { display: none; }
+#p4 .eyebrow { margin-bottom: 2px; }
+#p4 .page-headline-sm { margin-bottom: 2px !important; font-size: 25px; }
+#p4 .card.card-dark { margin-bottom: 0 !important; padding: 7px 12px !important; }
+#p4 .toc-row { padding: 2.6px 0; }
+#p4 .toc-name { font-size: 9.8px; line-height: 1.1; }
+#p4 .toc-pg { font-size: 11.5px; }
+#p4 .mascot-row {
   position: absolute;
   left: 26px;
   right: 26px;
@@ -1073,111 +1171,12 @@ body {
   gap: 7px;
   align-items: stretch;
 }
-#p3 .mascot-avatar { width: 34px; height: 34px; }
-#p3 .mascot-speech { padding: 6px 9px; }
-#p3 .mascot-label { margin-bottom: 2px; }
-#p3 .mascot-text { font-size: 9.4px; line-height: 1.2; }
+#p4 .mascot-avatar { width: 34px; height: 34px; }
+#p4 .mascot-speech { padding: 6px 9px; }
+#p4 .mascot-label { margin-bottom: 2px; }
+#p4 .mascot-text { font-size: 9.4px; line-height: 1.2; }
 
-/* Placement page tuning */
-#p20 .pg-inner {
-  padding: 22px 22px 88px 22px !important;
-}
-#p20 .corner-mascot {
-  display: none;
-}
-#p20 .card.card-dark {
-  margin-bottom: 7px !important;
-  padding: 9px 11px !important;
-}
-#p20 .tag-cloud {
-  gap: 4px;
-}
-#p20 .ctag {
-  font-size: 8.8px;
-  padding: 3px 8px;
-}
-#p20 .placement-highlight {
-  margin-bottom: 10px !important;
-  padding: 10px 12px 11px !important;
-}
-#p20 .placement-story {
-  margin-top: 6px;
-  padding: 14px 15px 16px !important;
-}
-#p20 .placement-kicker {
-  font-family: var(--font-tech);
-  font-size: 9.5px;
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 6px;
-  letter-spacing: 1.4px;
-}
-#p20 .placement-intro {
-  font-size: 10.2px;
-  color: rgba(255,255,255,0.82);
-  line-height: 1.48;
-  margin-bottom: 8px;
-}
-#p20 .placement-names {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 14px;
-  margin-bottom: 8px;
-}
-#p20 .placement-name {
-  font-size: 10.6px;
-  color: rgba(255,255,255,0.82);
-  line-height: 1.2;
-}
-#p20 .placement-note {
-  font-size: 9.95px;
-  color: rgba(255,255,255,0.72);
-  line-height: 1.42;
-}
-#p20 .placement-body {
-  font-size: 10.15px;
-  color: rgba(255,255,255,0.82);
-  line-height: 1.52;
-  margin-bottom: 8px;
-}
-#p20 .placement-selected-title {
-  font-family: var(--font-tech);
-  font-size: 9.2px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  color: var(--green);
-  margin: 10px 0 7px;
-}
-#p20 .placement-selected-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 14px;
-  margin-bottom: 9px;
-}
-#p20 .mascot-row {
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 34px;
-  gap: 8px;
-  align-items: stretch;
-}
-#p20 .mascot-avatar {
-  width: 34px;
-  height: 34px;
-}
-#p20 .mascot-speech {
-  padding: 6px 9px;
-}
-#p20 .mascot-label {
-  margin-bottom: 2px;
-}
-#p20 .mascot-text {
-  font-size: 9.3px;
-  line-height: 1.22;
-}
-
-/* ── Mascot bubble ── */
+/* -- Mascot bubble -- */
 .mascot-row {
   display: flex;
   gap: 10px;
@@ -1217,7 +1216,7 @@ body {
   color: rgba(248,244,238,0.85);
 }
 
-/* ── Faculty kpi ── */
+/* -- Faculty kpi -- */
 .fac-kpi-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1246,7 +1245,7 @@ body {
   margin-top: 2px;
 }
 
-/* ── Market bars ── */
+/* -- Market bars -- */
 .bar-item {
   display: grid;
   grid-template-columns: 100px 1fr 44px;
@@ -1259,7 +1258,7 @@ body {
 .bar-fill { height: 100%; border-radius: 99px; background: var(--cyan); }
 .bar-val { font-family: var(--font-tech); font-size: 9px; color: var(--cyan); text-align: right; }
 
-/* ── Company tags ── */
+/* -- Company tags -- */
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 5px; }
 .ctag {
   font-family: var(--font-tech);
@@ -1271,7 +1270,7 @@ body {
   color: rgba(248,244,238,0.8);
 }
 
-/* ── Table ── */
+/* -- Table -- */
 .plain-table {
   display: grid;
   grid-template-columns: 1.1fr 1fr 1fr;
@@ -1295,10 +1294,10 @@ body {
   color: rgba(248,244,238,0.75);
 }
 
-/* ── Two-col layout ── */
+/* -- Two-col layout -- */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-/* ── Scatter/photo layout ── */
+/* -- Scatter/photo layout -- */
 .scatter-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1325,7 +1324,7 @@ body {
 .scatter-note .ev-title { font-size: 11px; }
 .scatter-note .ev-desc { font-size: 10.5px; }
 
-/* ── Innovation strips ── */
+/* -- Innovation strips -- */
 .innovation-strip {
   margin-top: auto;
   align-self: center;
@@ -1409,18 +1408,18 @@ body {
   overflow-wrap: anywhere;
 }
 
-#p5 .corner-mascot,
 #p6 .corner-mascot,
 #p7 .corner-mascot,
 #p8 .corner-mascot,
-#p9 .corner-mascot {
+#p9 .corner-mascot,
+#p10 .corner-mascot {
   width: 46px;
   left: 8px;
   bottom: 10px;
   opacity: 0.62;
 }
 
-/* ── Special mention tuning ── */
+/* -- Special mention tuning -- */
 #p11a .pg-inner {
   padding-left: 28px;
   padding-right: 28px !important;
@@ -1450,7 +1449,7 @@ body {
   max-width: 100%;
 }
 
-/* ── Editorial feature blocks ── */
+/* -- Editorial feature blocks -- */
 .feature-num {
   font-family: var(--font-headline);
   font-size: 80px;
@@ -1484,7 +1483,7 @@ body {
   margin-top: 2px;
 }
 
-/* ── Badge ── */
+/* -- Badge -- */
 .badge {
   display: inline-block;
   font-family: var(--font-tech);
@@ -1607,51 +1606,13 @@ body {
   color: rgba(255,255,255,0.38);
 }
 
-/* Thank-you page mentor row */
-#p23 .gratitude-panel {
-  max-width: 412px;
-  padding: 10px 10px 12px;
-}
-#p23 .gratitude-head {
-  font-size: 7.2px;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-#p23 .gratitude-crew {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px 6px;
-}
-#p23 .gratitude-person {
-  min-width: 0;
-}
-#p23 .gratitude-photo {
-  width: 58px;
-  height: 58px;
-  margin-bottom: 7px;
-}
-#p23 .gratitude-name {
-  font-size: 7.2px;
-  line-height: 1.22;
-}
-#p23 .gratitude-role {
-  margin-top: 2px;
-  font-size: 5.9px;
-  letter-spacing: 0.8px;
-  line-height: 1.25;
-}
-#p23 .gratitude-dept {
-  margin-top: 2px;
-  font-size: 5.4px;
-  letter-spacing: 0.8px;
-}
-
-/* ── Two-tone heading ── */
+/* -- Two-tone heading -- */
 .hl-gold { color: var(--gold); }
 .hl-cyan { color: var(--cyan); }
 .hl-pink { color: var(--pink); }
 .hl-green { color: var(--green); }
 
-/* ── Image helpers ── */
+/* -- Image helpers -- */
 .img-frame {
   border-radius: 8px;
   overflow: hidden;
@@ -1688,9 +1649,9 @@ body {
 .cover-corner.bl { bottom: 20px; left: 12px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
 .cover-corner.br { bottom: 20px; right: 12px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 1 — COVER: Cinematic Intro
-   ══════════════════════════════════════ */
+   -------------------------------------- */
 #p1 { background: #05070d; }
 #p1 .pg-inner {
   padding: 0;
@@ -1868,10 +1829,10 @@ body {
   }
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 2 — MEET THE TEAM: Soft Editorial Cream
-   ══════════════════════════════════════ */
-#p2 { background: #0e0b1a; }
+   -------------------------------------- */
+#p3 { background: #0e0b1a; }
 .p2-stripe {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -1923,10 +1884,10 @@ body {
   margin-top: 1px;
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 3 — TOC: Dark Tech Blue
-   ══════════════════════════════════════ */
-#p3 { background: #060d1a; }
+   -------------------------------------- */
+#p4 { background: #060d1a; }
 .p3-accent-bar {
   position: absolute;
   left: 0; top: 0; bottom: 0;
@@ -1934,44 +1895,44 @@ body {
   background: linear-gradient(180deg, var(--cyan), transparent);
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 4 — ACHIEVEMENTS: Deep Purple Gold
-   ══════════════════════════════════════ */
-#p4 { background: #0d0520; }
-#p4 .corner-mascot { left: 22px; }
+   -------------------------------------- */
+#p5 { background: #0d0520; }
+#p5 .corner-mascot { left: 22px; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 5–10 — EVENTS: Neon Tech
-   ══════════════════════════════════════ */
-#p5 { background: #070814; }
-#p6 { background: #0c0814; }
-#p7 { background: #100814; }
-#p8 { background: #060c14; }
-#p9 { background: #08060f; }
-#p10 { background: #060814; }
+   -------------------------------------- */
+#p6 { background: #070814; }
+#p7 { background: #0c0814; }
+#p8 { background: #100814; }
+#p9 { background: #060c14; }
+#p10 { background: #08060f; }
+#p11 { background: #060814; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 11 — SPOTLIGHT: Sports Olive
-   ══════════════════════════════════════ */
-#p11 { background: #090e08; }
+   -------------------------------------- */
+#p12 { background: #090e08; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 11a,11b — SPECIAL MENTIONS: Rich Indigo
-   ══════════════════════════════════════ */
+   -------------------------------------- */
 #p11a { background: #0a0718; }
 #p11b { background: #0d0818; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 12 — MOMENTS: Photographic Dark
-   ══════════════════════════════════════ */
-#p12 { background: #090610; }
+   -------------------------------------- */
+#p13 { background: #090610; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 13–19 — FACULTY: Academic Navy + Engagements
-   ══════════════════════════════════════ */
-#p13 { background: #040e1c; }
-#p14 { background: #040a18; }
-#p15 { background: #050c1a; }
+   -------------------------------------- */
+#p14 { background: #040e1c; }
+#p15 { background: #040a18; }
+#p16 { background: #050c1a; }
 #p15a { background: #071016; }
 #p15b { background: #0d0718; }
 
@@ -2029,15 +1990,15 @@ body {
   text-transform: uppercase;
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 20 — SPECIAL MENTION: Faculty Spotlight
-   ══════════════════════════════════════ */
+   -------------------------------------- */
 #p15c { background: #09070f; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 21 — WEALTH: Finance Amber
-   ══════════════════════════════════════ */
-#p16 { background: #0d0900; }
+   -------------------------------------- */
+#p17 { background: #0d0900; }
 .p16-bg-stripe {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -2045,35 +2006,35 @@ body {
   background: linear-gradient(0deg, rgba(232,200,74,0.06), transparent);
 }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 22 — GEN AI: Electric Blue
-   ══════════════════════════════════════ */
-#p17 { background: #040c1e; }
+   -------------------------------------- */
+#p18 { background: #040c1e; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 23 — RAG: Royal Blue
-   ══════════════════════════════════════ */
-#p18 { background: #050b1c; }
+   -------------------------------------- */
+#p19 { background: #050b1c; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 24 — STOCK: Forest Green
-   ══════════════════════════════════════ */
-#p19 { background: #040d08; }
+   -------------------------------------- */
+#p20 { background: #040d08; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 25 — PLACEMENTS: Midnight Emerald
-   ══════════════════════════════════════ */
-#p20 { background: #040b10; }
+   -------------------------------------- */
+#p21 { background: #040b10; }
 
-/* ══════════════════════════════════════
+/* --------------------------------------
    PAGE 26 — THANK YOU: Regal Violet
-   ══════════════════════════════════════ */
-#p23 { background: #0a0618; }
+   -------------------------------------- */
+#p24 { background: #0a0618; }
 
-/* ── SVG backgrounds ── */
+/* -- SVG backgrounds -- */
 .pg-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
 
-/* ── Corner logos (all inner pages) ── */
+/* -- Corner logos (all inner pages) -- */
 .corner-logo {
   position: absolute;
   top: 12px;
@@ -2081,7 +2042,7 @@ body {
   width: 74px;
   height: 42px;
   object-fit: contain;
-  z-index: 5;
+  z-index: 100;
   opacity: 0.85;
 }
 .corner-mascot {
@@ -2094,7 +2055,7 @@ body {
   opacity: 0.75;
 }
 
-/* ── Inline image portrait ── */
+/* -- Inline image portrait -- */
 .portrait-frame {
   border-radius: 10px;
   overflow: hidden;
@@ -2134,7 +2095,7 @@ body {
 .rule-duo span:first-child { flex: 2; height: 2px; background: var(--gold); border-radius: 1px; }
 .rule-duo span:last-child { flex: 1; height: 2px; background: rgba(255,255,255,0.15); border-radius: 1px; }
 
-/* ── Page-specific heading sizes ── */
+/* -- Page-specific heading sizes -- */
 .page-headline-lg { font-family: var(--font-headline); font-size: 52px; line-height: 0.9; letter-spacing: 2px; }
 .page-headline-md { font-family: var(--font-headline); font-size: 38px; line-height: 0.92; letter-spacing: 1.5px; }
 .page-headline-sm { font-family: var(--font-headline); font-size: 28px; line-height: 1; letter-spacing: 1px; }
@@ -2142,9 +2103,9 @@ body {
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
+<!-- --------------------------------------
      OPENING ANIMATION — Cinematic Neon Intro
-     ══════════════════════════════════════ -->
+     -------------------------------------- -->
 <div id="intro-overlay">
   <div class="intro-backdrop">
     <canvas id="intro-particles" class="intro-canvas particles"></canvas>
@@ -2185,15 +2146,15 @@ body {
 
 <div class="mag-shell">
   <div class="mag-header">
-    <h1>✦ TEXPLORE Magazine ✦</h1>
+    <h1>&#10022; TEXPLORE Magazine &#10022;</h1>
     <p>JAN-MAR 2026 Digital Edition · Computer Science &amp; Engineering</p>
   </div>
 
   <div id="flipbook">
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 1: COVER — Dark Luxury Gold
-         ══════════════════════════════════════ -->
+         -------------------------------------- -->
     <div class="pg" id="p1">
       <img src="images/colab.png" class="cover-backdrop" alt="Collaborative CSE moments"/>
       <div class="cover-overlay"></div>
@@ -2215,7 +2176,7 @@ body {
         </div>
         <div class="cover-footer">
           <div class="cover-meta">
-            <div class="cover-stat"><span class="n">26</span><span class="l">Pages</span></div>
+            <div class="cover-stat"><span class="n">27</span><span class="l">Pages</span></div>
             <div class="cover-stat"><span class="n">500+</span><span class="l">Events</span></div>
             <div class="cover-stat"><span class="n">2026</span><span class="l">Edition</span></div>
           </div>
@@ -2228,10 +2189,68 @@ body {
       <span class="pg-num">01</span>
     </div>
 
-    <!-- ══════════════════════════════════════
-         PAGE 2: MEET THE TEAM — Warm Editorial
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p2">
+    <!-- --------------------------------------
+         PAGE 2: FROM THE DESK OF THE HoD
+         -------------------------------------- -->
+    <div class="pg hod-page" id="p2">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hodGlow" cx="74%" cy="18%" r="70%">
+            <stop offset="0%" stop-color="#17344b"/>
+            <stop offset="48%" stop-color="#0e1329"/>
+            <stop offset="100%" stop-color="#070611"/>
+          </radialGradient>
+          <linearGradient id="hodGoldLine" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#e8c84a" stop-opacity="0"/>
+            <stop offset="52%" stop-color="#e8c84a" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.45"/>
+          </linearGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#hodGlow)"/>
+        <circle cx="382" cy="80" r="104" fill="rgba(0,212,255,0.07)"/>
+        <circle cx="42" cy="532" r="126" fill="rgba(232,200,74,0.06)"/>
+        <path d="M0 118 C110 84 240 152 450 94" fill="none" stroke="url(#hodGoldLine)" stroke-width="1.3" opacity="0.75"/>
+        <path d="M0 134 C126 104 238 174 450 116" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+        <rect x="22" y="570" width="170" height="2" fill="url(#hodGoldLine)" opacity="0.75"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner">
+        <div class="hod-topline">
+          <div class="hod-title-block">
+            <div class="eyebrow" style="color:var(--cyan);">Department Message</div>
+            <div class="hod-title">From the Desk<br>of the HoD</div>
+            <div class="hod-edition">TEXPLORE | Jan 2026 - Mar 2026</div>
+          </div>
+          <div class="hod-photo-frame">
+            <img src="images/EMM pic.jpg.jpeg" alt="Dr. E. M. Malathy" onerror="this.style.display='none'"/>
+          </div>
+        </div>
+
+        <div class="hod-letter">
+          <p>The Department of Computer Science and Engineering proudly presents this edition (Jan 2026 - Mar 2026), highlighting the academic excellence, innovation, and achievements of our students and faculty.</p>
+          <p>This issue of <strong>Texplore</strong> reflects our continuous commitment to nurturing technical expertise, research aptitude, and creativity in emerging domains such as Artificial Intelligence, Data Science, Speech Technology, Cyber Security, and Generative AI.</p>
+          <p>It showcases a diverse range of student projects, research contributions, events, workshops, and accomplishments that define the dynamic academic environment of our department.</p>
+          <p>We believe this publication serves as a platform to inspire young minds, promote knowledge sharing, and strengthen industry-academic collaboration.</p>
+          <p>I sincerely appreciate the editorial team, contributors, and all stakeholders for their dedicated efforts in bringing out this magazine successfully. Wishing all readers an enriching and insightful experience.</p>
+        </div>
+
+        <div class="hod-signature">
+          <div class="hod-name">Dr. E. M. Malathy, M.E., Ph.D.</div>
+          <div class="hod-role">
+            Professor and Head<br>
+            Department of Computer Science and Engineering<br>
+            Rajalakshmi Engineering College, Thandalam - 602105, India<br>
+            An Autonomous Institution Affiliated to Anna University
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">02</span>
+    </div>
+
+    <!-- --------------------------------------
+         PAGE 3: MEET THE TEAM — Warm Editorial
+         -------------------------------------- -->
+    <div class="pg" id="p3">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#0e0b1a"/>
         <rect x="0" y="0" width="450" height="110" fill="rgba(232,200,74,0.05)"/>
@@ -2303,14 +2322,14 @@ body {
         </div>
 
       </div>
-      <span class="pg-num">02</span>
+      <span class="pg-num">03</span>
     </div>
 
-    <!-- ══════════════════════════════════════
-         PAGE 3: TABLE OF CONTENTS — Tech Blue
-         ══════════════════════════════════════ -->
+    <!-- --------------------------------------
+         PAGE 4: TABLE OF CONTENTS — Tech Blue
+         -------------------------------------- -->
 
-    <div class="pg" id="p3">
+    <div class="pg" id="p4">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#060d1a"/>
         <rect x="0" y="0" width="3" height="600" fill="url(#cyanBar)"/>
@@ -2324,41 +2343,25 @@ body {
         <div class="page-headline-sm" style="color:var(--cyan); margin-bottom:6px;">Table of Contents</div>
         <div style="height:2px;width:40px;background:var(--cyan);margin-bottom:10px;opacity:0.7;"></div>
         <div class="card card-dark" style="margin-bottom:10px;padding:10px 14px;">
-   <a class="toc-row toc-link" href="#p1" data-page="1"><span class="toc-name">📖 Cover Page</span><span class="toc-dots"></span><span class="toc-pg">01</span></a>
-
-<a class="toc-row toc-link" href="#p2" data-page="2"><span class="toc-name">👥 Meet the Team</span><span class="toc-dots"></span><span class="toc-pg">02</span></a>
-
-<a class="toc-row toc-link" href="#p3" data-page="3"><span class="toc-name">📑 Table of Contents</span><span class="toc-dots"></span><span class="toc-pg">03</span></a>
-
-<a class="toc-row toc-link" href="#p4" data-page="4"><span class="toc-name">🏆 Student Achievements</span><span class="toc-dots"></span><span class="toc-pg">04</span></a>
-
-<a class="toc-row toc-link" href="#p5" data-page="5"><span class="toc-name">💻 Hackathon & Symposium</span><span class="toc-dots"></span><span class="toc-pg">05–06</span></a>
-
-<a class="toc-row toc-link" href="#p7" data-page="7"><span class="toc-name">🎯 Workshops & Talks</span><span class="toc-dots"></span><span class="toc-pg">07–10</span></a>
-
-<a class="toc-row toc-link" href="#p11" data-page="11"><span class="toc-name">🌟 Sports & Spotlight</span><span class="toc-dots"></span><span class="toc-pg">11</span></a>
-
-<a class="toc-row toc-link" href="#p11a" data-page="12"><span class="toc-name">🏅 Special Mentions</span><span class="toc-dots"></span><span class="toc-pg">12–13</span></a>
-
-<a class="toc-row toc-link" href="#p12" data-page="14"><span class="toc-name">📸 Moments to Glory</span><span class="toc-dots"></span><span class="toc-pg">14</span></a>
-
-<a class="toc-row toc-link" href="#p13" data-page="15"><span class="toc-name">🏛️ Faculty & Department</span><span class="toc-dots"></span><span class="toc-pg">15–17</span></a>
-
-<a class="toc-row toc-link" href="#p15a" data-page="18"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">18–19</span></a>
-
-<a class="toc-row toc-link" href="#p15c" data-page="20"><span class="toc-name">🌟 Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">20</span></a>
-
-<a class="toc-row toc-link" href="#p16" data-page="21"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">21</span></a>
-
-<a class="toc-row toc-link" href="#p17" data-page="22"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">22</span></a>
-
-<a class="toc-row toc-link" href="#p18" data-page="23"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">23</span></a>
-
-<a class="toc-row toc-link" href="#p19" data-page="24"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">24</span></a>
-
-<a class="toc-row toc-link" href="#p20" data-page="25"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">25</span></a>
-
-<a class="toc-row toc-link" href="#p23" data-page="26"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">26</span></a>
+          <div class="toc-row"><span class="toc-name">Cover Page</span><span class="toc-dots"></span><span class="toc-pg">01</span></div>
+          <div class="toc-row"><span class="toc-name">From the Desk of the HoD</span><span class="toc-dots"></span><span class="toc-pg">02</span></div>
+          <div class="toc-row"><span class="toc-name">Meet the Team</span><span class="toc-dots"></span><span class="toc-pg">03</span></div>
+          <div class="toc-row"><span class="toc-name">Table of Contents</span><span class="toc-dots"></span><span class="toc-pg">04</span></div>
+          <div class="toc-row"><span class="toc-name">Student Achievements</span><span class="toc-dots"></span><span class="toc-pg">05</span></div>
+          <div class="toc-row"><span class="toc-name">Hackathon &amp; Symposium</span><span class="toc-dots"></span><span class="toc-pg">06-07</span></div>
+          <div class="toc-row"><span class="toc-name">Workshops &amp; Talks</span><span class="toc-dots"></span><span class="toc-pg">08-11</span></div>
+          <div class="toc-row"><span class="toc-name">Sports &amp; Spotlight</span><span class="toc-dots"></span><span class="toc-pg">12</span></div>
+          <div class="toc-row"><span class="toc-name">Special Mentions</span><span class="toc-dots"></span><span class="toc-pg">13-14</span></div>
+          <div class="toc-row"><span class="toc-name">Moments to Glory</span><span class="toc-dots"></span><span class="toc-pg">15</span></div>
+          <div class="toc-row"><span class="toc-name">Faculty &amp; Department</span><span class="toc-dots"></span><span class="toc-pg">16-18</span></div>
+          <div class="toc-row"><span class="toc-name">Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">19-20</span></div>
+          <div class="toc-row"><span class="toc-name">Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">21</span></div>
+          <div class="toc-row"><span class="toc-name">Wealth &amp; Finance</span><span class="toc-dots"></span><span class="toc-pg">22</span></div>
+          <div class="toc-row"><span class="toc-name">GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">23</span></div>
+          <div class="toc-row"><span class="toc-name">RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">24</span></div>
+          <div class="toc-row"><span class="toc-name">Tech &amp; Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">25</span></div>
+          <div class="toc-row"><span class="toc-name">Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">26</span></div>
+          <div class="toc-row"><span class="toc-name">Thank You</span><span class="toc-dots"></span><span class="toc-pg">27</span></div>
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
@@ -2368,13 +2371,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">03</span>
+      <span class="pg-num">04</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 4: STUDENT ACHIEVEMENTS — Deep Purple
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p4">
+         -------------------------------------- -->
+    <div class="pg" id="p5">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#0d0520"/>
         <ellipse cx="380" cy="540" rx="140" ry="120" fill="rgba(232,200,74,0.05)"/>
@@ -2390,7 +2393,7 @@ body {
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
           <div class="mascot-speech">
             <div class="mascot-label">ADHI says</div>
-            <p class="mascot-text">"Every number here comes from our own magazine pages — real wins, real stages, real student impact! 🏆"</p>
+            <p class="mascot-text">"Every number here comes from our own magazine pages - real wins, real stages, real student impact!"</p>
           </div>
         </div>
         <div class="stat-row" style="margin-bottom:10px;">
@@ -2400,22 +2403,22 @@ body {
           <div class="stat-cell"><div class="stat-val" style="color:var(--green);">1000+</div><div class="stat-lbl">Learners Impacted</div></div>
         </div>
         <div class="card card-dark" style="margin-bottom:8px;padding:10px 12px;">
-          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">🌏 NOTABLE ACHIEVEMENTS</div>
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">NOTABLE ACHIEVEMENTS</div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;gap:8px;align-items:flex-start;">
-              <span style="font-size:14px;flex-shrink:0;">🥇</span>
+              <span style="font-size:14px;flex-shrink:0;">01</span>
               <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Sakthivel R</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">EcoInnovators National Winner · Villars Switzerland</div></div>
             </div>
             <div style="display:flex;gap:8px;align-items:flex-start;">
-              <span style="font-size:14px;flex-shrink:0;">🌐</span>
-              <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Mukesh V</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">TechHacks 2.0 · 1st Prize · ₹20,000</div></div>
+              <span style="font-size:14px;flex-shrink:0;">02</span>
+              <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Mukesh V</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">TechHacks 2.0 · 1st Prize · Rs.20,000</div></div>
             </div>
             <div style="display:flex;gap:8px;align-items:flex-start;">
-              <span style="font-size:14px;flex-shrink:0;">🤖</span>
+              <span style="font-size:14px;flex-shrink:0;">03</span>
               <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Sarveshvaran D &amp; Sejal Sai S</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">Best Paper · International Conference · ML Research</div></div>
             </div>
             <div style="display:flex;gap:8px;align-items:flex-start;">
-              <span style="font-size:14px;flex-shrink:0;">💡</span>
+              <span style="font-size:14px;flex-shrink:0;">04</span>
               <div><div style="font-family:var(--font-tech);font-size:11px;font-weight:600;color:var(--white);">Atchaya Senthilkumaran</div><div style="font-size:10px;color:rgba(255,255,255,0.5);">30+ events · 1000+ learners · 50+ sessions</div></div>
             </div>
           </div>
@@ -2447,13 +2450,13 @@ body {
 </div>
         </div>
       </div>
-      <span class="pg-num">04</span>
+      <span class="pg-num">05</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 5: HACKATHON & SYMPOSIUM I
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p5">
+         -------------------------------------- -->
+    <div class="pg" id="p6">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#070814"/>
         <circle cx="400" cy="100" r="110" fill="rgba(0,212,255,0.05)"/>
@@ -2473,7 +2476,7 @@ body {
           <div class="ev-body">
             <div class="ev-title">HACKTHRONE 2025</div>
             <p class="ev-desc">Our <strong>CSE Department</strong> student <strong style="color:var(--gold);">Sakthivel (II Year)</strong> made us proud by emerging as a winner at the prestigious Hackathrone 2025. Competing against top innovators from across the country, he showcased exceptional problem-solving skills and creativity, earning recognition among hundreds of participants.</p>
-            <span class="ev-tag">3rd Prize · ₹30,000 · 100+ Teams</span>
+            <span class="ev-tag">3rd Prize · Rs.30,000 · 100+ Teams</span>
           </div>
         </div>
         <div class="ev-block">
@@ -2483,7 +2486,7 @@ body {
           <div class="ev-body">
             <div class="ev-title">CODEATHON 2026</div>
             <p class="ev-desc">Showcasing exceptional innovation, <strong style="color:var(--gold);">Sarveshvaran D (II Year)</strong> made a remarkable mark at Codeathon 2026, a 30-hour national-level hackathon. His project stood out for its practical approach and impactful execution, bringing pride to the department.</p>
-            <span class="ev-tag">2nd Prize · ₹5,000 · National Level</span>
+            <span class="ev-tag">2nd Prize · Rs.5,000 · National Level</span>
           </div>
         </div>
         <div class="innovation-strip cyan">
@@ -2510,13 +2513,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">05</span>
+      <span class="pg-num">06</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 6: HACKATHON II — Violet Neon
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p6">
+         -------------------------------------- -->
+    <div class="pg" id="p7">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#0c0814"/>
         <circle cx="60" cy="400" r="90" fill="rgba(255,79,160,0.05)"/>
@@ -2545,7 +2548,7 @@ body {
           <div class="ev-body">
             <div class="ev-title">TECHHACKS 2.0</div>
             <p class="ev-desc"><strong style="color:var(--gold);">Mukesh V (II yr)</strong> secured <strong>First Prize</strong> at TechHacks 2.0, conducted by SRM Ramapuram. His project, <strong>CuraTrack</strong>, is a Smart Beneficiary Health Record and Medication Tracking System integrating AI-based medication reminders, unified digital health records, and intelligent health insights.</p>
-            <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">1st Prize · ₹20,000 · AI Healthcare</span>
+            <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">1st Prize · Rs.20,000 · AI Healthcare</span>
           </div>
         </div>
         <div class="innovation-strip pink">
@@ -2572,13 +2575,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">06</span>
+      <span class="pg-num">07</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 7: CULTURAL TECH FUSION — Magenta
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p7">
+         -------------------------------------- -->
+    <div class="pg" id="p8">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#100814"/>
         <circle cx="300" cy="300" r="160" fill="rgba(255,79,160,0.04)"/>
@@ -2635,13 +2638,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">07</span>
+      <span class="pg-num">08</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 8: INNOVATION SHOWCASE I
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p8">
+         -------------------------------------- -->
+    <div class="pg" id="p9">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#060c14"/>
         <circle cx="200" cy="200" r="180" fill="rgba(0,212,255,0.04)"/>
@@ -2699,13 +2702,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">08</span>
+      <span class="pg-num">09</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 9: PAPER PRESENTATION
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p9">
+         -------------------------------------- -->
+    <div class="pg" id="p10">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#08060f"/>
         <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(255,79,160,0.4)" stroke-width="2"/>
@@ -2740,7 +2743,7 @@ body {
 
           </div>
           <div class="ev-body">
-            <div class="ev-title">IKS CONFERENCE – PAPER PRESENTATION 🏆</div>
+            <div class="ev-title">IKS CONFERENCE - PAPER PRESENTATION</div>
             <p class="ev-desc">Demonstrating strong research and presentation skills, <strong style="color:var(--gold);">Haritha M (III yr)</strong> secured <strong>First Position</strong> in Paper Presentation at the IKS Conference conducted by SSN College of Engineering. The conference focused on <em>Indian Knowledge Systems: Tradition, Culture &amp; Technology</em>.</p>
             <span class="ev-tag" style="background:rgba(255,79,160,0.12);border-color:rgba(255,79,160,0.3);color:var(--pink);">1st Position · IKS Conference · SSN College</span>
           </div>
@@ -2769,13 +2772,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">09</span>
+      <span class="pg-num">10</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 10: STUDENT ORGANIZATIONS
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p10">
+         -------------------------------------- -->
+    <div class="pg" id="p11">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#060814"/>
         <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(46,204,113,0.5)" stroke-width="2"/>
@@ -2821,13 +2824,13 @@ body {
           </div>
         </div>
       </div>
-      <span class="pg-num">10</span>
+      <span class="pg-num">11</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 11: SPORTS — Olive Green / Scatter
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p11">
+         -------------------------------------- -->
+    <div class="pg" id="p12">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#090e08"/>
         <circle cx="380" cy="350" r="120" fill="rgba(46,204,113,0.05)"/>
@@ -2850,7 +2853,7 @@ body {
         </div>
         <div class="scatter-wrap">
           <div class="scatter-note">
-            <div class="ev-title" style="font-size:10.5px;margin-bottom:4px;">LOYOLA ICAM TROPHY – RUNNER-UP 🏏</div>
+            <div class="ev-title" style="font-size:10.5px;margin-bottom:4px;">LOYOLA ICAM TROPHY - RUNNER-UP</div>
             <p class="ev-desc" style="font-size:10.5px;">The Cricket (Men) team secured <strong>Runner-Up</strong> in the Loyola ICAM Trophy 2026. CSE students — <strong style="color:var(--gold);">Lithan G, Mohith, Hirthic Vasan R, Dhanush Karthick, and Gowtham Raj M</strong> — played a significant role throughout the tournament.</p>
           </div>
           <div class="scatter-photo" style="height:140px;">
@@ -2861,12 +2864,12 @@ body {
           <div style="font-family:var(--font-tech);font-size:9.5px;color:var(--green);text-align:center;letter-spacing:1px;">Quick Highlights: Chess Silver · Cricket Runner-Up · Inter-Dept Champions</div>
         </div>
       </div>
-      <span class="pg-num">11</span>
+      <span class="pg-num">12</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 12 (p11a): SPECIAL MENTION — Sakthivel
-         ══════════════════════════════════════ -->
+         -------------------------------------- -->
     <div class="pg" id="p11a">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#0a0718"/>
@@ -2892,7 +2895,7 @@ body {
         </div>
         <div class="card" style="background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.25);padding:9px 12px;margin-bottom:8px;">
           <div style="font-family:var(--font-tech);font-size:9px;letter-spacing:2px;color:var(--cyan);margin-bottom:4px;text-transform:uppercase;">Progression</div>
-          <div style="font-family:var(--font-tech);font-size:10.5px;color:var(--white);line-height:1.4;"><strong style="color:var(--gold);">VIT Hackathon Winner</strong> → <strong style="color:var(--gold);">EcoInnovators Ideathon 2026 Winner</strong> → <strong style="color:var(--gold);">Selected for Villars Symposium, Switzerland</strong></div>
+          <div style="font-family:var(--font-tech);font-size:10.5px;color:var(--white);line-height:1.4;"><strong style="color:var(--gold);">VIT Hackathon Winner</strong> | <strong style="color:var(--gold);">EcoInnovators Ideathon 2026 Winner</strong> | <strong style="color:var(--gold);">Selected for Villars Symposium, Switzerland</strong></div>
         </div>
         <div class="card card-dark" style="margin-bottom:8px;padding:10px;">
           <div class="ev-title">EcoInnovators Ideathon 2026 – National Winner</div>
@@ -2902,15 +2905,15 @@ body {
         <div class="card card-dark" style="padding:10px;">
           <div class="ev-title">Global and Institutional Recognition</div>
           <p class="ev-desc">Selected for the Villars Symposium, Switzerland; shortlisted for the Indian Bank innovation event; contributing to a government-funded project with strong public-impact relevance.</p>
-          <span class="ev-tag">Hackathon → Ideathon → International Stage</span>
+          <span class="ev-tag">Hackathon | Ideathon | International Stage</span>
         </div>
       </div>
-      <span class="pg-num">12</span>
+      <span class="pg-num">13</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 13 (p11b): SPECIAL MENTION — Atchaya
-         ══════════════════════════════════════ -->
+         -------------------------------------- -->
     <div class="pg" id="p11b">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#0d0818"/>
@@ -2941,13 +2944,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <div style="font-family:var(--font-tech);font-size:9px;letter-spacing:1.5px;color:var(--pink);">Founder and CEO · AI Tech Associate · Educator · Design Lead · Community Builder</div>
         </div>
       </div>
-      <span class="pg-num">13</span>
+      <span class="pg-num">14</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 14 (p12): MOMENTS TO GLORY
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p12">
+         -------------------------------------- -->
+    <div class="pg" id="p13">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#090610"/>
         <circle cx="225" cy="300" r="200" fill="rgba(108,43,217,0.06)"/>
@@ -2970,13 +2973,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">14</span>
+      <span class="pg-num">15</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 15 (p13): FACULTY EXCELLENCE I
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p13">
+         -------------------------------------- -->
+    <div class="pg" id="p14">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#040e1c"/>
         <circle cx="100" cy="150" r="100" fill="rgba(0,212,255,0.05)"/>
@@ -3026,13 +3029,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">15</span>
+      <span class="pg-num">16</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 16 (p14): FACULTY EXCELLENCE II
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p14">
+         -------------------------------------- -->
+    <div class="pg" id="p15">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#040a18"/>
         <circle cx="350" cy="200" r="130" fill="rgba(108,43,217,0.06)"/>
@@ -3079,13 +3082,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">16</span>
+      <span class="pg-num">17</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 17 (p15): FACULTY EXCELLENCE III
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p15">
+         -------------------------------------- -->
+    <div class="pg" id="p16">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#050c1a"/>
         <circle cx="100" cy="450" r="100" fill="rgba(255,79,160,0.05)"/>
@@ -3132,12 +3135,12 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">17</span>
+      <span class="pg-num">18</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 18 (p15a): FACULTY ENGAGEMENTS — Teal Gold
-         ══════════════════════════════════════ -->
+         -------------------------------------- -->
     <div class="pg" id="p15a">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -3167,7 +3170,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
         <div class="faculty-engage-grid">
-          <div class="faculty-photo-slot"><img src="images/newedu.png" alt="ThinkEdu Conclave placeholder" style="object-fit:contain;object-position:center center;"/></div>
+          <div class="faculty-photo-slot"><img src="images/edu.png" alt="ThinkEdu Conclave placeholder"/></div>
           <div>
             <div class="faculty-engage-title">ThinkEdu Conclave 2026</div>
             <p class="faculty-engage-copy">The <strong>14th edition of The New Indian Express ThinkEdu Conclave 2026</strong> was held on March 2 and 3, 2026, at ITC Grand Chola, Chennai.</p>
@@ -3183,12 +3186,12 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">18</span>
+      <span class="pg-num">19</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 19 (p15b): FACULTY ENGAGEMENTS — Violet Lime
-         ══════════════════════════════════════ -->
+         -------------------------------------- -->
     <div class="pg" id="p15b">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -3234,12 +3237,12 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">19</span>
+      <span class="pg-num">20</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 20 (p15c): SPECIAL MENTION — Faculty Spotlight
-         ══════════════════════════════════════ -->
+         -------------------------------------- -->
     <div class="pg" id="p15c">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -3295,13 +3298,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">20</span>
+      <span class="pg-num">21</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 21 (p16): WEALTH ENGINEERING — Amber Finance
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p16">
+         -------------------------------------- -->
+    <div class="pg" id="p17">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="wBg" cx="70%" cy="90%" r="80%">
@@ -3326,7 +3329,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <div style="font-family:var(--font-tech);font-size:10px;color:var(--gold);font-weight:700;margin-bottom:4px;">Premium Reality Check</div>
           <div style="font-family:var(--font-headline);font-size:42px;color:var(--gold);line-height:0.9;margin-bottom:6px;">Rs. 1.44L</div>
           <p class="body-copy" style="font-size:11.5px;">A casual <strong style="color:var(--gold);">Rs.100/day</strong> lifestyle spend across 4 years becomes nearly <strong style="color:var(--gold);">Rs.1.44 lakhs</strong>. The winning move is simple: keep lifestyle joy, remove money leakage.</p>
-          <div style="font-family:var(--font-tech);font-size:10px;color:rgba(255,255,255,0.6);margin-top:6px;"><strong style="color:var(--gold);">Rs.500</strong> Monthly SIP → <strong style="color:var(--gold);">10–12%</strong> Long-run equity range → <strong style="color:var(--gold);">Time</strong> Your hidden multiplier</div>
+          <div style="font-family:var(--font-tech);font-size:10px;color:rgba(255,255,255,0.6);margin-top:6px;"><strong style="color:var(--gold);">Rs.500</strong> Monthly SIP | <strong style="color:var(--gold);">10-12%</strong> Long-run equity range | <strong style="color:var(--gold);">Time</strong> Your hidden multiplier</div>
         </div>
         <div class="card card-dark" style="margin-bottom:8px;padding:11px 12px;">
           <div style="font-family:var(--font-tech);font-size:10px;color:var(--gold);font-weight:700;margin-bottom:6px;">Trading vs Investing: Career-Safe Decision Matrix</div>
@@ -3345,13 +3348,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">21</span>
+      <span class="pg-num">22</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 22 (p17): GEN AI — Electric Blue
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p17">
+         -------------------------------------- -->
+    <div class="pg" id="p18">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="gBg" cx="18%" cy="20%" r="90%">
@@ -3397,13 +3400,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">22</span>
+      <span class="pg-num">23</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 23 (p18): RAG MODELS — Royal Blue
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p18">
+         -------------------------------------- -->
+    <div class="pg" id="p19">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="rBg" cx="55%" cy="40%" r="86%">
@@ -3449,13 +3452,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">23</span>
+      <span class="pg-num">24</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 24 (p19): STOCK MARKET — Forest Green
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p19">
+         -------------------------------------- -->
+    <div class="pg" id="p20">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="sBg" cx="70%" cy="20%" r="86%">
@@ -3489,7 +3492,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <div class="bar-item"><span class="bar-label">Patience Score</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:var(--gold);"></div></div><span class="bar-val" style="color:var(--gold);">Alpha</span></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px;">
-          <div class="stat-cell"><div class="stat-val" style="font-size:20px;">₹500</div><div class="stat-lbl">SIP Start</div></div>
+          <div class="stat-cell"><div class="stat-val" style="font-size:20px;">Rs.500</div><div class="stat-lbl">SIP Start</div></div>
           <div class="stat-cell"><div class="stat-val" style="font-size:20px;color:var(--cyan);">6 Mo</div><div class="stat-lbl">Safety Buffer</div></div>
           <div class="stat-cell"><div class="stat-val" style="font-size:20px;color:var(--pink);">0</div><div class="stat-lbl">Leverage</div></div>
         </div>
@@ -3502,13 +3505,13 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         </div>
         <div style="font-family:var(--font-serif);font-size:12px;color:var(--gold);border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">Golden Rule: protect capital first. Compounding rewards survivors.</div>
       </div>
-      <span class="pg-num">24</span>
+      <span class="pg-num">25</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 25 (p20): PLACEMENTS — Midnight Emerald
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p20">
+         -------------------------------------- -->
+    <div class="pg" id="p21">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <rect width="450" height="600" fill="#040b10"/>
         <circle cx="400" cy="100" r="120" fill="rgba(46,204,113,0.05)"/>
@@ -3521,46 +3524,44 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         <div class="eyebrow" style="color:var(--green);">Career Success</div>
         <div class="page-headline-sm" style="color:var(--white);margin-bottom:6px;">Placement <span style="color:var(--green);">Achievements</span></div>
         <div style="height:2px;width:40px;background:var(--green);margin-bottom:10px;opacity:0.8;"></div>
-        <div class="card card-gold placement-highlight placement-story">
-          <div class="placement-kicker">EMBEDUR SYSTEMS CAMPUS PLACEMENT</div>
-          <p class="placement-intro">
-            The Department of Computer Science &amp; Engineering celebrates the successful placement of its students at <strong style="color:var(--green);">embedUR Systems</strong>, a global product engineering company specializing in embedded systems, networking, and IoT solutions.
-          </p>
-          <p class="placement-body">
-            With a strong presence in firmware development, device connectivity, and system-level software, the company works on real-world products used in industries such as telecommunications, healthcare devices, and smart infrastructure.
-          </p>
-          <p class="placement-body">
-            Notably, these students secured their placements during their <strong style="color:var(--gold);">III Year</strong> itself, reflecting early preparedness and a strong foundation in core technical skills.
-          </p>
-          <p class="placement-body">
-            After a rigorous campus recruitment process involving technical assessments and interviews, the following CSE students were selected:
-          </p>
-          <div class="placement-selected-title">SELECTED CSE STUDENTS</div>
-          <div class="placement-selected-list">
-            <div class="placement-name">• <strong style="color:var(--gold);">Shangamithra TS</strong></div>
-            <div class="placement-name">• <strong style="color:var(--gold);">Manicka Meenakshi S</strong></div>
-            <div class="placement-name">• <strong style="color:var(--gold);">Kumaran S</strong></div>
-            <div class="placement-name">• <strong style="color:var(--gold);">Vishwa J</strong></div>
+        <div class="stat-row" style="margin-bottom:10px;">
+          <div class="stat-cell" style="background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);"><div class="stat-val" style="color:var(--green);">96%</div><div class="stat-lbl">Placement Rate</div></div>
+          <div class="stat-cell"><div class="stat-val">Rs.45L</div><div class="stat-lbl">Highest Package</div></div>
+          <div class="stat-cell"><div class="stat-val" style="color:var(--cyan);">Rs.8.2L</div><div class="stat-lbl">Average CTC</div></div>
+          <div class="stat-cell" style="background:rgba(255,79,160,0.08);border-color:rgba(255,79,160,0.2);"><div class="stat-val" style="color:var(--pink);">180+</div><div class="stat-lbl">Companies Visited</div></div>
+        </div>
+        <div class="card card-dark" style="margin-bottom:8px;padding:10px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:2px;">TOP RECRUITERS 2026</div>
+          <div class="tag-cloud">
+            <span class="ctag">Google</span><span class="ctag">Microsoft</span><span class="ctag">Amazon</span><span class="ctag">Apple</span>
+            <span class="ctag">Goldman Sachs</span><span class="ctag">Zoho</span><span class="ctag">Freshworks</span><span class="ctag">Oracle</span>
+            <span class="ctag">Wipro</span><span class="ctag">Infosys</span><span class="ctag">TCS</span><span class="ctag">Cognizant</span>
           </div>
-          <div class="placement-note">
-            Their success reflects solid problem-solving ability, core subject knowledge, and consistent preparation. This achievement reinforces the department's focus on building industry-relevant skills and highlights the growing placement strength in core technology roles.
+        </div>
+        <div class="card card-gold" style="margin-bottom:10px;padding:10px 12px;">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px;letter-spacing:1.5px;">DREAM PLACEMENTS</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Preethi K.</strong> - Google SWE · Rs.45L · Hyderabad</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Rahul S.</strong> - Microsoft SDET · Rs.38L · Bangalore</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Sneha M.</strong> - Goldman Sachs · Rs.32L · Bangalore</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.75);">• <strong style="color:var(--gold);">Arun P.</strong> - Amazon SDE-2 · Rs.29L · Chennai</div>
           </div>
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
           <div class="mascot-speech" style="border-color:rgba(46,204,113,0.3);background:rgba(46,204,113,0.07);">
             <div class="mascot-label" style="color:var(--green);">ADHI says</div>
-            <p class="mascot-text">"These numbers aren't just stats - they're dreams fulfilled! Every offer letter is a story of late-night coding sessions paying off! 💪✨"</p>
+            <p class="mascot-text">"These numbers aren't just stats - they're dreams fulfilled! Every offer letter is a story of late-night coding sessions paying off!"</p>
           </div>
         </div>
       </div>
-      <span class="pg-num">25</span>
+      <span class="pg-num">26</span>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- --------------------------------------
          PAGE 26: THANK YOU — Regal Violet
-         ══════════════════════════════════════ -->
-    <div class="pg" id="p23">
+         -------------------------------------- -->
+    <div class="pg" id="p24">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="tBg" cx="50%" cy="50%" r="80%">
@@ -3601,12 +3602,6 @@ With experience across AI, development, design, and entrepreneurship, and a grow
               <div class="gratitude-dept">Department of CSE</div>
             </div>
             <div class="gratitude-person">
-              <div class="gratitude-photo"><img src="images/Manoranjini Photo.jpg.jpeg" alt="Dr. Manoranjini J"/></div>
-              <div class="gratitude-name">Dr. Manoranjini J</div>
-              <div class="gratitude-role">Professor &amp; Deputy Head</div>
-              <div class="gratitude-dept">Department of CSE</div>
-            </div>
-            <div class="gratitude-person">
               <div class="gratitude-photo"><img src="images/mam.png" alt="Priya Ma'am"/></div>
               <div class="gratitude-name">Ms M.Priyachitra</div>
               <div class="gratitude-role">Faculty Coordinator</div>
@@ -3634,29 +3629,29 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           <span class="badge" style="border-color:rgba(255,79,160,0.4);color:var(--pink);">Digital First</span>
         </div>
         <div style="font-family:var(--font-tech);font-size:9.5px;color:rgba(255,255,255,0.25);margin-top:4px;">© 2026 REC CSE Department · All rights reserved</div>
-        <div style="font-family:var(--font-tech);font-size:9px;color:rgba(255,255,255,0.18);margin-top:2px;">Designed with ❤️ by CSE Editorial Team</div>
+        <div style="font-family:var(--font-tech);font-size:9px;color:rgba(255,255,255,0.18);margin-top:2px;">Designed by CSE Editorial Team</div>
       </div>
-      <span class="pg-num">26</span>
+      <span class="pg-num">27</span>
     </div>
 
   </div><!-- end #flipbook -->
 
   <div class="nav-row">
-    <button class="nav-btn" id="btn-prev">← PREV</button>
+    <button class="nav-btn" id="btn-prev">&larr; PREV</button>
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div id="page-counter">Page 1 of 26</div>
+      <div id="page-counter">Page 1 of 27</div>
       <div class="progress-track"><div class="progress-fill" id="prog"></div></div>
     </div>
-    <button class="nav-btn" id="btn-next">NEXT →</button>
+    <button class="nav-btn" id="btn-next">NEXT &rarr;</button>
   </div>
-  <p class="kb-hint">← → Arrow keys to navigate · Click page edges to flip</p>
+  <p class="kb-hint">&larr; &rarr; Arrow keys to navigate · Click page edges to flip</p>
 </div><!-- end .mag-shell -->
 
 <script>
 $(document).ready(function() {
-  // ══════════════════════════════════════
+  // --------------------------------------
   // INTRO CANVAS ANIMATION
-  // ══════════════════════════════════════
+  // --------------------------------------
   (function() {
     const overlay = document.getElementById('intro-overlay');
     const particleCanvas = document.getElementById('intro-particles');
@@ -3967,48 +3962,6 @@ $(document).ready(function() {
     $('#prog').css('width', pct + '%');
   }
 
-  function goToBookPage(page, targetId) {
-    if (!page) return;
-    $('#flipbook').turn('page', page);
-    if (targetId) {
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', '#' + targetId);
-      } else {
-        window.location.hash = targetId;
-      }
-    }
-  }
-
-  $('.toc-link').on('click', function(e) {
-    e.preventDefault();
-    var page = parseInt(this.getAttribute('data-page'), 10);
-    var targetId = (this.getAttribute('href') || '').replace('#', '');
-    goToBookPage(page, targetId);
-  });
-
-  function syncBookToHash() {
-    var hash = window.location.hash ? window.location.hash.slice(1) : '';
-    if (!hash) return;
-
-    var $link = $('.toc-link[href="#' + hash + '"]').first();
-    if (!$link.length) return;
-
-    var page = parseInt($link.attr('data-page'), 10);
-    if (!page) return;
-
-    $('#flipbook').turn('page', page);
-  }
-
-  function resetBookToCover() {
-    $('#flipbook').turn('page', 1);
-    updateNav(1);
-    if (window.history && window.history.replaceState) {
-      window.history.replaceState(null, '', '#p1');
-    } else {
-      window.location.hash = 'p1';
-    }
-  }
-
   $('#btn-next').on('click', function() { $('#flipbook').turn('next'); });
   $('#btn-prev').on('click', function() { $('#flipbook').turn('previous'); });
 
@@ -4080,8 +4033,7 @@ $(document).ready(function() {
 
   window.addEventListener('afterprint', adjustSize);
 
-  resetBookToCover();
-  window.addEventListener('hashchange', syncBookToHash);
+  updateNav(1);
 });
 </script>
 </body>

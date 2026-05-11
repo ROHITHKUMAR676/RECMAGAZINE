@@ -1987,9 +1987,94 @@ body {
 /* ══════════════════════════════════════
    PAGE 13–19 — FACULTY: Academic Navy + Engagements
    ══════════════════════════════════════ */
+#p12a { background: #081813; }
 #p13 { background: #040e1c; }
 #p15 { background: #050c1a; }
 #p15b { background: #0d0718; }
+#p15e { background: #111009; }
+
+.section-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  font-family: var(--font-tech);
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(248,244,238,0.78);
+  background: rgba(255,255,255,0.04);
+}
+.section-ribbon::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+.faculty-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0;
+}
+.faculty-mosaic .tile,
+.writeup-stack .tile {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.045);
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 70px;
+}
+.faculty-mosaic .num {
+  font-family: var(--font-headline);
+  font-size: 28px;
+  line-height: 0.9;
+  color: #80ffc9;
+}
+.faculty-mosaic .lbl,
+.writeup-stack .lbl {
+  margin-top: 6px;
+  font-family: var(--font-tech);
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.writeup-stack {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0;
+}
+.writeup-stack .tile {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: center;
+  min-height: 0;
+}
+.writeup-stack .mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-tech);
+  font-size: 10px;
+  font-weight: 800;
+  color: #111009;
+  background: var(--gold);
+}
+.writeup-stack .title {
+  font-family: var(--font-tech);
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--white);
+}
 
 .faculty-engage-grid {
   display: grid;
@@ -2046,7 +2131,7 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PAGE 20 — SPECIAL MENTION: Faculty Spotlight
+   PAGE 20–21 — SPECIAL MENTION: Faculty Spotlight
    ══════════════════════════════════════ */
 #p15c { background: #09070f; }
 
@@ -2187,7 +2272,7 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PAGE 21 — WEALTH: Finance Amber
+   PAGE 23 — WEALTH: Finance Amber
    ══════════════════════════════════════ */
 #p16 { background: #0d0900; }
 .p16-bg-stripe {
@@ -2198,27 +2283,27 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PAGE 22 — GEN AI: Electric Blue
+   PAGE 24 — GEN AI: Electric Blue
    ══════════════════════════════════════ */
 #p17 { background: #040c1e; }
 
 /* ══════════════════════════════════════
-   PAGE 23 — RAG: Royal Blue
+   PAGE 25 — RAG: Royal Blue
    ══════════════════════════════════════ */
 #p18 { background: #050b1c; }
 
 /* ══════════════════════════════════════
-   PAGE 24 — STOCK: Forest Green
+   PAGE 26 — STOCK: Forest Green
    ══════════════════════════════════════ */
 #p19 { background: #040d08; }
 
 /* ══════════════════════════════════════
-   PAGE 25 — PLACEMENTS: Midnight Emerald
+   PAGE 27 — PLACEMENTS: Midnight Emerald
    ══════════════════════════════════════ */
 #p20 { background: #040b10; }
 
 /* ══════════════════════════════════════
-   PAGE 26 — THANK YOU: Regal Violet
+   PAGE 28 — THANK YOU: Regal Violet
    ══════════════════════════════════════ */
 #p23 { background: #0a0618; }
 
@@ -2552,23 +2637,19 @@ body {
 
 <a class="toc-row toc-link" href="#p12" data-page="15"><span class="toc-name">📸 Moments to Glory</span><span class="toc-dots"></span><span class="toc-pg">15</span></a>
 
-<a class="toc-row toc-link" href="#p13" data-page="16"><span class="toc-name">🏛️ Faculty & Department</span><span class="toc-dots"></span><span class="toc-pg">16–17</span></a>
+<a class="toc-row toc-link" href="#p12a" data-page="16"><span class="toc-name">🏅 Faculty Achievements</span><span class="toc-dots"></span><span class="toc-pg">16</span></a>
 
-<a class="toc-row toc-link" href="#p15b" data-page="18"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">18</span></a>
+<a class="toc-row toc-link" href="#p13" data-page="17"><span class="toc-name">🏛️ Faculty & Department</span><span class="toc-dots"></span><span class="toc-pg">17–18</span></a>
 
-<a class="toc-row toc-link" href="#p15c" data-page="19"><span class="toc-name">🌟 Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">19–20</span></a>
+<a class="toc-row toc-link" href="#p15b" data-page="19"><span class="toc-name">🎓 Faculty Engagements</span><span class="toc-dots"></span><span class="toc-pg">19</span></a>
 
-<a class="toc-row toc-link" href="#p16" data-page="21"><span class="toc-name">💰 Wealth & Finance</span><span class="toc-dots"></span><span class="toc-pg">21</span></a>
+<a class="toc-row toc-link" href="#p15c" data-page="20"><span class="toc-name">🌟 Faculty Special Mention</span><span class="toc-dots"></span><span class="toc-pg">20–21</span></a>
 
-<a class="toc-row toc-link" href="#p17" data-page="22"><span class="toc-name">🤖 GenAI Studio</span><span class="toc-dots"></span><span class="toc-pg">22</span></a>
+<a class="toc-row toc-link" href="#p15e" data-page="22"><span class="toc-name">✍️ Student Writeups</span><span class="toc-dots"></span><span class="toc-pg">22–26</span></a>
 
-<a class="toc-row toc-link" href="#p18" data-page="23"><span class="toc-name">📚 RAG Concepts</span><span class="toc-dots"></span><span class="toc-pg">23</span></a>
+<a class="toc-row toc-link" href="#p20" data-page="27"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">27</span></a>
 
-<a class="toc-row toc-link" href="#p19" data-page="24"><span class="toc-name">📈 Tech & Stock Trends</span><span class="toc-dots"></span><span class="toc-pg">24</span></a>
-
-<a class="toc-row toc-link" href="#p20" data-page="25"><span class="toc-name">💼 Placement Achievements</span><span class="toc-dots"></span><span class="toc-pg">25</span></a>
-
-<a class="toc-row toc-link" href="#p23" data-page="26"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">26</span></a>
+<a class="toc-row toc-link" href="#p23" data-page="28"><span class="toc-name">🙏 Thank You</span><span class="toc-dots"></span><span class="toc-pg">28</span></a>
         </div>
         <div class="mascot-row">
           <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
@@ -3184,7 +3265,76 @@ With experience across AI, development, design, and entrepreneurship, and a grow
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 16 (p13): FACULTY EXCELLENCE I
+         PAGE 16 (p12a): FACULTY ACHIEVEMENTS — Emerald Ledger
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p12a">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="faOpenBg" cx="78%" cy="16%" r="90%">
+            <stop offset="0%" stop-color="#1f5c46"/>
+            <stop offset="52%" stop-color="#081813"/>
+            <stop offset="100%" stop-color="#030706"/>
+          </radialGradient>
+          <linearGradient id="faGrid" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="rgba(128,255,201,0.24)"/>
+            <stop offset="100%" stop-color="rgba(232,200,74,0.04)"/>
+          </linearGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#faOpenBg)"/>
+        <path d="M36 90 H414 M36 146 H414 M36 202 H414 M36 258 H414 M36 314 H414 M36 370 H414 M36 426 H414" stroke="url(#faGrid)" stroke-width="0.8"/>
+        <path d="M82 42 V535 M154 42 V535 M226 42 V535 M298 42 V535 M370 42 V535" stroke="rgba(128,255,201,0.055)" stroke-width="0.8"/>
+        <circle cx="386" cy="108" r="96" fill="rgba(128,255,201,0.08)"/>
+        <circle cx="62" cy="500" r="116" fill="rgba(232,200,74,0.05)"/>
+        <path d="M58 463 C130 390 190 458 250 394 S344 320 410 350" fill="none" stroke="rgba(128,255,201,0.32)" stroke-width="2"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(128,255,201,0.72)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <div class="pg-inner" style="padding:25px 22px 22px;">
+        <div class="section-ribbon" style="color:#80ffc9;margin-bottom:11px;">Faculty Milestones</div>
+        <div class="page-headline-sm" style="color:var(--white);font-size:34px;line-height:0.92;margin-bottom:2px;">Faculty <span style="color:#80ffc9;">Achievements</span></div>
+        <div style="font-family:var(--font-tech);font-size:9.5px;letter-spacing:2.4px;color:rgba(255,255,255,0.56);text-transform:uppercase;margin-bottom:10px;">Leadership · Research · Collaboration · Learning</div>
+        <div class="card card-dark" style="padding:11px 13px;border-color:rgba(128,255,201,0.2);background:rgba(3,9,8,0.58);">
+          <p class="body-copy" style="font-size:11.5px;line-height:1.55;">This section celebrates the faculty voices shaping REC CSE through academic leadership, research publications, expert sessions, institutional collaboration, and continuous upskilling.</p>
+        </div>
+        <div class="faculty-mosaic">
+          <div class="tile">
+            <div class="num">02</div>
+            <div class="lbl">Research Publications</div>
+          </div>
+          <div class="tile" style="border-color:rgba(232,200,74,0.18);">
+            <div class="num" style="color:var(--gold);">02</div>
+            <div class="lbl">Special Mentions</div>
+          </div>
+          <div class="tile" style="border-color:rgba(0,212,255,0.16);">
+            <div class="num" style="color:var(--cyan);">03</div>
+            <div class="lbl">FDP &amp; Awareness Notes</div>
+          </div>
+          <div class="tile" style="border-color:rgba(255,79,160,0.16);">
+            <div class="num" style="color:var(--pink);">120</div>
+            <div class="lbl">Student Participants Reached</div>
+          </div>
+        </div>
+        <div class="card card-dark" style="padding:10px 12px;margin-bottom:9px;border-color:rgba(128,255,201,0.18);">
+          <div style="font-family:var(--font-tech);font-size:10px;font-weight:800;letter-spacing:1.8px;color:#80ffc9;margin-bottom:7px;text-transform:uppercase;">Achievement Trail</div>
+          <div style="display:grid;gap:6px;">
+            <div style="font-size:10.6px;color:rgba(248,244,238,0.82);"><strong style="color:var(--white);">Academic Governance</strong> · HOD representation in Academic Council.</div>
+            <div style="font-size:10.6px;color:rgba(248,244,238,0.82);"><strong style="color:var(--white);">Research Momentum</strong> · IEEE proceedings and Scopus-indexed publication work.</div>
+            <div style="font-size:10.6px;color:rgba(248,244,238,0.82);"><strong style="color:var(--white);">Future Readiness</strong> · AI, blockchain, IP awareness, and educator-focused learning.</div>
+          </div>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(128,255,201,0.28);background:rgba(128,255,201,0.07);">
+            <div class="mascot-label" style="color:#80ffc9;">ADHI says</div>
+            <p class="mascot-text">"Faculty achievements are quiet power: they lift classrooms, research culture, and every student who learns from that momentum."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">16</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 17 (p13): FACULTY EXCELLENCE I
          ══════════════════════════════════════ -->
     <div class="pg" id="p13">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3236,11 +3386,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">16</span>
+      <span class="pg-num">17</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 17 (p15): FACULTY EXCELLENCE II
+         PAGE 18 (p15): FACULTY EXCELLENCE II
          ══════════════════════════════════════ -->
     <div class="pg" id="p15">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3289,11 +3439,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">17</span>
+      <span class="pg-num">18</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 18 (p15b): FACULTY ENGAGEMENTS — Violet Lime
+         PAGE 19 (p15b): FACULTY ENGAGEMENTS — Violet Lime
          ══════════════════════════════════════ -->
     <div class="pg" id="p15b">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3340,11 +3490,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">18</span>
+      <span class="pg-num">19</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 19 (p15c): SPECIAL MENTION — Faculty Spotlight
+         PAGE 20 (p15c): SPECIAL MENTION — Faculty Spotlight
          ══════════════════════════════════════ -->
     <div class="pg" id="p15c">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3401,11 +3551,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">19</span>
+      <span class="pg-num">20</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 20 (p15d): SPECIAL MENTION — Faculty Engagements
+         PAGE 21 (p15d): SPECIAL MENTION — Faculty Engagements
          ══════════════════════════════════════ -->
     <div class="pg" id="p15d">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3463,11 +3613,78 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">20</span>
+      <span class="pg-num">21</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 21 (p16): WEALTH ENGINEERING — Amber Finance
+         PAGE 22 (p15e): STUDENT WRITEUPS — Editorial Desk
+         ══════════════════════════════════════ -->
+    <div class="pg" id="p15e">
+      <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="swOpenBg" cx="24%" cy="18%" r="90%">
+            <stop offset="0%" stop-color="#5b4a18"/>
+            <stop offset="46%" stop-color="#161208"/>
+            <stop offset="100%" stop-color="#070604"/>
+          </radialGradient>
+          <linearGradient id="paperGlow" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="rgba(232,200,74,0.22)"/>
+            <stop offset="100%" stop-color="rgba(0,212,255,0.06)"/>
+          </linearGradient>
+        </defs>
+        <rect width="450" height="600" fill="url(#swOpenBg)"/>
+        <rect x="60" y="74" width="330" height="408" rx="10" fill="rgba(255,255,255,0.035)" stroke="rgba(232,200,74,0.16)"/>
+        <rect x="78" y="100" width="126" height="9" fill="url(#paperGlow)"/>
+        <rect x="78" y="130" width="270" height="1.4" fill="rgba(255,255,255,0.1)"/>
+        <rect x="78" y="158" width="238" height="1.4" fill="rgba(255,255,255,0.08)"/>
+        <rect x="78" y="186" width="282" height="1.4" fill="rgba(255,255,255,0.08)"/>
+        <rect x="78" y="214" width="210" height="1.4" fill="rgba(255,255,255,0.08)"/>
+        <circle cx="382" cy="118" r="98" fill="rgba(0,212,255,0.06)"/>
+        <circle cx="64" cy="512" r="118" fill="rgba(232,200,74,0.06)"/>
+        <path d="M56 520 C122 456 206 526 266 458 S354 402 410 434" fill="none" stroke="rgba(232,200,74,0.22)" stroke-width="1.8"/>
+        <line x1="0" y1="0" x2="450" y2="0" stroke="rgba(232,200,74,0.72)" stroke-width="2"/>
+      </svg>
+      <img src="images/reclogo.png" class="corner-logo" alt="REC Logo"/>
+      <img src="images/voltmascot.png" class="corner-mascot" alt="ADHI"/>
+      <div class="pg-inner" style="padding:26px 22px 22px;">
+        <div class="section-ribbon" style="color:var(--gold);margin-bottom:12px;">Editorial Shelf</div>
+        <div class="page-headline-sm" style="font-size:35px;line-height:0.92;color:var(--white);margin-bottom:2px;">Student <span style="color:var(--gold);">Writeups</span></div>
+        <div style="font-family:var(--font-serif);font-size:15px;font-style:italic;color:rgba(248,244,238,0.76);line-height:1.35;max-width:320px;margin-bottom:10px;">Ideas from students who are learning the world by questioning it, building with it, and writing it down.</div>
+        <div class="stat-row" style="grid-template-columns:1fr 1fr;margin-bottom:10px;">
+          <div class="stat-cell" style="border-color:rgba(232,200,74,0.22);background:rgba(232,200,74,0.06);"><div class="stat-val" style="color:var(--gold);">04</div><div class="stat-lbl">Featured Essays</div></div>
+          <div class="stat-cell" style="border-color:rgba(0,212,255,0.2);background:rgba(0,212,255,0.055);"><div class="stat-val" style="color:var(--cyan);">03</div><div class="stat-lbl">Tech &amp; Finance Themes</div></div>
+        </div>
+        <div class="writeup-stack">
+          <div class="tile">
+            <div class="mark">01</div>
+            <div><div class="title">Wealth Engineering</div><div class="lbl">Money habits, SIP discipline, and student finance</div></div>
+          </div>
+          <div class="tile" style="border-color:rgba(0,212,255,0.18);">
+            <div class="mark" style="background:var(--cyan);">02</div>
+            <div><div class="title">Generative AI Studio</div><div class="lbl">The modern AI stack from chips to applications</div></div>
+          </div>
+          <div class="tile" style="border-color:rgba(157,184,255,0.18);">
+            <div class="mark" style="background:#9db8ff;">03</div>
+            <div><div class="title">RAG Concepts</div><div class="lbl">Grounded answers through retrieval and context</div></div>
+          </div>
+          <div class="tile" style="border-color:rgba(46,204,113,0.18);">
+            <div class="mark" style="background:var(--green);">04</div>
+            <div><div class="title">Stock Market Trends</div><div class="lbl">Risk, patience, ownership, and market thinking</div></div>
+          </div>
+        </div>
+        <div class="mascot-row">
+          <div class="mascot-avatar"><img src="images/voltmascot.png" alt="ADHI"/></div>
+          <div class="mascot-speech" style="border-color:rgba(232,200,74,0.3);background:rgba(232,200,74,0.075);">
+            <div class="mascot-label" style="color:var(--gold);">ADHI notes</div>
+            <p class="mascot-text">"A good writeup is a student thinking in public. These pages turn curiosity into clarity."</p>
+          </div>
+        </div>
+      </div>
+      <span class="pg-num">22</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAGE 23 (p16): WEALTH ENGINEERING — Amber Finance
          ══════════════════════════════════════ -->
     <div class="pg" id="p16">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3513,11 +3730,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">21</span>
+      <span class="pg-num">23</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 22 (p17): GEN AI — Electric Blue
+         PAGE 24 (p17): GEN AI — Electric Blue
          ══════════════════════════════════════ -->
     <div class="pg" id="p17">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3565,11 +3782,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">22</span>
+      <span class="pg-num">24</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 23 (p18): RAG MODELS — Royal Blue
+         PAGE 25 (p18): RAG MODELS — Royal Blue
          ══════════════════════════════════════ -->
     <div class="pg" id="p18">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3617,11 +3834,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">23</span>
+      <span class="pg-num">25</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 24 (p19): STOCK MARKET — Forest Green
+         PAGE 26 (p19): STOCK MARKET — Forest Green
          ══════════════════════════════════════ -->
     <div class="pg" id="p19">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3670,11 +3887,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         </div>
         <div style="font-family:var(--font-serif);font-size:12px;color:var(--gold);border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">Golden Rule: protect capital first. Compounding rewards survivors.</div>
       </div>
-      <span class="pg-num">24</span>
+      <span class="pg-num">26</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 25 (p20): PLACEMENTS — Midnight Emerald
+         PAGE 27 (p20): PLACEMENTS — Midnight Emerald
          ══════════════════════════════════════ -->
     <div class="pg" id="p20">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3722,11 +3939,11 @@ With experience across AI, development, design, and entrepreneurship, and a grow
           </div>
         </div>
       </div>
-      <span class="pg-num">25</span>
+      <span class="pg-num">27</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         PAGE 26: THANK YOU — Regal Violet
+         PAGE 28: THANK YOU — Regal Violet
          ══════════════════════════════════════ -->
     <div class="pg" id="p23">
       <svg class="pg-bg" viewBox="0 0 450 600" xmlns="http://www.w3.org/2000/svg">
@@ -3804,7 +4021,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
         <div style="font-family:var(--font-tech);font-size:9.5px;color:rgba(255,255,255,0.25);margin-top:4px;">© 2026 REC CSE Department · All rights reserved</div>
         <div style="font-family:var(--font-tech);font-size:9px;color:rgba(255,255,255,0.18);margin-top:2px;">Designed with ❤️ by CSE Editorial Team</div>
       </div>
-      <span class="pg-num">26</span>
+      <span class="pg-num">28</span>
     </div>
 
   </div><!-- end #flipbook -->
@@ -3812,7 +4029,7 @@ With experience across AI, development, design, and entrepreneurship, and a grow
   <div class="nav-row">
     <button class="nav-btn" id="btn-prev">← PREV</button>
     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div id="page-counter">Page 1 of 26</div>
+      <div id="page-counter">Page 1 of 28</div>
       <div class="progress-track"><div class="progress-fill" id="prog"></div></div>
     </div>
     <button class="nav-btn" id="btn-next">NEXT →</button>

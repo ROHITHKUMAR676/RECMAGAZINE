@@ -1995,8 +1995,11 @@ body {
 
 .section-ribbon {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 8px;
+  width: max-content;
+  max-width: calc(100% - 104px);
   padding: 6px 10px;
   border: 1px solid rgba(255,255,255,0.14);
   border-radius: 999px;
